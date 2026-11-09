@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ja"><head><meta charset="utf-8"><script>var YBUILD='yaniv-v35';(function(){try{if(!/\bLine\//i.test(navigator.userAgent||''))return;var q=location.search||'';if(/[?&]openExternalBrowser=1/.test(q))return;location.replace(location.pathname+(q?q+'&':'?')+'openExternalBrowser=1'+location.hash)}catch(e){}})();</script>
+<html lang="ja"><head><meta charset="utf-8"><script>var YBUILD='yaniv-v36';(function(){try{if(!/\bLine\//i.test(navigator.userAgent||''))return;var q=location.search||'';if(/[?&]openExternalBrowser=1/.test(q))return;location.replace(location.pathname+(q?q+'&':'?')+'openExternalBrowser=1'+location.hash)}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"><meta name="format-detection" content="telephone=no">
 <title>ヤニブ</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Yuji+Boku&display=swap&text=%E4%B8%83%E6%B8%A1%E3%83%A4%E3%83%8B%E3%83%96%21Straight%C3%97%EF%BC%92%EF%BC%93%EF%BC%94%EF%BC%95%EF%BC%96%EF%BC%97%EF%BC%98%EF%BC%99">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Yuji+Boku&display=swap&text=%E4%B8%83%E6%B8%A1%E3%83%A4%E3%83%8B%E3%83%96%21Straight%C3%97%EF%BC%91%EF%BC%92%EF%BC%93%EF%BC%94%EF%BC%95%EF%BC%96%EF%BC%97%EF%BC%98%EF%BC%99">
 <meta name="theme-color" content="#0b0705"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="ヤニブ">
 <link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-180.png"><link rel="manifest" href="manifest.webmanifest">
 <style>
@@ -200,6 +200,7 @@ body.dfx #start h1{visibility:hidden}body.dfx #ci,body.dfx #fx{z-index:87}
 .dfl{position:absolute;width:0;height:0;transform-origin:0 0;z-index:3;will-change:transform}
 .dfw{position:absolute;perspective:700px}.dfi{position:absolute;inset:0;transform-style:preserve-3d;-webkit-transform-style:preserve-3d}
 .dfc{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}.dfc>.cd{margin:0}.dff{transform:rotateY(180deg)}
+.row.demo{gap:6px}.row.demo .act{min-width:4.6em}
 .dshow{position:absolute;inset:0;z-index:5;display:flex;align-items:center;justify-content:center;pointer-events:none}
 .dshow .dsfl{position:absolute;inset:0;animation:dsfl var(--d) linear both;mix-blend-mode:screen}
 body.d3 .dshow .dsfl{opacity:.55}
@@ -393,7 +394,7 @@ function discardAct(p,v){const h=G.hands[p];v.s.forEach(c=>h.splice(h.indexOf(c)
 log(NM[p]+'が捨てた: '+v.s.map(nm).join(' '));
 if(v.tri){const k=v.s.length>=4?2:1,dl=[];for(let x=0;x<k;x++){const e=draw();if(e){G.inds.push(e);const d=e.r===0?0:e.r%13+1;if(!G.dora.includes(d))G.dora.push(d);dl.push(nm(e)+'→ドラ'+RN[d]);log('同数字'+v.s.length+'枚!ドラ表示牌追加: '+nm(e)+' → ドラ'+RN[d])}}if(dl.length){const on=(typeof NET!=='undefined'&&NET.on)||(typeof FXON!=='undefined'&&FXON);if(on)G.hold=Math.max(G.hold||0,Date.now()+2800)}if(dl.length)cutin('dora',dl.length>1?'ドラ +2!':'ドラ追加!',dl.join('  '),dl.length)}
 const run=v.s.length>=3&&v.s[0].r!==v.s[1].r,lt=v.s[v.s.length-1];G.blk=run&&lt.r===7?lt:null;if(run&&v.s.some(c=>c.r===7))log((v.str?'ストレート':'階段')+'の7は七渡無効');if(v.str){G.hold=Date.now()+(typeof FXON!=='undefined'&&FXON?STRMS:0);log(NM[p]+'のストレート!');if(typeof strFx==='function')try{strFx(p,v.s)}catch(e){}}G.pend={sev:run?0:v.s.filter(c=>c.r===7).length,jqk:v.s.filter(c=>c.r>=11).length,rk:run?[]:v.s.map(c=>c.r)};G.phase='draw';render();fxDisc(p,v.s);nanaFx(p)}
-function nanaFx(p){const n=G.pend.sev,nx=sevenTarget(p);if(n&&nx!==null)cutin('nana',n>1?'七渡×'+String.fromCharCode(65296+Math.min(9,n)):'七渡',NM[p]+' → '+NM[nx]+'  '+n+'枚',n)}
+function nanaFx(p){const n=G.pend.sev,nx=sevenTarget(p);if(n&&nx!==null)cutin('nana','七渡×'+String.fromCharCode(65296+Math.max(1,Math.min(9,n))),NM[p]+' → '+NM[nx]+'  '+n+'枚',n)}
 function drawAct(p,from){let c;if(from==='pile'&&G.prevTop&&G.pile.includes(G.prevTop)){c=G.prevTop;G.pile.splice(G.pile.indexOf(c),1)}else c=draw();
 if(c){fxDraw(p,c,from);G.hands[p].push(c);log(NM[p]+'が'+(from==='pile'?'捨て札('+nm(c)+')':'山札')+'から引いた')}
 if(c&&from!=='pile'&&G.pend.rk.includes(c.r)){if(G.hum[p]){G.phase='bonus';G.bonus=c;return render()}if(cb(c,G.dora)>0)return bonusAct(p,c,true)}post(p)}
@@ -1261,13 +1262,17 @@ if(document.addEventListener){const un=()=>{if(SNDON)audio()};document.addEventL
 /* ===== ストレート演出(約7秒・画面を切り替えて見せる) ===== */
 let SXT=[];
 function strFx(p,cs){net('fx',{k:'s',p,c:cs.map(enc)});strLocal(p,cs)}
+/* 演出の試し見(☰ → その他)。演出OFFのときも見られる */
+const DEMOS=[['ヤニブ',()=>cutinLocal('yaniv','ヤニブ!','あなたの宣言',1,1)],['七渡',()=>cutinLocal('nana','七渡×１','CPU1 → あなた  1枚',1,1)],
+ ['ドラ追加',()=>cutinLocal('dora','ドラ追加!','♠5→ドラ6',1,1)],['ドラ+2',()=>cutinLocal('dora','ドラ +2!','♠5→ドラ6  ♥9→ドラ10',2,1)],['ストレート',()=>strLocal(0,[{r:9,s:0},{r:10,s:1},{r:11,s:3},{r:12,s:2},{r:13,s:0}],1)]];
+function demoFx(i){const d=DEMOS[i];if(!d)return;closeOv();setTimeout(d[1],120)}
 function demoMode(ms){if(!ST.vis)return;document.body.classList.toggle('dfx',true);clearTimeout(demoMode.t);demoMode.t=setTimeout(()=>document.body.classList.toggle('dfx',false),ms)}
 const SQBR='<svg viewBox="0 0 1000 200" preserveAspectRatio="none"><defs><filter id="sqr" x="-5%" y="-30%" width="110%" height="160%"><feTurbulence type="fractalNoise" baseFrequency="0.018 0.22" numOctaves="3" seed="7"/><feDisplacementMap in="SourceGraphic" scale="42"/></filter><linearGradient id="sqbg" x1="0" x2="1"><stop offset="0" stop-color="#2a0505" stop-opacity="0"/><stop offset=".1" stop-color="#4d0909"/><stop offset=".5" stop-color="#7a1010"/><stop offset=".9" stop-color="#4d0909"/><stop offset="1" stop-color="#2a0505" stop-opacity="0"/></linearGradient></defs><rect x="20" y="38" width="960" height="124" fill="url(#sqbg)" filter="url(#sqr)"/><rect x="60" y="150" width="880" height="6" fill="#c19a48" opacity=".55" filter="url(#sqr)"/></svg>';
 function inkSvg(){let h='<svg viewBox="0 0 1000 300" preserveAspectRatio="none"><defs><filter id="sqk"><feTurbulence type="fractalNoise" baseFrequency=".06" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="14"/></filter></defs><g filter="url(#sqk)">';
  for(let i=0;i<26;i++){const side=i%2?1:-1,x=500+side*(330+Math.random()*190),y=60+Math.random()*190,r=2+Math.random()*(i<6?16:7),c=Math.random()<.65?'#5c0a0a':'#0d0503';h+='<circle cx="'+x.toFixed(0)+'" cy="'+y.toFixed(0)+'" r="'+r.toFixed(1)+'" fill="'+c+'" opacity="'+(.55+Math.random()*.4).toFixed(2)+'"/>'}
  return h+'</g></svg>'}
 function strLocal(p,cs,demo){cs=[...cs].sort((a,b)=>a.r-b.r).slice(0,5);const who=demo?'あなた':String(NM[p]||''),rk=cs.map(c=>RN[c.r]).join(' ・ ');
- if(!FXON){toast(who+'のストレート! '+cs.map(c=>RN[c.r]).join('-'));sfx('tap');return}
+ if(!FXON&&!demo){toast(who+'のストレート! '+cs.map(c=>RN[c.r]).join('-'));sfx('tap');return}
  const L=document.getElementById('sxl');if(!L)return;SXT.forEach(clearTimeout);SXT=[];const at=(ms,f)=>SXT.push(setTimeout(f,ms));if(demo)demoMode(STRMS+300);
  const fs=Math.max(12,Math.min(30,STW*.6/(5*4.4+4*1.0),STH*.4/6.2));
  L.innerHTML='<div class="sq" style="--fs:'+fs.toFixed(1)+'px"><div class="sq-bk"></div><div class="sq-w"><div class="sq-fog"></div><div class="sq-smk"></div><div class="sq-smk s2"></div><div class="sq-rays"></div><div class="sq-slit"></div><div class="sq-burst"></div>'
@@ -1281,10 +1286,10 @@ function strLocal(p,cs,demo){cs=[...cs].sort((a,b)=>a.r-b.r).slice(0,5);const wh
  at(STRMS-900,()=>document.body.classList.toggle('sxv',false));at(STRMS,()=>{L.innerHTML='';L.style.display='none'})}
 function cutin(t,a,b,n){net('fx',{k:'c',t,a,b,n:n||1});cutinLocal(t,a,b,n)}
 function cutinLocal(t,a,b,n,demo){if(t==='yaniv'&&!demo&&S3.ok&&G&&G.declarer!=null)S3.declare(G.declarer);if(t==='dora'&&!demo&&G){NEWIND={n:n||1,gid:G.gid,hide:FXON?1:0,landed:0,t0:Date.now(),until:FXON?0:Date.now()+2000};if(NET.on&&!NET.host&&!ST.vis)paint()}CIQ.push([t,a,b,demo,n]);if(CIQ.length>3)CIQ.splice(0,CIQ.length-3);if(!CIB)ciNext()}
-function ciNext(){const L=document.getElementById('ci');if(!CIQ.length||!L||!L.appendChild){CIB=false;return}CIB=true;const [t,a,b,demo,cn]=CIQ.shift();let dur=t==='yaniv'||t==='nana'?3000:1450;if(CIQ.length)dur*=.8;if(demo)demoMode(dur+400);
-if(t==='dora'){if(!FXON){sfx('swish');setTimeout(ciNext,200);return}setTimeout(()=>{let ms=0;try{ms=doraShow(a,b,demo)}catch(e){unhideAll();ms=0}setTimeout(ciNext,ms)},demo?50:200);return}
+function ciNext(){const L=document.getElementById('ci');if(!CIQ.length||!L||!L.appendChild){CIB=false;return}CIB=true;const [t,a,b,demo,cn]=CIQ.shift();let dur=t==='yaniv'||t==='nana'?3000:1450;if(CIQ.length)dur*=.8;if(demo)demoMode(t==='dora'?DORAMS+900:dur+400);
+if(t==='dora'){if(!FXON&&!demo){sfx('swish');setTimeout(ciNext,200);return}setTimeout(()=>{let ms=0;try{ms=doraShow(a,b,demo,cn)}catch(e){unhideAll();ms=0}setTimeout(ciNext,ms)},demo?50:200);return}
 sfx(t);if(t==='yaniv'&&SNDON&&navigator.vibrate)try{navigator.vibrate([60,40,140])}catch(e){}
-if(!FXON){setTimeout(ciNext,200);return}
+if(!FXON&&!demo){setTimeout(ciNext,200);return}
 const d=document.createElement('div');d.className='ci ci-'+t+(t==='nana'&&cn>1?' nx'+Math.min(3,cn):'');d.style.setProperty('--d',dur+'ms');
 d.innerHTML=t==='nana'?'<div class="nsp"></div><div class="n7">7</div><div class="nfl"><span class="g2"></span><span class="g1"></span><span class="cit"></span></div><div class="cis"></div>':'<div class="cib"></div>'+(t==='yaniv'?'<div class="bgw">YANIV</div>':'')+'<div class="cit"></div><div class="cis"></div>';
 d.querySelectorAll('.cit,.g1,.g2').forEach(e=>e.textContent=a);if(t==='nana'){const m=/^(.*?)(×[0-9０-９]+)$/.exec(a);if(m)d.querySelectorAll('.cit,.g1,.g2').forEach(ct=>{ct.textContent=m[1];const x=document.createElement('span');x.className='nxm';x.textContent=m[2];ct.appendChild(x)});if(cn>2)setTimeout(()=>{const ap=document.getElementById('app');if(ap&&ap.classList){ap.classList.remove('shake');void ap.offsetWidth;ap.classList.add('shake')}},Math.round(dur*.4))}const sb=d.querySelector('.cis');if(b)sb.textContent=b;else sb.remove();L.appendChild(d);
@@ -1294,13 +1299,13 @@ const stP=p=>p&&ROT()?{x:p.y-ROFF,y:innerWidth-p.x}:p;
 const ctrE=e=>{const r=e.getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+r.height/2}};
 function doraLabel(a,b,ms){const L=document.getElementById('ci');if(!L||!L.appendChild)return;const lb=document.createElement('div');lb.className='dlab';const mp=S3.proj([.03,1.08,.15]);lb.style.left=(mp.x+STH*.16)+'px';lb.style.top=(mp.y+STH*.05)+'px';lb.style.setProperty('--d',ms+'ms');lb.innerHTML='<div class="dl1"></div>'+(b?'<div class="dl2"></div>':'');lb.querySelector('.dl1').textContent=a;if(b)lb.querySelector('.dl2').textContent=b;L.appendChild(lb);setTimeout(()=>lb.remove(),ms+60)}
 const DORAMS=2000;
-function doraShow(a,b,demo){const L=document.getElementById('ci');if(!L||!L.appendChild){unhideAll();return 0}
- const live=!demo&&G&&!ST.vis&&NEWIND.gid===G.gid,n=live?Math.max(1,NEWIND.n):1,cards=live?G.inds.slice(-n):[{r:1+(Math.random()*13|0),s:Math.random()*4|0}];
+function doraShow(a,b,demo,dn){const L=document.getElementById('ci');if(!L||!L.appendChild){unhideAll();return 0}
+ const live=!demo&&G&&!ST.vis&&NEWIND.gid===G.gid,n=live?Math.max(1,NEWIND.n):1,cards=live?G.inds.slice(-n):[{r:5,s:0},{r:9,s:1}].slice(0,Math.max(1,Math.min(2,dn||1)));
  const fs=Math.max(14,Math.min(40,STH*.46/6.2,STW*.62/(cards.length*4.9)));
  const box=document.createElement('div');box.className='dshow';box.style.setProperty('--d',DORAMS+'ms');
  box.innerHTML='<div class="dsfl"></div><div class="dsin"><div class="dst"></div><div class="dsc">'+cards.map(c=>card(c,{fs})).join('')+'</div><div class="dsb"></div></div>';
  box.querySelector('.dst').textContent=a;const sb=box.querySelector('.dsb');if(b)sb.textContent=b;else sb.remove();L.appendChild(box);
- try{if(S3.ok&&!ST.vis)S3.lampFlash(DORAMS)}catch(e){}sfx('dora');try{SNDON&&navigator.vibrate&&navigator.vibrate([40,460,40,460,40,460,40])}catch(e){}
+ try{if(S3.ok)S3.lampFlash(DORAMS)}catch(e){}sfx('dora');try{SNDON&&navigator.vibrate&&navigator.vibrate([40,460,40,460,40,460,40])}catch(e){}
  setTimeout(()=>{box.classList.add('out');const els=live?document.querySelectorAll('#app .tray .cd'):[],cds=box.querySelectorAll('.dsc .cd');let flew=0;
   cds.forEach((cd,k)=>{const el=els[G?G.inds.length-cards.length+k:-1];if(!el)return;const T=stP(ctrE(el)),S=stP(ctrE(cd)),r1=el.getBoundingClientRect(),r0=cd.getBoundingClientRect(),sc=Math.max(.05,Math.max(r1.width,r1.height)/Math.max(1,r0.width,r0.height));
    cd.style.transition='transform .42s cubic-bezier(.55,0,.8,.3),opacity .42s';cd.style.transform='translate('+(T.x-S.x).toFixed(1)+'px,'+(T.y-S.y).toFixed(1)+'px) scale('+sc.toFixed(3)+')';flew=1});
@@ -1474,11 +1479,11 @@ const og=Object.keys(FRS).filter(id=>!isFr(id)).map(id=>({k:'s',v:id,n:FRS[id].n
 if(og.length)h+='<div class="t" style="margin-top:10px">申請中</div>'+og.map(x=>'<div class="mr"><span class="dot"></span>'+(x.n?esc(x.n)+' ':'')+'<span class="mut2">ID '+fidFmt(x.f)+(x.k==='q'?'(予約)':'')+'</span><button class="act s" onclick="frCancel(\''+x.k+'\',\''+esc(x.v)+'\')">取り消し</button></div>').join('');
 return h}
 function etcHtml(){let h='<div class="t">ユーザー名</div><div class="row"><input id="un" maxlength="12" value="'+esc(USER)+'"><button class="act s" onclick="saveName()">保存</button></div>';
+h+='<div class="t" style="margin-top:10px">演出・効果音</div><div class="row"><button class="act s '+(FXON?'g':'')+'" onclick="tgl(\'fx\')">演出: '+(FXON?'ON':'OFF')+'</button><button class="act s '+(SNDON?'g':'')+'" onclick="tgl(\'snd\')">効果音: '+(SNDON?'ON':'OFF')+'</button></div><div class="t" style="margin-top:10px">演出を試す</div><div class="row demo">'+DEMOS.map((d,i)=>'<button class="act s" onclick="demoFx('+i+')">'+d[0]+'</button>').join('')+'</div>';
 h+='<div class="t" style="margin-top:10px">データの保存・引き継ぎ</div>';
 if(tcOn())h+='<div class="tcb"><div class="idr"><span>ID</span><b>'+fidFmt(myFid())+'</b></div><div class="idr"><span>引き継ぎコード</span><b>'+tcFmt(myTc())+'</b><button class="act s" onclick="copyText(\'ID '+fidFmt(myFid())+' / 引き継ぎコード '+tcFmt(myTc())+'\',\'IDと引き継ぎコードをコピーしました\')">コピー</button></div></div><div class="mut" style="text-align:left;font-size:12px">'+tcStat()+'<br>別のスマホ・ブラウザでは、この2つを入れるとデータが戻ります。引き継ぎコードは人に教えないでください。</div><div class="row" style="margin-top:6px;flex-wrap:nowrap"><input id="rid" inputmode="numeric" maxlength="9" placeholder="ID" style="flex:1;min-width:0"><input id="rtc" maxlength="9" autocapitalize="characters" autocomplete="off" placeholder="引き継ぎコード" style="flex:1;min-width:0"><button class="act s" onclick="tcRestoreUI(\'rid\',\'rtc\')">戻す</button></div>';
 else h+='<div class="mut" style="text-align:left">'+(CST==='cloud'?'✅ 対戦成績・履歴・名前・フレンド・アバター・設定は、Claudeアカウントに自動保存されています。ゲームを更新しても消えません。アプリ版へ移すときは、下の長い引き継ぎコードを使ってください。':'この'+(isStandalone()?'ホーム画面アプリ':INAPP?'アプリ内ブラウザ':'ブラウザ')+'の中に保存しています。Safari・Chrome・ホーム画面のアプリ・LINEの中は、それぞれ別々に保存されます。別の場所へ移すときは、下の長い引き継ぎコードを使ってください。')+'</div>';
 h+='<div class="row" style="margin-top:6px"><button class="act s" onclick="ETCBK=!ETCBK;ovRender()">'+(ETCBK?'長い引き継ぎコードを閉じる':'長い引き継ぎコードを表示')+'</button>'+(ETCBK?'<button class="act s g" onclick="copyText(backupCode(),\'コピーしました\',()=>{const t=document.getElementById(\'bkout\');if(t){t.focus();t.select();t.setSelectionRange(0,1e6)}toast(\'うまくコピーできないときは、下の文字を長押し →「すべてを選択」→「コピー」\')})">コピー</button>':'')+'</div>'+(ETCBK?'<textarea id="bkout" class="invt" readonly rows="3" onclick="this.select();this.setSelectionRange(0,1e6)">'+esc(backupCode())+'</textarea>':'')+'<div class="row" style="margin-top:6px;flex-wrap:nowrap"><input id="bkin" placeholder="長い引き継ぎコードを貼り付け" style="flex:1;min-width:0"><button class="act s" onclick="pasteInto(\'bkin\')">貼り付け</button><button class="act s" onclick="restoreCode()">復元</button></div>';
-h+='<div class="t" style="margin-top:10px">演出・効果音</div><div class="row"><button class="act s '+(FXON?'g':'')+'" onclick="tgl(\'fx\')">演出: '+(FXON?'ON':'OFF')+'</button><button class="act s '+(SNDON?'g':'')+'" onclick="tgl(\'snd\')">効果音: '+(SNDON?'ON':'OFF')+'</button></div>';
 h+='<div class="row" style="margin-top:10px"><button class="act s" onclick="goFull()">全画面にする</button>'+(ST.vis?'':quitPending()?(QA?'</div><div class="mut" style="text-align:left;color:#ffb4a8;margin-top:6px">途中で抜けると「途中退出」としてマイナス評価になります。残りの人は人数が減った状態で続けます。</div><div class="row"><button class="act s o" onclick="toStart()">抜ける</button><button class="act s" onclick="QA=0;ovRender()">やめる</button>':'<button class="act s" onclick="QA=1;ovRender()">ルーム戦を抜ける</button>'):'<button class="act s" onclick="toStart()">'+(G&&!G.over?'ゲームをやめてスタート画面へ':'スタート画面へ')+'</button>')+'</div>';
 if(G&&!ST.vis)h+='<div class="t" style="margin-top:10px">ログ</div><div class="mut" style="text-align:left">'+G.log.map(l=>esc(l)).join('<br>')+'</div>';
 return h+'<details style="margin-top:10px"><summary class="t">ルール</summary><div class="mut" style="text-align:left;line-height:1.5">'+esc(RULES)+'</div></details>'}
