@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja"><head><meta charset="utf-8"><script>var YBUILD='yaniv-v38';(function(){try{if(!/\bLine\//i.test(navigator.userAgent||''))return;var q=location.search||'';if(/[?&]openExternalBrowser=1/.test(q))return;location.replace(location.pathname+(q?q+'&':'?')+'openExternalBrowser=1'+location.hash)}catch(e){}})();</script>
+<html lang="ja"><head><meta charset="utf-8"><script>var YBUILD='yaniv-v39';(function(){try{if(!/\bLine\//i.test(navigator.userAgent||''))return;var q=location.search||'';if(/[?&]openExternalBrowser=1/.test(q))return;location.replace(location.pathname+(q?q+'&':'?')+'openExternalBrowser=1'+location.hash)}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"><meta name="format-detection" content="telephone=no">
 <title>ヤニブ</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Yuji+Boku&display=swap&text=%E4%B8%83%E6%B8%A1%E3%83%A4%E3%83%8B%E3%83%96%21Straight%C3%97%EF%BC%91%EF%BC%92%EF%BC%93%EF%BC%94%EF%BC%95%EF%BC%96%EF%BC%97%EF%BC%98%EF%BC%99">
@@ -77,11 +77,48 @@ html,body{overflow:hidden;min-height:360px}#stage{position:fixed;left:0;top:0;wi
 .resbox{position:absolute;left:130px;right:130px;top:40px;background:#0b1a16f2;border:2px solid var(--gold);border-radius:14px;padding:12px;z-index:5;font-size:13px;line-height:1.5}
 .ovp details summary{cursor:pointer}
 #start{position:absolute;inset:0;z-index:85;display:none;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:radial-gradient(ellipse at 50% 40%,#1d6a52 0,#0f4136 60%,#08241e 100%);padding:10px;text-align:center;overflow:auto}
+/* info ボタンと説明画面 */
+.infob{position:absolute;top:8px;left:20px;z-index:3;width:42px;height:42px;padding:0;display:flex;align-items:center;justify-content:center;border-radius:8px;background:linear-gradient(180deg,#ffe46e,#f2c52e);border:2.5px solid #111;color:#111;font:900 26px/1 system-ui,-apple-system,sans-serif;box-shadow:0 3px 0 #000b,0 6px 14px #0009;cursor:pointer}
+.infob:active{transform:translateY(2px);box-shadow:0 1px 0 #000b}
+#help{position:fixed;inset:0;z-index:93;display:none;align-items:center;justify-content:center;background:#000c;padding:8px}
+.hlp{width:min(840px,100%);height:100%;display:flex;flex-direction:column;background:linear-gradient(180deg,#24190f,#140d07);border:1px solid #c19a48;border-radius:14px;box-shadow:0 10px 40px #000;overflow:hidden}
+.hlph{display:flex;gap:8px;align-items:center;padding:8px 10px;border-bottom:1px solid #c19a4855;flex:none}
+.hlpb{flex:1;min-height:0;overflow-y:auto;padding:6px 14px 28px;color:#efe2b4;font-size:14px;line-height:1.65;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;text-align:left}
+.hlpb p{margin:6px 2px}.hlead{color:#cfe3d8;font-size:13px}
+.hlpb h3{margin:18px 0 6px;font-size:16px;color:var(--gold);display:flex;align-items:center;gap:8px}
+.hlpb h3 .no{display:inline-flex;flex:none;width:24px;height:24px;border-radius:50%;background:var(--gold);color:#1a1206;font-size:13px;align-items:center;justify-content:center}
+.hf{position:relative;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;padding:16px 10px 12px;margin:6px 0;border-radius:12px;background:radial-gradient(ellipse at 50% 20%,#4a3119,#1b120a 75%);border:1px solid #6a5a3e;box-shadow:inset 0 2px 10px #000a}
+.hg{position:relative;display:flex;flex-direction:column;align-items:center;gap:8px}
+.hcs{display:flex;align-items:flex-end;justify-content:center;padding-top:10px}
+.hlp .cap{font-size:12px;line-height:1.5;color:#e9dcb4;text-align:center}
+.hlp .cd{margin:0 -.12em;flex:none}.hlp .cd.sel{transform:translateY(-.9em);box-shadow:0 0 0 .1em #f6e7b0,0 .6em .9em #0008;z-index:1}
+.hlp .cd.dora::after{content:"";position:absolute;inset:-.08em;border-radius:.36em;border:.13em solid #f6d25e;box-shadow:0 0 .35em .06em #f6d25eee,0 0 .9em .2em #e8b93a99;pointer-events:none}
+.hlp .cd.dim{filter:grayscale(.55) brightness(.8)}
+.hlp .rb{position:relative;display:inline-flex;flex:none;flex-direction:column;align-items:center;justify-content:center;width:60px;height:60px;border-radius:50%;border:2px solid #d9b45a;color:#fff7e0;font-weight:800;font-size:12px;line-height:1.15;text-align:center;box-shadow:inset 0 2px 0 #ffffff40,inset 0 -5px 10px #0006,0 3px 0 #000a}
+.hlp .rb small{font-size:9px;font-weight:700;opacity:.9;margin-top:1px}.hlp .rb.gold{font-size:15px}.hlp .rb.big{font-size:15px}
+.hlp .rb.koff small,.hlp .rb.kon small{font-size:11px}
+.hbtns{flex-direction:column;align-items:stretch;gap:8px}
+.hbx{display:flex;align-items:center;gap:10px}.hbx p{margin:0;flex:1;font-size:13px}.hbx .rb+.rb{margin-left:-2px}
+.htm{flex:none;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:800 18px/1 system-ui,sans-serif;color:#fff;background:radial-gradient(circle,#1d130a 0 60%,transparent 62%),conic-gradient(#f6efdc 70%,#ffffff26 0);box-shadow:0 0 0 1.5px #c19a48}
+.hbi{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;font-size:1.3rem}
+.hnote{font-size:12.5px;color:#d8e6dd;background:#0b0806b0;border-left:3px solid var(--gold);padding:6px 10px;border-radius:6px;margin:6px 0}
+.har{font-size:26px;color:var(--gold);font-weight:900;text-shadow:0 2px 4px #000}
+.hfg{position:absolute;font-size:30px;line-height:1;z-index:3;filter:drop-shadow(0 2px 3px #000);pointer-events:none}
+.hsw{position:absolute;left:4%;right:22%;top:66%;height:7px;border-radius:4px;z-index:2;background:linear-gradient(90deg,#ffe08a00,#ffe08a);box-shadow:0 0 10px #ffd76a}
+.hsw::after{content:"";position:absolute;right:-12px;top:50%;transform:translateY(-50%);border-left:16px solid #ffe08a;border-top:10px solid transparent;border-bottom:10px solid transparent}
+.hty{position:relative;pointer-events:none}.hty.hbig{transform:scale(1.6);transform-origin:50% 50%;margin:14px 26px}
+.hpt{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px}.hpt span{font-size:12px;font-weight:700;color:#efe2b4}
+.hpt em{position:absolute;left:50%;top:60%;transform:translate(-50%,-50%) rotate(-6deg);font-style:normal;font-size:12px;font-weight:800;color:#ffd2c8;background:#1a0b07e6;border:1px solid #ff9f8a;border-radius:6px;padding:2px 7px;white-space:nowrap}
+.hpts{display:inline-block;font-size:12px;font-weight:800;color:#1a1206;background:var(--gold);border-radius:999px;padding:1px 9px}.hpts.neg{background:#7fd3ff;color:#06263a}
+.hscore{gap:10px}.hvs{font:900 20px/1 Georgia,serif;color:#cfe3d8}
+.hbk{display:flex}.hbk .cd{margin:0 -.6em}.hcrown,.hgift{font-size:34px;line-height:1;filter:drop-shadow(0 2px 3px #000)}.hgift{margin-left:4px}
+.hul{margin:6px 0;padding-left:1.3em}.hul li{margin:4px 0}
+.hdet{margin-top:16px}.hdet summary{cursor:pointer;color:var(--gold);font-weight:700}
 #start h1{margin:0;font-size:clamp(28px,11vh,46px);letter-spacing:.35em;color:var(--gold);text-shadow:0 3px 8px #000;padding-left:.35em}
 .crumb{font-size:13px;color:#cfe3d8;min-height:16px}.big{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
 .bigb{width:300px;max-width:calc(50% - 10px);box-sizing:border-box;padding:14px 10px;font-size:20px;white-space:nowrap;display:flex;flex-direction:column;gap:4px;border-radius:18px}.bigb small{white-space:nowrap;font-size:12px;font-weight:600;opacity:.85}
 .nums{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:520px}.nb{width:58px;height:58px;border-radius:50%;font-size:22px;font-weight:800;border:2px solid var(--gold);background:#0f2b25;color:#fff;cursor:pointer;box-shadow:0 3px 0 #000a}.nb.sel{background:var(--gold);color:#000}
-.stbar{position:absolute;top:8px;right:8px;display:flex;gap:8px;align-items:center}.who{background:#0b1a16cc;border:1px solid #4a6a5c;color:#f1e7c8;border-radius:16px;padding:6px 12px;font-size:13px;cursor:pointer;max-width:42vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.code{font-size:20px;color:#fff}.code b{color:var(--gold);letter-spacing:.2em;font-size:28px}
+.stbar{position:absolute;top:8px;right:22px;display:flex;gap:8px;align-items:center}.who{background:#0b1a16cc;border:1px solid #4a6a5c;color:#f1e7c8;border-radius:16px;padding:6px 12px;font-size:13px;cursor:pointer;max-width:42vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.code{font-size:20px;color:#fff}.code b{color:var(--gold);letter-spacing:.2em;font-size:28px}
 .mems{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:560px}.chip{background:#0b1a16;border:1px solid #4a6a5c;border-radius:14px;padding:4px 10px;font-size:13px}.chip a{color:var(--gold);cursor:pointer;text-decoration:underline}
 #start input{padding:8px;border-radius:8px;border:1px solid #6a5a3e;background:#0e0a07;color:#fff}
 .ovp{display:flex;flex-direction:column;padding:10px 12px}.ovb{overflow:auto;min-height:0;flex:1;padding-top:4px}.ovh{gap:8px;margin-bottom:4px}
@@ -266,7 +303,7 @@ body.d3 .dshow .dsfl{opacity:.55}
 #vig{display:none;position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 80% 75% at 50% 45%,transparent 60%,#0009 100%)}body.d3 #vig{display:block}
 body.d3 #stage{background:#0b0806}body.d3 #stage::after{display:none}
 body.d3 #app{pointer-events:none}body.d3 #app *{pointer-events:none}body.d3 #app .rs,body.d3 #app .rs *,body.d3 #app button,body.d3 #app .cd[onclick],body.d3 #app .resbox,body.d3 #app .resbox *,body.d3 #app .tray{pointer-events:auto;cursor:pointer;transform-origin:0 0;transition:transform .18s ease-out}.tray.dz{transform:scale(2);z-index:40;box-shadow:0 0 0 2px #e3c26b,0 10px 30px #000d}
-.info3{position:absolute;right:62px;top:10px;display:flex;gap:10px;align-items:center;background:linear-gradient(180deg,#2c1f12e6,#17100ae6);border:1px solid #c19a48;border-radius:18px;padding:5px 12px;font-size:12px;color:#efe2b4;box-shadow:0 4px 10px #0009}.info3 b{color:var(--gold)}.info3 .tn{color:#fff;font-weight:700}
+.info3{position:absolute;right:76px;top:10px;display:flex;gap:10px;align-items:center;background:linear-gradient(180deg,#2c1f12e6,#17100ae6);border:1px solid #c19a48;border-radius:18px;padding:5px 12px;font-size:12px;color:#efe2b4;box-shadow:0 4px 10px #0009}.info3 b{color:var(--gold)}.info3 .tn{color:#fff;font-weight:700}
 .tick3{position:absolute;left:10px;top:66px;max-width:300px;font-size:11px;color:#efe2b4;text-shadow:0 1px 3px #000;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .np{position:absolute;transform:translate(-50%,-100%)}.np.cp .pl{gap:3px}.np.cp .pl .av{width:22px;height:22px;font-size:.8rem;border-width:2px}.np.cp .pl .av .pk{width:12px;height:12px;font-size:8px;line-height:12px;right:-5px;bottom:-4px}.np.cp .pt{font-size:9px;padding:1px 5px;line-height:1.15}.np .pl{flex-direction:row}.np .pt{font-size:11px}
 .stt3{position:absolute;left:150px;right:230px;bottom:118px;text-align:center;font-weight:700;color:#f6e7b0;font-size:12px;text-shadow:0 1px 4px #000,0 0 8px #000}
@@ -353,7 +390,7 @@ body.rsv #gl3d{filter:blur(7px) brightness(.5) saturate(.85);transition:filter .
 <div id="boot" style="position:fixed;left:0;right:0;top:0;bottom:0;z-index:1000;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;background:#0b2a22;color:#e3c26b;font:16px/1.6 system-ui,sans-serif">ヤニブ 読み込み中…</div>
 <script>function bootErr(e){var b=document.getElementById('boot');if(!b)return;b.style.display='flex';b.style.background='#2a0b0b';b.style.color='#ffd0d0';b.style.fontSize='13px';var m=(e&&(e.message||e.reason&&e.reason.message))||String(e);b.innerHTML='<div>エラーが起きました<br><br>'+String(m).replace(/[<>&]/g,'')+'<br><br>この文面を教えてください</div>'}(function(){var d=document,no=function(e){e.preventDefault()},opt={passive:false};['gesturestart','gesturechange','gestureend'].forEach(function(t){d.addEventListener(t,no,opt)});d.addEventListener('touchmove',function(e){if(e.touches&&e.touches.length>1)e.preventDefault()},opt);d.addEventListener('wheel',function(e){if(e.ctrlKey)e.preventDefault()},opt);d.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&['+','-','=','0',';'].indexOf(e.key)>=0)e.preventDefault()});d.addEventListener('dblclick',no,opt);d.addEventListener('contextmenu',function(e){var t=e.target;if(!(t&&t.closest&&t.closest('input,textarea')))e.preventDefault()})})();
 function bootOK(){window.__ok=1;var b=document.getElementById('boot');if(b)b.style.display='none'}window.addEventListener('error',function(ev){if(!window.__ok)bootErr(ev.error||ev.message)});window.addEventListener('unhandledrejection',function(ev){if(document.getElementById('boot')&&document.getElementById('boot').style.display!=='none')bootErr(ev)});</script>
-<div id="stage"><canvas id="gl3d"></canvas><div id="vig"></div><div id="app"></div><div id="fx"></div><div id="ci"></div><div id="sxl"></div><div id="cdn"></div><div id="start"></div><div id="ov"></div><div id="toast"></div><div id="inv"></div>
+<div id="stage"><canvas id="gl3d"></canvas><div id="vig"></div><div id="app"></div><div id="fx"></div><div id="ci"></div><div id="sxl"></div><div id="cdn"></div><div id="start"></div><div id="ov"></div><div id="help"></div><div id="toast"></div><div id="inv"></div>
 </div>
 <script id="yaniv-logic">
 /* ===== ゲームロジック: ルール・状態・CPU思考・進行 =====
@@ -981,7 +1018,7 @@ const RB=(cls,slot,label,on,dis)=>`<button class="rb ${cls} ${slot}" onclick="${
 function paint3D(){maybeRecord();S3.sync();syncSel();const me=G.hands[ME],sc=score(me,G.dora),ph=G.phase,my=G.turn===ME&&!G.over,can=G.prevTop&&G.pile.includes(G.prevTop),jk=me.length>0&&me.every(c=>c.r===0);
 const NI=NEWIND;if(NI.hide&&Date.now()-NI.t0>9000){NI.hide=0;NI.until=0}const nac=NI.n&&NI.gid===G.gid,ni=G.inds.length-NI.n,thl=nac&&(NI.hide||Date.now()<NI.until);
 let h=`<div class="tray ${thl?'dhl':''}${DZ?' dz':''}" style="position:absolute;left:8px;top:6px" onclick="togDora()"><span class="lb">ドラ表示</span>${G.inds.map((c,i)=>card(c,{fs:7,st:nac&&NI.hide&&i>=ni+NI.landed?'visibility:hidden':''})).join('')}<span class="dr">ドラ ${G.dora.map(d=>RN[d]).join(' ')}</span></div>`;
-if(!G.over)h+=`<div class="info3"><b>第${G.round||1}/${(G.ser&&G.ser.total)||1}局</b><span>山札 ${G.deck.length}</span><span class="tn">${G.over?'終局':'▶ '+esc(NM[G.turn])}</span></div><button class="hb rb0" style="position:absolute;right:8px;top:6px" onclick="openOv('etc')">☰</button>`;
+if(!G.over)h+=`<div class="info3"><b>第${G.round||1}/${(G.ser&&G.ser.total)||1}局</b><span>山札 ${G.deck.length}</span><span class="tn">${G.over?'終局':'▶ '+esc(NM[G.turn])}</span></div><button class="hb rb0" style="position:absolute;right:22px;top:6px" onclick="openOv('etc')">☰</button>`;
 h+=`<div class="tick3">${esc(G.log[0]||'')}</div>`;
 const many=N>6,pls=[];for(let i=0;i<N;i++){if(i===ME)continue;const a=S3.anchor(i);if(!a)continue;const q=toApp(a);if(many){pls.push({i,x:Math.min(LW-46,Math.max(46,q.x)),y:Math.max(q.x<210?104:78,q.y-4)});continue}const x=Math.min(LW-80,Math.max(80,q.x+(a.front?78:0)));let y=a.front?Math.max(52,q.y):Math.min(230,Math.max(150,q.y));if(!a.front&&x+40>LW-90)y=Math.min(y,98);else if(!a.front&&x>LW-175)y=Math.min(y,118);h+=`<div class="np${a.front?'':' side'}" style="left:${x.toFixed(0)}px;top:${y.toFixed(0)}px">${plate(i,0)}</div>`}
 /* 7人以上: 小さい名札を頭上に置き、重なったら下へずらす */
@@ -1006,7 +1043,7 @@ function paint2D(){maybeRecord();syncSel();const me=G.hands[ME],sc=score(me,G.do
 const opp=[...Array(N).keys()].filter(i=>i!==ME).sort((a,b)=>off(b)-off(a));let Lf=[],T=[],Rt=[];if(opp.length===1)T=opp;else{Lf=[opp[0]];Rt=[opp[opp.length-1]];T=opp.slice(1,-1)}
 const fs=Math.max(7,Math.min(14,550/(Math.max(me.length,1)*4.16)));
 const NI=NEWIND;if(NI.hide&&Date.now()-NI.t0>9000){NI.hide=0;NI.until=0}const nac=NI.n&&NI.gid===G.gid,ni=G.inds.length-NI.n,thl=nac&&(NI.hide||Date.now()<NI.until);
-let h=`<div class="tray ${thl?'dhl':''}${DZ?' dz':''}" style="position:absolute;left:8px;top:6px" onclick="togDora()"><span class="lb">ドラ表示</span>${G.inds.map((c,i)=>card(c,{fs:7,st:nac&&NI.hide&&i>=ni+NI.landed?'visibility:hidden':''})).join('')}<span class="dr">ドラ ${G.dora.map(d=>RN[d]).join(' ')}</span></div><button class="hb" style="position:absolute;right:8px;top:6px" onclick="openOv('etc')">☰</button>`;
+let h=`<div class="tray ${thl?'dhl':''}${DZ?' dz':''}" style="position:absolute;left:8px;top:6px" onclick="togDora()"><span class="lb">ドラ表示</span>${G.inds.map((c,i)=>card(c,{fs:7,st:nac&&NI.hide&&i>=ni+NI.landed?'visibility:hidden':''})).join('')}<span class="dr">ドラ ${G.dora.map(d=>RN[d]).join(' ')}</span></div><button class="hb" style="position:absolute;right:22px;top:6px" onclick="openOv('etc')">☰</button>`;
 T.forEach((i,k)=>{const x=170+(k+.5)*((LW-230)/T.length);h+=`<div class="tz" style="left:${x}px">${plate(i,0)}<div class="row5">${G.hands[i].map((_,j,a)=>{const d=j-(a.length-1)/2;return back(5,`margin:0 -7px;transform:translateY(${(d*d*.7).toFixed(1)}px) rotate(${(d*5).toFixed(1)}deg)`)}).join('')}</div></div>`});
 Lf.forEach(i=>{h+=`<div class="side" style="left:8px;top:72px">${plate(i,1)}<div class="col">${G.hands[i].map(()=>bkv(5)).join('')}</div></div>`});
 Rt.forEach(i=>{h+=`<div class="side" style="right:8px;top:72px">${plate(i,1)}<div class="col">${G.hands[i].map(()=>bkv(5)).join('')}</div></div>`});
@@ -1241,6 +1278,76 @@ function saveName(){const v=document.getElementById('un').value.replace(/[\u0000
 function delFr(i){const f=FR[i];FR.splice(i,1);sv('fr',FR);if(f){delete FRS[f.id];frSave()}ovRender()}
 function setRoomN(k){NET.N=k;ovRender()}
 function openOv(t){if(t)OVT=t;ovOpen=true;ovRender()}
+/* ===== info: 操作方法(絵つき) と ルール説明 ===== */
+let HLPT='op';
+function openHelp(t){if(t)HLPT=t;const e=document.getElementById('help');if(!e)return;e.innerHTML=helpHtml();e.style.display='flex';const b=e.querySelector('.hlpb');if(b)b.scrollTop=0}
+function closeHelp(){const e=document.getElementById('help');if(e){e.style.display='none';e.innerHTML=''}}
+const hlC=(r,s,o)=>{o=o||{};let h=card({r,s},{fs:o.fs||11,sel:o.sel});h=h.replace(/(class="cd[^"]*?)\bdora\b/,'$1');if(o.dora)h=h.replace('class="cd ','class="cd dora ');if(o.dim)h=h.replace('class="cd ','class="cd dim ');return h};
+const hlB=(cls,label,sub,dis)=>'<span class="rb '+cls+(dis?' off':'')+'">'+label+(sub?'<small>'+sub+'</small>':'')+'</span>';
+const hlCap=t=>'<div class="cap">'+t+'</div>';
+const hlG=(cards,cap,extra)=>'<div class="hg">'+(extra||'')+'<div class="hcs">'+cards+'</div>'+(cap?hlCap(cap):'')+'</div>';
+function helpHtml(){const op=HLPT==='op';
+ let h='<div class="hlp"><div class="hlph"><div class="tabs"><button class="'+(op?'on':'')+'" onclick="openHelp(\'op\')">操作方法</button><button class="'+(op?'':'on')+'" onclick="openHelp(\'rule\')">ルール</button></div><button class="hb" style="width:38px;height:38px;flex:none" onclick="closeHelp()" aria-label="閉じる">✕</button></div><div class="hlpb">';
+ h+=op?helpOp():helpRule();return h+'</div></div>'}
+function helpOp(){let h='<p class="hlead">対戦中の画面の使いかたです。</p>';
+ h+='<h3><span class="no">1</span>ボタン</h3><div class="hf hbtns">'
+  +'<div class="hbx">'+hlB('gold','ヤニブ','2回タップ')+'<p><b>ヤニブ宣言</b>。「勝てそう!」と思ったら、札を捨てる前に<b>2回つづけてタップ</b>。</p></div>'
+  +'<div class="hbx">'+hlB('dark big','パス','2回タップ')+'<p>だれかがヤニブしたあとに出ます。自分の番を<b>とばす</b>(2回タップ)。</p></div>'
+  +'<div class="hbx">'+hlB('green','捨てる')+'<p>えらんだ札を<b>捨てる</b>。</p></div>'
+  +'<div class="hbx">'+hlB('koff','階段','OFF')+hlB('kon','階段','ON')+'<p><b>階段をえらぶモード</b>の切りかえ(下の「2」を見てね)。階段が作れないときは灰色。</p></div>'
+  +'<div class="hbx">'+hlB('green','山札から<br>引く')+hlB('dark','捨て札<br>から引く','♦7')+'<p>捨てたあとに<b>1枚引く</b>。テーブルの山札や捨て札をタップしても引けます。</p></div>'
+  +'<div class="hbx">'+hlB('green','渡す')+'<p><b>七渡</b>で、次の人に渡す札をえらんでから押す。</p></div>'
+  +'<div class="hbx">'+hlB('green','続けて<br>捨てる','♥5')+hlB('dark','キープ')+'<p>山札から引いた札が、いま捨てた数字と同じとき。<b>続けて捨てる</b>か<b>手札に残す</b>かをえらぶ。</p></div>'
+  +'<div class="hbx"><span class="htm">30</span><p><b>持ち時間</b>。0になると自動で進みます。</p></div>'
+  +'<div class="hbx"><span class="hb hbi">☰</span><p><b>メニュー</b>(対戦履歴・フレンド・設定・演出の試し見など)。</p></div>'
+  +'</div><div class="hnote">灰色のボタンは、いまは押せません(ほかの人の番など)。自分の番の前でも、札は先にえらんでおけます。</div>';
+ h+='<h3><span class="no">2</span>階段のえらびかた</h3><div class="hf">'
+  +hlG(hlB('kon','階段','ON'),'① 階段ボタンを<br>押してONにする')
+  +'<span class="har">→</span>'
+  +hlG(hlC(3,1,{sel:1})+hlC(4,0,{sel:1})+hlC(5,2,{sel:1})+hlC(9,3)+hlC(13,0),'② 階段の<b>いちばん小さい数字</b>をタップ<br>→ 3枚まとめてえらばれる','<span class="hfg" style="left:14%;top:46%">👆</span>')
+  +'<span class="har">→</span>'
+  +hlG(hlB('green','捨てる'),'③ 捨てる')
+  +'</div><div class="hnote">階段は<b>2〜10</b>の、つづいた数字<b>3枚</b>(マークはバラバラでもOK)。もう一度「階段」を押すとOFFにもどります。</div>';
+ h+='<h3><span class="no">3</span>ドラの確認のしかた</h3><div class="hf">'
+  +hlG('<div class="tray hty"><span class="lb">ドラ表示</span>'+hlC(4,0,{fs:7})+'<span class="dr">ドラ 5</span></div>','左上の「ドラ表示」を<b>タップ</b>','<span class="hfg" style="right:-6px;bottom:6px">👆</span>')
+  +'<span class="har">→</span>'
+  +hlG('<div class="tray hty hbig"><span class="lb">ドラ表示</span>'+hlC(4,0,{fs:7})+'<span class="dr">ドラ 5</span></div>','<b>2倍</b>に大きくなる<br>(もう一度タップか5秒でもどる)')
+  +'</div><div class="hf">'+hlG(hlC(2,3)+hlC(5,1,{dora:1})+hlC(9,0)+hlC(5,2,{dora:1}),'手札の<b>ドラの札</b>は<b>金色のふち</b>で光ります')+'</div>'
+  +'<div class="hnote">ドラ表示の札の<b>次の数字</b>がドラ(4ならドラは5。Kの次はA)。手札は、ドラの札が右側にならびます。</div>';
+ h+='<h3><span class="no">4</span>ストレートの捨てかた</h3><div class="hf">'
+  +hlG(hlC(3,1,{sel:1})+hlC(4,0,{sel:1})+hlC(5,2,{sel:1})+hlC(6,3,{sel:1})+hlC(7,1,{sel:1})+hlC(12,0),'手札を<b>左から右へ</b>指でなぞる','<span class="hsw"></span><span class="hfg" style="left:66%;top:62%">👆</span>')
+  +'</div><div class="hnote">つづいた数字<b>5枚</b>(ストレート)が<b>まとめてえらばれ</b>、自分の番ならそのまま捨てられます。KからAへはつながりません(J・Q・K・A・2はダメ)。ストレートの中の7は七渡になりません。</div>';
+ h+='<h3><span class="no">5</span>引けない捨て札</h3><div class="hf">'+hlG('<div class="hpt"><span>前の人の捨て札</span>'+hlC(12,2,{dim:1})+'<em>引けません</em></div>','7や、延長のもとになったJ・Q・Kは<br>捨て札から引けません')+'</div>';
+ return h}
+function helpRule(){const P=(t,c)=>'<span class="hpts'+(c?' '+c:'')+'">'+t+'</span>';
+ let h='<p class="hlead">トランプで遊ぶ「ヤニブ」のルールです。むずかしいところは、やりながら覚えればだいじょうぶ!</p>';
+ h+='<h3><span class="no">1</span>めあて</h3><div class="hf">'+hlG(hlC(1,0)+hlC(2,1)+hlC(3,2),'1 + 2 + 3 = <b>6点</b>')+'<span class="hvs">VS</span>'+hlG(hlC(10,3)+hlC(12,1)+hlC(9,0),'10 + 12 + 9 = <b>31点</b>')+'</div>'
+  +'<p>手札の数字を<b>たした点数</b>が、<b>いちばん小さい人の勝ち</b>!小さい数字の札を集めて、大きい札はどんどん捨てよう。</p>';
+ h+='<h3><span class="no">2</span>札の点数</h3><div class="hf hscore">'
+  +hlG(hlC(1,0),P('1点'))+hlG(hlC(7,1),P('書いてある数'))+hlG(hlC(11,3),P('11点'))+hlG(hlC(12,2),P('12点'))+hlG(hlC(13,0),P('マイナス1点','neg'))+hlG(hlC(0,5),P('0点'))
+  +'</div><div class="hnote">K(キング)は<b>マイナス1点</b>!持っているとトクな札です。</div>';
+ h+='<h3><span class="no">3</span>自分の番にすること</h3><p><b>① 札を捨てる</b> → <b>② 1枚引く</b> の順番です。捨てられるのは、つぎの形です。</p><div class="hf">'
+  +hlG(hlC(9,1),'1枚')+hlG(hlC(8,0)+hlC(8,2),'同じ数字<br>(何枚でも)')+hlG(hlC(4,1)+hlC(5,3)+hlC(6,0),'階段<br>(2〜10の3枚)')+hlG(hlC(2,0)+hlC(3,1)+hlC(4,2)+hlC(5,3)+hlC(6,1),'ストレート<br>(つづいた5枚)')
+  +'</div><p>引くときは、<b>山札</b>(うら向きの山)か、<b>前の人が捨てた札</b>のどちらかから1枚。</p>'
+  +'<div class="hnote">山札から引いた札が、いま捨てた数字と同じなら、<b>続けて捨てる</b>こともできます。</div>';
+ h+='<h3><span class="no">4</span>「ヤニブ!」で勝負</h3><div class="hf">'+hlG(hlB('gold','ヤニブ','2回タップ'),'自分の番、捨てる前に宣言')+'<span class="har">→</span>'+hlG('<span class="hbk">'+back(9)+back(9)+back(9)+'</span>','宣言した人は手札を<br>ふせて置く')+'<span class="har">→</span>'+hlG('<span class="hcrown">👑</span>','ほかの人が1回ずつ番をして<br>点数をくらべる')+'</div>'
+  +'<p>「もう勝てそう!」と思ったら、<b>何点でも</b>ヤニブできます。宣言のあと、ほかの人は1回ずつ番があり(勝てそうなら<b>パス</b>もOK)、最後に全員の点数をくらべて<b>いちばん小さい人の勝ち</b>。同じ点なら、宣言した人の勝ちです。</p>'
+  +'<div class="hnote">ジョーカーが<b>2枚</b>そろうと、自動でヤニブになります。</div>';
+ h+='<h3><span class="no">5</span>ドラ(ラッキーな数字)</h3><div class="hf">'+hlG(hlC(4,0,{fs:9}),'ドラ表示')+'<span class="har">→</span>'+hlG(hlC(5,1,{dora:1})+hlC(5,3,{dora:1}),'次の数字の<b>5がドラ</b>')+'</div>'
+  +'<p>ドラの札は<b>マイナス2点</b>になります。ドラのKは<b>マイナス3点</b>、ドラのジョーカーは<b>プラス5点</b>。</p>'
+  +'<div class="hf">'+hlG(hlC(9,0)+hlC(9,1)+hlC(9,2),'同じ数字を<b>3枚</b>捨てると<br>ドラが<b>1つふえる</b>')+hlG(hlC(6,0)+hlC(6,1)+hlC(6,2)+hlC(6,3),'<b>4枚</b>なら<br>ドラが<b>2つふえる</b>')+'</div>';
+ h+='<h3><span class="no">6</span>7を捨てると「七渡」</h3><div class="hf">'+hlG(hlC(7,1),'7を捨てる')+'<span class="har">→</span>'+hlG(hlC(12,0)+'<span class="hgift">🎁</span>','7の枚数だけ、手札を<br><b>次の人にわたす</b>')+'</div>'
+  +'<p>いらない札を相手に押しつけられる、うれしいルール!7が2枚なら2枚わたせます。(階段・ストレートの中の7は七渡になりません。捨て札の7は引けません)</p>';
+ h+='<h3><span class="no">7</span>ヤニブのあとのJ・Q・K</h3><div class="hf">'+hlG(hlC(11,1)+hlC(12,3)+hlC(13,0),'J・Q・Kを捨てると<br><b>もう1回</b>自分の番(延長)')+'</div>'
+  +'<p>だれかがヤニブしたあとにJ・Q・Kを捨てると、1枚につき1回、続けて番ができます。そのJ・Q・Kは、だれも捨て札から引けません。</p>';
+ h+='<h3><span class="no">8</span>気をつけること</h3><ul class="hul">'
+  +'<li>ジョーカーは<b>捨てられません</b>(七渡でわたすのはOK)。</li>'
+  +'<li>点数が<b>マイナス</b>になると「オーバーフロー」で<b>最下位</b>。ただしドラがA・K・ジョーカーのときは、マイナスでも勝てます。</li>'
+  +'<li>Kがドラのときは、Aの点数が特別:Aが<b>偶数枚ならマイナス5点</b>、<b>奇数枚ならプラス5点</b>。</li>'
+  +'<li>手札にストレート(つづいた5枚)があると、その5枚は<b>0点</b>。</li>'
+  +'<li>番は番号順。2回目からは前の試合の勝った人が1番で、勝った人が1人なら手札は4枚から。</li></ul>';
+ h+='<details class="hdet"><summary>くわしいルール(全部)</summary><div class="mut" style="text-align:left;font-size:12px;line-height:1.7">'+esc(RULES)+'</div></details>';
+ return h}
 function closeOv(){ovOpen=false;QA=0;const o=document.getElementById('ov');if(o)o.style.display='none';avPrev()}
 function ovSoft(){if(ovOpen&&!(document.activeElement&&document.activeElement.tagName==='INPUT'))ovRender()}
 let FXON=ld('yfx',1),SNDON=ld('ysnd',1),CIQ=[],CIB=false,NEWIND={n:0,t:0},AC=null;
@@ -1569,7 +1676,7 @@ else if(st==='hello'){t='はじめまして';const tcx=tcOn();b=inappNote()+'<di
  +(tcx?'<div class="row hrow"><input id="hid" inputmode="numeric" maxlength="9" placeholder="ID(8桁の数字)" value="'+esc(ST.hi||'')+'" oninput="ST.hi=this.value"><input id="htc" maxlength="9" autocapitalize="characters" autocomplete="off" placeholder="引き継ぎコード(8文字)" value="'+esc(ST.hc||'')+'" oninput="ST.hc=this.value"><button class="act s g" onclick="tcRestoreUI(\'hid\',\'htc\')">戻す</button></div><div class="mut2" style="text-align:left">IDと引き継ぎコードは、前に遊んだ方の ☰ → その他 にあります</div>':'')
  +(tcx&&!ST.hlong?'<div class="mut2" style="text-align:left"><a onclick="ST.hlong=1;stRender()">Claude版など、長いコードで移すときはこちら</a></div>':'<div class="mut2" style="text-align:left">長い引き継ぎコードで移すとき: 前に遊んだ方の ☰ → その他 →「長い引き継ぎコードを表示」でコピーして、ここに貼り付け</div><div class="row hrow"><input id="hbk" placeholder="長い引き継ぎコード" value="'+esc(ST.hb||'')+'" oninput="ST.hb=this.value"><button class="act s" onclick="pasteInto(\'hbk\')">貼り付け</button><button class="act s g" onclick="restoreCode(\'hbk\')">引き継ぐ</button></div>')+'</div>'}
 else if(st==='ids'){t='あなたのIDと引き継ぎコード';b='<div class="hello idc"><div class="idr"><span>ID</span><b>'+fidFmt(myFid())+'</b></div><div class="idr"><span>引き継ぎコード</span><b>'+tcFmt(myTc())+'</b></div><div class="mut" style="text-align:left">スマホを替えたときや別のブラウザで開いたときは、この2つを入れるとデータ(名前・フレンド・履歴)が戻ります。<b style="color:#ffe7b0">スクショしておくと安心です。</b>引き継ぎコードは人に教えないでください。いつでも ☰ → その他 で見られます。</div><div class="row" style="justify-content:center"><button class="act g" onclick="stGo(\'mode\')">OK</button></div></div>'}
-e.innerHTML='<div class="stbar"><button class="who" onclick="openOv(\'etc\')">👤 '+esc(USER)+'</button><button class="hb" onclick="openOv(\'hist\')" aria-label="メニュー">☰</button></div>'+(st==='mode'?'<div class="sfan">'+[[1,0],[13,1],[12,2],[11,3],[0,5]].map((x,i)=>card({r:x[0],s:x[1]},{fs:12,st:'--r:'+((i-2)*13)+'deg;--y:'+(Math.abs(i-2)*Math.abs(i-2)*3)+'px'})).join('')+'</div>':'')+'<h1 aria-label="ヤニブ">'+TTL+'</h1><div class="crumb">'+cr+'</div><div class="stt" style="font-size:16px;color:#f1e7c8;font-weight:700">'+t+'</div>'+b+(st!=='mode'&&st!=='hello'&&st!=='ids'&&ST.step!=='set'?'<button class="act s" onclick="stBack()">← 戻る</button>':'')+'';if(ST.step==='set')whlInit();if(ST.step!=='lobby'&&S3.setLobbyN)S3.setLobbyN(ST.n)}
+e.innerHTML='<button class="infob" onclick="openHelp()" aria-label="遊び方とルール">?</button><div class="stbar"><button class="who" onclick="openOv(\'etc\')">👤 '+esc(USER)+'</button><button class="hb" onclick="openOv(\'hist\')" aria-label="メニュー">☰</button></div>'+(st==='mode'?'<div class="sfan">'+[[1,0],[13,1],[12,2],[11,3],[0,5]].map((x,i)=>card({r:x[0],s:x[1]},{fs:12,st:'--r:'+((i-2)*13)+'deg;--y:'+(Math.abs(i-2)*Math.abs(i-2)*3)+'px'})).join('')+'</div>':'')+'<h1 aria-label="ヤニブ">'+TTL+'</h1><div class="crumb">'+cr+'</div><div class="stt" style="font-size:16px;color:#f1e7c8;font-weight:700">'+t+'</div>'+b+(st!=='mode'&&st!=='hello'&&st!=='ids'&&ST.step!=='set'?'<button class="act s" onclick="stBack()">← 戻る</button>':'')+'';if(ST.step==='set')whlInit();if(ST.step!=='lobby'&&S3.setLobbyN)S3.setLobbyN(ST.n)}
 
 (async()=>{try{if(!window.claude){initP2P();return}const r=await window.claude.use('room');if(!r)return;NET.lobby=r;lobbyPres.k='';lobbyPres();r.onPeers(()=>{frFlush();ovSoft();stSoft()});r.on('invite',onInvite);ovSoft();stSoft()}catch(e){}})();
 SBOOT=false;try{layout();showStart();bootOK();setTimeout(init3d,60);cloudInit();setTimeout(()=>tcSync(),2500)}catch(e){bootErr(e)}
