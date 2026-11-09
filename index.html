@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja"><head><meta charset="utf-8"><script>var YBUILD='yaniv-v41';(function(){try{if(!/\bLine\//i.test(navigator.userAgent||''))return;var q=location.search||'';if(/[?&]openExternalBrowser=1/.test(q))return;location.replace(location.pathname+(q?q+'&':'?')+'openExternalBrowser=1'+location.hash)}catch(e){}})();</script>
+<html lang="ja"><head><meta charset="utf-8"><script>var YBUILD='yaniv-v42';(function(){try{if(!/\bLine\//i.test(navigator.userAgent||''))return;var q=location.search||'';if(/[?&]openExternalBrowser=1/.test(q))return;location.replace(location.pathname+(q?q+'&':'?')+'openExternalBrowser=1'+location.hash)}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"><meta name="format-detection" content="telephone=no">
 <title>ヤニブ</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Yuji+Boku&display=swap&text=%E4%B8%83%E6%B8%A1%E3%83%A4%E3%83%8B%E3%83%96%21Straight%C3%97%EF%BC%91%EF%BC%92%EF%BC%93%EF%BC%94%EF%BC%95%EF%BC%96%EF%BC%97%EF%BC%98%EF%BC%99">
@@ -404,6 +404,12 @@ body.rsv #gl3d{filter:blur(7px) brightness(.5) saturate(.85);transition:filter .
 .rk.r1{background:radial-gradient(circle at 35% 30%,#fff3c4,#e3b84a 55%,#9a6c14)}.rk.r2{background:radial-gradient(circle at 35% 30%,#ffffff,#c9ced6 55%,#7d848e)}.rk.r3{background:radial-gradient(circle at 35% 30%,#ffd9b0,#c9814a 55%,#7a4418)}
 .rn{display:flex;align-items:center;gap:6px;min-width:0}.rn .av.pchip{width:28px;height:28px;font-size:12px;flex:none;margin:0}.rs6 .rsr2{padding:1px 6px}.rs6 .rsl{gap:3px}.rnm{font-size:13px;font-weight:800;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:96px}.rnm small{font-size:10px;font-weight:600;color:#cfe3d8;margin-left:2px}
 .rtg{display:flex;flex-wrap:wrap;gap:2px;margin-top:1px}.tg{font-style:normal;font-size:9px;font-weight:800;border-radius:6px;padding:0 4px;line-height:14px}.tg.y{background:#e3c26b;color:#2a1a05}.tg.o{background:#c0392b;color:#fff}.tg.w{background:#2f6b52;color:#e6fff3}
+.tg.r{background:#2f5f9e;color:#e8f2ff}
+.rb2.nxt .rdc{font-size:11px;font-weight:800;letter-spacing:0;color:#5a3005;text-shadow:none}.rb2.nxt .rdc b{font-size:15px;font-variant-numeric:tabular-nums}.rb2.nxt.lo .rdc{color:#a3160b}
+.rb2.nxt.ok{color:#08261a;border-color:#c8f5dc;background:radial-gradient(circle at 35% 25%,#e3fbee 0,#7fd3a8 32%,#2f8a5f 68%,#14432e 100%);text-shadow:0 1px 0 #fff6}
+.rdyw{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);z-index:40;min-width:250px;max-width:82%;text-align:center;padding:12px 18px;border-radius:16px;border:1px solid #c19a48;background:linear-gradient(180deg,#24180ef2,#120c07f2);box-shadow:0 12px 34px #000c;color:#efe2b4}
+.rdyw>b{display:block;font-size:16px;color:#e3c26b;letter-spacing:.08em}.rdyw .rdl{margin-top:6px;font-size:13px}.rdyw .rdl b{font-size:19px;color:#fff;font-variant-numeric:tabular-nums}.rdyw.lo .rdl b{color:#ff8a7a}.rdyw .rdn{margin-top:3px;font-size:11px;color:#bfae86}.rdyw .rdb{margin-top:10px;display:flex;gap:8px;justify-content:center}
+.hnx{display:inline-flex;flex-direction:column;align-items:center;padding:7px 16px;border-radius:14px;font-weight:900;font-size:16px;letter-spacing:.05em;color:#2a1a05;border:2px solid #fff1bd;background:radial-gradient(circle at 35% 25%,#fff6cf 0,#f2cd5e 30%,#c99224 65%,#7c5310 100%)}.hnx small{font-size:10px;letter-spacing:0}
 .rh{display:flex;align-items:center;min-width:0;overflow:hidden;padding:2px 0}.rh .cd{margin-right:-.9em;box-shadow:0 0 0 .03em #b9b09e,0 .15em .35em #0009}.rh .cd:last-child{margin-right:0}
 .rsc{text-align:right;color:#fff}.rsc b{font:900 22px/1 Georgia,serif}.rsc small{font-size:10px;margin-left:1px;color:#cfe3d8}.rsr2.win .rsc b{color:var(--gold)}
 .rsf{margin-top:2px;padding:4px 8px;border-radius:8px;background:#e3c26b22;color:#efe2b4;font-size:12px;text-align:center}.rsf b{color:var(--gold)}
@@ -461,7 +467,9 @@ function sortAll(){if(G&&G.hands)G.hands.forEach(sortHand)}
 function startTurn(){if(G.over)return;const p=G.turn,h=G.hands[p];
 if(G.declarer===null&&h.filter(c=>c.r===0).length>=2){log(NM[p]+'はジョーカー2枚で強制ヤニブ!');return declare(p,'ジョーカー2枚で強制ヤニブ')}
 if(G.hum[p]){G.phase='discard';sortHand(h);render()}else{render();later(cpuTurn,900)}}
-function declare(p,why){G.rounds=G.cnt<alive().length?2:1;G.declarer=p;log(NM[p]+'がヤニブ宣言!');cutin('yaniv','ヤニブ!',NM[p]+(why?' '+why:'の宣言'));G.phase='';endTurn(p,false)}
+/* 宣言後の番: 宣言者以外は最後の番(1周目の宣言なら2回)と、J/Q/Kで得た延長ぶん。席順に、番が残っている人へ回す */
+function finalSetup(p){G.rounds=G.cnt<alive().length?2:1;G.lb=G.hands.map((_,i)=>i===p||isGone(i)?0:G.rounds);G.le=G.hands.map(()=>0)}
+function declare(p,why){G.declarer=p;finalSetup(p);log(NM[p]+'がヤニブ宣言!');if(G.rounds>1)log('1周目のヤニブ宣言: 宣言者以外はあと2回ずつ番があります');cutin('yaniv','ヤニブ!',NM[p]+(why?' '+why:'の宣言'));G.phase='';endTurn(p,false)}
 function discardAct(p,v){const h=G.hands[p];if(G.nd&&G.nd.length){const ks=v.s.map(enc);G.nd=G.nd.filter(k=>ks.indexOf(k)<0)}v.s.forEach(c=>h.splice(h.indexOf(c),1));G.pile.push(...v.s);G.grp=[...v.s];
 log(NM[p]+'が捨てた: '+v.s.map(nm).join(' '));
 if(v.tri){const k=v.s.length>=4?2:1,dl=[];for(let x=0;x<k;x++){const e=draw();if(e){G.inds.push(e);const d=e.r===0?0:e.r%13+1;if(!G.dora.includes(d))G.dora.push(d);dl.push(nm(e)+'→ドラ'+RN[d]);log('同数字'+v.s.length+'枚!ドラ表示牌追加: '+nm(e)+' → ドラ'+RN[d])}}if(dl.length){sortAll();const on=(typeof NET!=='undefined'&&NET.on)||(typeof FXON!=='undefined'&&FXON);if(on)G.hold=Math.max(G.hold||0,Date.now()+2800)}if(dl.length)cutin('dora',dl.length>1?'ドラ +2!':'ドラ追加!',dl.join('  '),dl.length)}
@@ -469,7 +477,7 @@ const run=v.s.length>=3&&v.s[0].r!==v.s[1].r,lt=v.s[v.s.length-1];G.blk=run&&lt.
 function nanaFx(p){const n=G.pend.sev,nx=sevenTarget(p);if(n&&nx!==null)cutin('nana',n>1?'七渡×'+String.fromCharCode(65296+Math.min(9,n)):'七渡',NM[p]+' → '+NM[nx]+'  '+n+'枚',n)}
 function drawAct(p,from){let c;if(from==='pile'&&G.prevTop&&G.pile.includes(G.prevTop)){c=G.prevTop;G.pile.splice(G.pile.indexOf(c),1)}else c=draw();
 if(c){fxDraw(p,c,from);G.hands[p].push(c);sortHand(G.hands[p]);log(NM[p]+'が'+(from==='pile'?'捨て札('+nm(c)+')':'山札')+'から引いた')}
-if(c&&from!=='pile'&&G.pend.rk.includes(c.r)){if(G.hum[p]){G.phase='bonus';G.bonus=c;return render()}if(cb(c,G.dora)>0)return bonusAct(p,c,true)}post(p)}
+if(c&&from!=='pile'&&G.pend.rk.includes(c.r)&&!(G.declarer!==null&&c.r>=11)){if(G.hum[p]){G.phase='bonus';G.bonus=c;return render()}if(cb(c,G.dora)>0)return bonusAct(p,c,true)}post(p)}
 function bonusAct(p,c,y){G.phase='';G.bonus=null;if(y){G.hands[p].splice(G.hands[p].indexOf(c),1);G.pile.push(c);G.grp.push(c);fxDisc(p,[c]);log(NM[p]+'が引いた'+nm(c)+'を続けて捨てた');if(c.r===7){G.pend.sev++;nanaFx(p)}if(c.r>=11)G.pend.jqk++}post(p)}
 function sevenTarget(p){let nx=nextOf(p);if(nx===G.declarer)nx=nextOf(nx);return nx===p?null:nx}
 /* ルーム戦の途中退出: その席は外して(CPUで埋めない)人数が減った状態で続行 */
@@ -485,15 +493,23 @@ if(G.hum[p]){G.phase='give';G.need=Math.min(n,G.hands[p].length);if(p===ME)clrSe
 cpuGive(p,n);return}
 if(n)log('七渡の渡し先がいないため無効');
 finish(p)}
-function giveAct(p,cs){const nx=sevenTarget(p);fxGive(p,nx,cs.length);cs.forEach(c=>G.hands[p].splice(G.hands[p].indexOf(c),1));G.hands[nx].push(...cs);sortHand(G.hands[nx]);if(!G.hands[p].length&&G.declarer===null){G.rounds=G.cnt<alive().length?2:1;G.declarer=p;G.phase='';log(NM[p]+'は手札0枚でヤニブ扱い!');cutin('yaniv','ヤニブ!',NM[p]+' 手札0枚');return endTurn(p,false)}finish(p)}
-function finish(p){let n=G.declarer!==null?G.pend.jqk:0;if(!G.inExt)G.extLeft=0;if((G.extN||0)>=30)n=0;if(n>0){G.nd=G.nd||[];(G.grp||[]).forEach(c=>{if(c.r>=11)G.nd.push(enc(c))})}G.extLeft+=n;if(G.extLeft>0){G.extLeft--;G.extN=(G.extN||0)+1;endTurn(p,true)}else endTurn(p,false)}
-function endTurn(p,extra){G.inExt=!!extra;if(G.declarer===null&&!extra)G.cnt++;{const g=extra?G.grp.filter(c=>G.pile.includes(c)):[],u=G.pile.filter(c=>!g.includes(c));G.prevTop=u[u.length-1]||null;G.shown=G.prevTop;if(G.prevTop&&G.prevTop.r===7)G.prevTop=null;if(G.prevTop&&((G.nd&&G.nd.indexOf(enc(G.prevTop))>=0)||(extra&&G.prevTop.r>=11)))G.prevTop=null}
-if(extra){log(NM[p]+'はJ/Q/Kで1ターン延長!');G.turn=p}else{const nx=nextOf(p);if(G.declarer!==null&&nx===G.declarer){if(--G.rounds<=0)return end();log('1周目のヤニブ宣言: 宣言者以外にもう1ターンの権利!');G.turn=nextOf(nx)}else G.turn=nx}nextTurn()}
+function giveAct(p,cs){const nx=sevenTarget(p);fxGive(p,nx,cs.length);cs.forEach(c=>G.hands[p].splice(G.hands[p].indexOf(c),1));G.hands[nx].push(...cs);sortHand(G.hands[nx]);if(!G.hands[p].length&&G.declarer===null){G.declarer=p;finalSetup(p);G.phase='';log(NM[p]+'は手札0枚でヤニブ扱い!');cutin('yaniv','ヤニブ!',NM[p]+' 手札0枚');return endTurn(p,false)}finish(p)}
+function finish(p){let n=G.declarer!==null?G.pend.jqk:0;if((G.extN||0)>=30)n=0;if(n>0){G.nd=G.nd||[];(G.grp||[]).forEach(c=>{if(c.r>=11)G.nd.push(enc(c))});G.le=G.le||[];G.le[p]=(G.le[p]||0)+n;log(NM[p]+'はJ/Q/Kで延長'+(n>1?n+'回':'')+'(次の人の番のあとにもう1回)')}endTurn(p)}
+/* 捨て札の「前の人の札」: self=同じ人が続けて番(自分の捨てた札は引けない) / ext=延長ターン(J/Q/Kは引けない) */
+function setPrev(self,ext){const g=self?G.grp.filter(c=>G.pile.includes(c)):[],u=G.pile.filter(c=>!g.includes(c));G.prevTop=u[u.length-1]||null;G.shown=G.prevTop;if(G.prevTop&&G.prevTop.r===7)G.prevTop=null;if(G.prevTop&&((G.nd&&G.nd.indexOf(enc(G.prevTop))>=0)||(ext&&G.prevTop.r>=11)))G.prevTop=null}
+function endTurn(p){G.tc=(G.tc||0)+1;
+if(G.declarer===null){G.cnt++;setPrev(false,false);G.inExt=false;G.turn=nextOf(p);return nextTurn()}
+if(!G.lb||!G.le){G.lb=G.lb||G.hands.map(()=>0);G.le=G.le||G.hands.map(()=>0)}
+const lf=i=>i!==G.declarer&&!isGone(i)?((G.lb&&G.lb[i])||0)+((G.le&&G.le[i])||0):0;let q=null,x=p;for(let k=0;k<N;k++){x=nextOf(x);if(x===p)break;if(lf(x)>0){q=x;break}}if(q===null&&lf(p)>0)q=p;
+if(q===null){setPrev(false,false);return closeGame(p)}
+const ext=!(G.lb[q]>0);setPrev(q===p,ext);if(ext){G.le[q]--;G.inExt=true;G.extN=(G.extN||0)+1;log(NM[q]+'の延長ターン'+(q===p?'(ほかに番の人がいないので続けて)':''))}else{G.lb[q]--;G.inExt=false}G.turn=q;nextTurn()}
+/* 最後の人の動き(捨てる・引く・七渡で渡す)の演出が終わってから結果へ */
+function closeGame(p){G.phase='';G.inExt=false;G.ending=1;G.turn=p;render();let k=0;const go=()=>{if(!G||G.over||!G.ending)return;if(G.declarer===null){G.ending=0;return endTurn(G.turn)}const w=Math.max(fxBusy(),(G.hold||0)-Date.now(),typeof CIB!=='undefined'&&CIB?300:0);if(w>60&&k++<18){later(go,Math.min(350,Math.max(80,w)));return}later(()=>{if(G&&!G.over&&G.ending)end()},800)};later(go,300)}
 /* 前の人の「引く/渡す」演出が手元に届くまで次の手番を始めない(CPUは考える時間ぶん早めに開始) */
 function fxBusy(){try{if(typeof S3!=='undefined'&&S3.ok&&S3.running&&!(typeof ST!=='undefined'&&ST.vis))return S3.busy()}catch(e){}return 0}
 function fxNeed(){const b=fxBusy();return b>0?(G.hum[G.turn]?b+120:b-650):0}
 function nextTurn(){const t0=Date.now(),go=()=>{if(!G||G.over||G.phase)return;const w=fxNeed();if(w>60&&Date.now()-t0<3200){later(go,Math.min(350,w));return}startTurn()};const w=fxNeed();if(w>60){G.phase='';render();later(go,Math.min(350,w))}else startTurn()}
-function end(){G.over=true;G.phase='';const sc=G.hands.map((h,i)=>isGone(i)?1e9:ef(h,G.dora)),m=Math.min(...sc);G.win=sc[G.declarer]===m?[G.declarer]:sc.map((x,i)=>x===m?i:-1).filter(i=>i>=0);if(SERIES){G.win.forEach(i=>SERIES.wins[i]++);G.hands.forEach((h,i)=>{if(!isGone(i))SERIES.sum[i]+=score(h,G.dora)})}render()}
+function end(){if(G.over)return;G.over=true;G.ending=0;G.phase='';G.rdy=G.hands.map((_,i)=>G.hum[i]&&!isGone(i)?0:1);G.rdl=typeof NET!=='undefined'&&NET.on?Date.now()+RDYMS:0;G.rgo=0;const sc=G.hands.map((h,i)=>isGone(i)?1e9:ef(h,G.dora)),m=Math.min(...sc);G.win=sc[G.declarer]===m?[G.declarer]:sc.map((x,i)=>x===m?i:-1).filter(i=>i>=0);if(SERIES){G.win.forEach(i=>SERIES.wins[i]++);G.hands.forEach((h,i)=>{if(!isGone(i))SERIES.sum[i]+=score(h,G.dora)})}render()}
 function cpuTurn(){{const b=fxBusy();if(b>80&&(G.fxw=(G.fxw||0)+1)<8){later(cpuTurn,Math.min(400,b+40));return}G.fxw=0}const p=G.turn,h=G.hands[p],sc=cs(h);
 if(G.declarer!==null&&sc<cs(G.hands[G.declarer])){log(NM[p]+'はパス');return endTurn(p,false)}
 if(G.declarer===null&&((sc<=5+Math.floor(G.cnt/N/3)&&(sc<=3||Math.random()<.7))||G.cnt>=N*25))return declare(p);
@@ -502,7 +518,7 @@ if(!best){G.pend={sev:0,jqk:0,rk:[]};G.grp=[];G.phase='draw';render()}else disca
 function cpuDraw(p){const t=G.prevTop&&G.pile.includes(G.prevTop)?G.prevTop:null;drawAct(p,t&&cb(t,G.dora)<=3&&cs([...G.hands[p],t])<900?'pile':'deck')}
 /* 持ち時間: 人間の判断ごとに30秒。時間切れは自動で進める(ホスト/ひとり用で判定) */
 const STRMS=9200,TLIM=30000,TDRAW=10000,TPH={discard:1,draw:1,bonus:1,give:1},TLOK=[30,45,60,0];let TKEY='',TPREV=0,TLS=30;
-function armTimer(){if(!G)return;if((G.tlim===0&&!(G.away&&G.away[G.turn]))||G.over||!G.hum||!G.hum[G.turn]||!TPH[G.phase]){G.tdl=0;TKEY='';return}const k=G.gid+':'+G.turn+':'+G.phase+':'+G.pile.length+':'+G.hands[G.turn].length+':'+(G.extN||0)+':'+(G.cnt||0);if(k!==TKEY){TKEY=k;G.tdl=Math.max(Date.now(),G.hold||0)+(G.phase==='draw'?TDRAW:(G.tlim||TLIM))}}
+function armTimer(){if(!G)return;if((G.tlim===0&&!(G.away&&G.away[G.turn]))||G.over||!G.hum||!G.hum[G.turn]||!TPH[G.phase]){G.tdl=0;TKEY='';return}const k=G.gid+':'+G.turn+':'+G.phase+':'+G.pile.length+':'+G.hands[G.turn].length+':'+(G.extN||0)+':'+(G.cnt||0)+':'+(G.tc||0);if(k!==TKEY){TKEY=k;G.tdl=Math.max(Date.now(),G.hold||0)+(G.phase==='draw'?TDRAW:(G.tlim||TLIM))}}
 const tlTxt=t=>t?'1手'+t+'秒':'時間制限なし';
 function timeoutAct(s){if(!G||G.over||G.turn!==s)return;const h=G.hands[s],ph=G.phase;if(s===ME)clrSel();log(NM[s]+'は時間切れ(自動)');
  if(ph==='discard'){const c=h.filter(x=>x.r).sort((a,b)=>a.r-b.r||a.s-b.s)[0];if(c)discardAct(s,validate([c]));else{G.pend={sev:0,jqk:0,rk:[]};G.grp=[];G.phase='draw';render()}
@@ -885,7 +901,7 @@ function doDiscard(){const h=G.hands[ME],ix=[...SEL],v=validate(ix.map(i=>h[i]))
 function doGive(){if(SEL.size===G.need)act('give',{i:[...SEL]})}
 let ASEQ=0;const LASTA={};
 function act(t,d){if(NET.on&&!NET.host){const a={q:++ASEQ,t,d:d||{}};NET.room.emit('act',a).catch(()=>{});NET.room.presence({a}).catch(()=>{});if(t==='discard'||t==='give')clrSel();return}hostAct(ME,t,d||{})}
-function hostTake(peer,a){if(!NET.host||!NET.on||!PL||!a||typeof a.t!=='string'||!(a.q>(LASTA[peer]||0)))return;LASTA[peer]=a.q;const s=PL.hp.indexOf(peer);if(s>=0)hostAct(s,a.t,a.d&&typeof a.d==='object'?a.d:{})}
+function hostTake(peer,a){if(!NET.host||!NET.on||!PL||!a||typeof a.t!=='string'||!(a.q>(LASTA[peer]||0)))return;LASTA[peer]=a.q;const s=PL.hp.indexOf(peer);if(s>=0&&a.t==='rdy'){hostReady(s);return}if(s>=0)hostAct(s,a.t,a.d&&typeof a.d==='object'?a.d:{})}
 let menuOpen=false;const toggleMenu=()=>{menuOpen=!menuOpen;render()};
 function ctr(sel){const e=document.querySelector(sel);if(!e)return null;const r=e.getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+r.height/2}}
 const seatPt=p=>ctr(p===ME?'.hand':`.pl[data-i="${p}"] .av`);
@@ -1015,10 +1031,30 @@ const fl=[...r].sort((a,b)=>b.w-a.w||a.t-b.t);
 h+=`<div class="resbox${compact?' res3':''}"><div class="stt" style="font-size:15px;text-align:center;color:var(--gold);font-weight:700">${fin?'最終結果(全'+ser.total+'試合)':'第'+ser.cur+'/'+ser.total+'試合 結果'} — 勝者: ${G.win.map(i=>esc(NM[i])).join('・')}</div>`+(compact?'<details><summary>順位を見る</summary>':'')+(fin?fl.map((x,k)=>`<div>${k+1}位 ${esc(x.n)}: ${x.w}勝 <span style="color:var(--mut)">(合計${x.t}点)</span></div>`).join(''):r.map((x,k)=>`<div>${k+1}位 ${esc(x.n)}: ${x.raw}点${x.s>=900?'(オーバーフロー)':''} <span style="color:var(--mut)">${G.hands[x.i].map(nm).join(' ')} / 通算${x.w}勝</span></div>`).join(''))+(compact?'</details>':'')+`<div class="bar">${fin?'<button class="act g" style="padding:8px 20px" onclick="toStart()">スタート画面へ</button>':(!NET.on||NET.host?'<button class="act g" style="padding:8px 20px" onclick="rematch()">次の試合へ</button>':'<span class="mut">ホストの再開を待っています…</span>')}</div></div>`;
 return h}
 let RT=0,RSP=0,RSA='';
-function paint(){const ov=!!(G&&G.over&&!ST.vis);document.body.classList.toggle('rsv',ov);
+function paint(){const ov=!!(G&&G.over&&!ST.vis)&&(!myRdy()||RVIEW===G.gid)&&!resHold();document.body.classList.toggle('rsv',ov);
  if(S3.ok){if(ov){clearTimeout(RSP);RSP=setTimeout(()=>{if(G&&G.over&&!ST.vis)S3.active(false)},1800)}else{clearTimeout(RSP);S3.active(true)}}
  if(ov){maybeRecord();if(S3.ok)S3.sync();document.getElementById('app').innerHTML=resultScreen();return}
  if(S3.ok)return paint3D();return paint2D()}
+/* NEXT GAME: 各自が押す(先に押した人はテーブルで待つ)。全員そろったら次の試合。ルーム戦は1分以内に押さないと退場 */
+const RDYMS=60000;let MYRDY='',RVIEW='',RSW='',RSWt=0,RSWtm=0;
+const myRdy=()=>!!(G&&G.over&&NET.on&&(MYRDY===G.gid||(G.rdy&&G.rdy[ME])));
+const rdySec=()=>G&&G.rdl?Math.max(0,Math.ceil((G.rdl-Date.now())/1000)):0;
+function readyNext(){if(!G||!G.over)return;if(!NET.on){nextGame();return}if(myRdy()){backVenue();return}MYRDY=G.gid;RVIEW='';if(NET.host)hostReady(ME);else{act('rdy');paint()}}
+function viewRes(){if(G)RVIEW=G.gid;paint()}
+function backVenue(){RVIEW='';paint()}
+function hostReady(s){if(!G||!G.over)return;G.rdy=(G.rdy||[]).slice();G.rdy[s]=1;render();rdyCheck()}
+function rdyNeed(){return G.hands.map((_,i)=>i).filter(i=>G.hum[i]&&!isGone(i)&&!(G.after&&G.after[i]))}
+function rdyCheck(){if(!G||!G.over||!NET.on||!NET.host||G.rgo)return;if(rdyNeed().every(i=>G.rdy&&G.rdy[i])){G.rgo=1;const g=G.gid;setTimeout(()=>{if(G&&G.over&&G.gid===g&&NET.on&&NET.host)nextGame()},600)}}
+function rdyOut(){toast('1分以内にNEXT GAMEが押されなかったため、退場になりました');toStart()}
+function rdyPanel(){if(!G||!G.over||!myRdy())return'';const need=G.hands.map((_,i)=>i).filter(i=>G.hum[i]&&!isGone(i)&&!(G.after&&G.after[i])),ok=need.filter(i=>i===ME||(G.rdy&&G.rdy[i])),wt=need.filter(i=>ok.indexOf(i)<0),sec=rdySec();
+ return '<div class="rdyw'+(wt.length&&sec<=10?' lo':'')+'"><b>次の試合を待っています</b><div class="rdl">準備OK '+ok.length+' / '+need.length+'人'+(wt.length?'　残り <b class="rdcd">'+sec+'</b> 秒':'')+'</div><div class="rdn">'+(wt.length?'まだ: '+wt.map(i=>esc(NM[i])).join('、'):'まもなく始まります')+'</div><div class="rdb"><button class="act s" onclick="viewRes()">結果を見る</button><button class="act s" onclick="openOv(\'etc\')">メニュー</button></div></div>'}
+/* 最後の演出(捨てる・引く・渡す)がまだ動いていたら、終わるまで結果画面を待つ */
+function resHold(){if(!G||!G.over)return false;if(RSW!==G.gid){RSW=G.gid;RSWt=Date.now()}const b=Math.max(fxBusy(),typeof CIB!=='undefined'&&CIB?300:0);if(b>80&&Date.now()-RSWt<2500){if(!RSWtm)RSWtm=setTimeout(()=>{RSWtm=0;if(G&&G.over)paint()},Math.min(300,b));return true}return false}
+function rdyTick(){if(!G||!G.over||!NET.on||ST.vis)return;const sec=rdySec();
+ document.querySelectorAll('.rdcd').forEach(e=>{e.textContent=sec;const w=e.closest&&e.closest('.rb2,.rdyw');if(w&&w.classList)w.classList.toggle('lo',sec<=10)});
+ if(NET.host){rdyCheck();if(G.rdl&&Date.now()>=G.rdl){G.rdl=0;const late=rdyNeed().filter(i=>i!==ME&&!(G.rdy&&G.rdy[i]));for(const s of late){if(G&&PL&&PL.hum[s])seatLeft(s,'は時間切れで退場しました');if(!G||!G.over)return}if(!myRdy()){rdyOut();return}render();rdyCheck()}}
+ else if(G.rdl&&Date.now()>G.rdl+1500&&!myRdy())rdyOut()}
+if(typeof setInterval==='function')setInterval(()=>{try{rdyTick()}catch(e){}},250);
 function nextGame(){if(NET.on&&!NET.host)return;RT=0;if(NET.on)pruneSeats();if(SERIES&&SERIES.cur>=SERIES.total){const n=N,t=SERIES.total;if(NET.on){SERIES={total:t,cur:1,wins:Array(n).fill(0),sum:Array(n).fill(0)};newGame(null,n)}else startSolo(n,t,TLS)}else rematch()}
 const RETL=a=>NET.inGame?(a?'本当に抜ける？<small>途中退出として記録されます</small>':'リタイア<small>途中退出(マイナス評価)</small>'):(a?'本当にやめる？<small>もう一度タップでリタイア</small>':'リタイア<small>スタート画面へ</small>');
 function retBtn(){const b=document.querySelector('.rb2.ret');if(b){b.classList.toggle('arm',!!RT);b.innerHTML=RETL(RT)}}
@@ -1029,11 +1065,12 @@ function resultScreen(){const ser=G.ser||{total:1,cur:1,wins:[],sum:[]},fin=ser.
  const nmOf=i=>i===ME&&!NET.on?esc(USER)+'<small>(あなた)</small>':esc(NM[i])+(i===ME?'<small>(あなた)</small>':''),fs=N>5?5.5:N>4?6.2:7.2;
  const an=RSA!==G.gid;RSA=G.gid;let h='<div class="rs'+(an?' an':'')+(N>4?' rs6':'')+'"><div class="rsl"><div class="rsh"><b>'+(fin&&ser.total>1?'最終試合 結果':'第'+ser.cur+(ser.total>1?'/'+ser.total:'')+'試合 結果')+'</b><span>ドラ '+G.dora.map(d=>RN[d]).join(' ')+'</span></div>';
  h+=r.map((x,k)=>{const hand=[...G.hands[x.i]].sort((a,b)=>a.r-b.r||a.s-b.s),win=G.win&&G.win.indexOf(x.i)>=0;
-  return '<div class="rsr2'+(win?' win':'')+(x.i===ME?' me':'')+'"><div class="rk r'+Math.min(rk[k],4)+'">'+rk[k]+'</div><div class="rn"><div class="av pchip c'+(x.i%6)+'">'+((m=>m?'<small>C</small>'+m[1]:esc(String(NM[x.i]).slice(0,1)))(/^CPU(\d+)/.exec(String(NM[x.i]))))+'</div><div><div class="rnm">'+nmOf(x.i)+'</div><div class="rtg">'+(x.i===G.declarer?'<i class="tg y">ヤニブ宣言</i>':'')+(x.s>=900?'<i class="tg o">オーバーフロー</i>':'')+(ser.total>1?'<i class="tg w">通算'+x.w+'勝</i>':'')+'</div></div></div><div class="rh">'+(hand.length?hand.map(c=>card(c,{fs})).join(''):'<span class="mut2">手札なし</span>')+'</div><div class="rsc"><b>'+x.raw+'</b><small>点</small></div></div>'}).join('');
+  return '<div class="rsr2'+(win?' win':'')+(x.i===ME?' me':'')+'"><div class="rk r'+Math.min(rk[k],4)+'">'+rk[k]+'</div><div class="rn"><div class="av pchip c'+(x.i%6)+'">'+((m=>m?'<small>C</small>'+m[1]:esc(String(NM[x.i]).slice(0,1)))(/^CPU(\d+)/.exec(String(NM[x.i]))))+'</div><div><div class="rnm">'+nmOf(x.i)+'</div><div class="rtg">'+(x.i===G.declarer?'<i class="tg y">ヤニブ宣言</i>':'')+(x.s>=900?'<i class="tg o">オーバーフロー</i>':'')+(ser.total>1?'<i class="tg w">通算'+x.w+'勝</i>':'')+(NET.on&&G.hum[x.i]&&((G.rdy&&G.rdy[x.i])||(x.i===ME&&myRdy()))?'<i class="tg r">準備OK</i>':'')+'</div></div></div><div class="rh">'+(hand.length?hand.map(c=>card(c,{fs})).join(''):'<span class="mut2">手札なし</span>')+'</div><div class="rsc"><b>'+x.raw+'</b><small>点</small></div></div>'}).join('');
  h+=NM.map((n,i)=>i).filter(isGone).map(i=>'<div class="rsr2 gn"><div class="rk">—</div><div class="rn"><div class="av pchip c'+(i%6)+'">'+((m=>m?'<small>C</small>'+m[1]:esc(String(NM[i]).slice(0,1)))(/^CPU(\d+)/.exec(String(NM[i]))))+'</div><div><div class="rnm">'+esc(NM[i])+'</div><div class="rtg"><i class="tg o">途中退出</i></div></div></div><div class="rh"><span class="mut2">手札は山札へ</span></div><div class="rsc"><b>—</b></div></div>').join('');
  if(fin&&ser.total>1){const fl=NM.map((n,i)=>({i,w:ser.wins[i]||0,t:ser.sum[i]||0})).filter(x=>!isGone(x.i)).sort((a,b)=>b.w-a.w||a.t-b.t);h+='<div class="rsf">シリーズ優勝: <b>'+nmOf(fl[0].i)+'</b>('+fl[0].w+'勝 / 合計'+fl[0].t+'点)</div>'}
  h+='</div><div class="rsbtn">'+(fin?'<button class="rb2 home" onclick="toStart()">スタート画面に戻る<small>シリーズ終了</small></button>':'<button class="rb2 ret'+(RT?' arm':'')+'" onclick="retire()">'+RETL(RT)+'</button>');
- h+=(NET.on&&!NET.host)?'<button class="rb2 nxt" disabled>NEXT GAME<small>ホストの開始を待っています</small></button>':'<button class="rb2 nxt" onclick="nextGame()">NEXT GAME<small>'+(fin?(ser.total>1?'新しいシリーズを始める':'もう一度遊ぶ'):'第'+(ser.cur+1)+'/'+ser.total+'試合へ')+'</small></button>';
+ {const sub=fin?(ser.total>1?'新しいシリーズを始める':'もう一度遊ぶ'):'第'+(ser.cur+1)+'/'+ser.total+'試合へ';
+ h+=!NET.on?'<button class="rb2 nxt" onclick="readyNext()">NEXT GAME<small>'+sub+'</small></button>':myRdy()?'<button class="rb2 nxt ok" onclick="backVenue()">準備OK ✓<small>テーブルで待つ</small></button>':'<button class="rb2 nxt'+(rdySec()<=10?' lo':'')+'" onclick="readyNext()">NEXT GAME<small>'+sub+'</small><span class="rdc">あと <b class="rdcd">'+rdySec()+'</b> 秒で退場</span></button>'}
  return h+'</div></div>'}
 /* ヤニブは誤タップ防止のためダブルタップ(0.5秒以内に2回)で宣言 */
 let DZ=false;/* アプリ版: 新しい版が公開されたら、スタート画面にいるときに自動で読み込み直す(対局中は終わってから) */
@@ -1056,20 +1093,20 @@ const many=N>6,pls=[];for(let i=0;i<N;i++){if(i===ME)continue;const a=S3.anchor(
 if(many){const PW=84,PH=25,done=[],lim=x=>x<130?232:x<215?146:250,free=(x,y)=>x>=46&&x<=LW-46&&y<=lim(x)&&y>=(x<200?100:76)&&!done.some(d=>Math.abs(d.x-x)<PW&&Math.abs(d.y-y)<PH);pls.sort((a,b)=>a.y-b.y||a.x-b.x);
  for(const p of pls){if(p.x>LW-160&&p.y>104)p.x=LW-160;let b=null;for(const dx of [0,PW,-PW,2*PW,-2*PW]){for(const k of [0,1,2,3,4,5,6,-1,-2,-3,-4]){if(b)break;const x=p.x+dx,y=p.y+k*(PH+1);if(free(x,y))b={x,y}}if(b)break}if(b){p.x=b.x;p.y=b.y}done.push(p);h+=`<div class="np cp" style="left:${p.x.toFixed(0)}px;top:${p.y.toFixed(0)}px">${plate(p.i,0)}</div>`}}
 h+=`<div class="mp">${plate(ME,1)}<div class="sc"><span>点数</span><b>${sc}</b>${sc<0&&!safe(G.dora)?'<i>オーバーフロー!</i>':''}</div></div>`;
-h+=`<div class="stt3${SEL.size&&G.declarer!==ME?' dim':''}${G.declarer===ME&&!G.over?' low':''}">${my&&G.inExt&&!G.over?'延長ターン — ':''}${G.over?'対局終了':G.declarer===ME?'ヤニブ宣言済み — 手札は伏せてテーブルに置きました':my?(ph==='discard'?(KAI?'階段: 一番小さい数字をタップ → 捨てる':hasStr(me)?'ストレートあり!(水色の5枚) 手札を左から右へなぞって一括捨て':'札をタップで選択 → 捨てる'):ph==='draw'?'「山札から引く」か「捨て札から引く」ボタンで引く':ph==='bonus'?'引いた札が捨てた数字と同じ: 続けて捨てられます':ph==='give'?'次の人に渡す札を'+G.need+'枚選ぶ':'まもなくあなたの番… 札を先に選んでおけます'):esc(NM[G.turn])+(G.inExt?'の延長ターン(J/Q/Kを捨てたのでもう1回)':'の番… 札を先に選んでおけます')}</div>`;
+h+=`<div class="stt3${SEL.size&&G.declarer!==ME?' dim':''}${G.declarer===ME&&!G.over?' low':''}">${my&&G.inExt&&!G.over?'延長ターン — ':''}${G.over?'対局終了':G.ending?'まもなく結果発表…':G.declarer===ME?'ヤニブ宣言済み — 手札は伏せてテーブルに置きました':my?(ph==='discard'?(KAI?'階段: 一番小さい数字をタップ → 捨てる':hasStr(me)?'ストレートあり!(水色の5枚) 手札を左から右へなぞって一括捨て':'札をタップで選択 → 捨てる'):ph==='draw'?'「山札から引く」か「捨て札から引く」ボタンで引く':ph==='bonus'?'引いた札が捨てた数字と同じ: 続けて捨てられます':ph==='give'?'次の人に渡す札を'+G.need+'枚選ぶ':'まもなくあなたの番… 札を先に選んでおけます'):esc(NM[G.turn])+(G.inExt?'の延長ターン(J/Q/Kを捨てたのでもう1回)':'の番… 札を先に選んでおけます')}</div>`;
 const fs=Math.max(8,Math.min(17,(LW-350)/(Math.max(me.length,1)*4.2))),nowt=Date.now(),stI=G.over||G.declarer===ME?null:strOf(me,me.map((_,i)=>i)),stS=new Set(stI||[]);
 if(!(G.declarer===ME&&!G.over))h+=`<div class="hand3"><div class="fan3">${me.map((c,i)=>{const d=i-(me.length-1)/2,sp=Math.min(1.3,10/Math.max(me.length,1)),hid=MYNEW&&MYNEW.k===enc(c)&&nowt<MYNEW.t;return card(c,{fs,sel:SEL.has(i),di:i,cls:stS.has(i)?'strk':'',on:G.over?'':`pick(${i})`,st:`margin:0 ${(-fs*.1).toFixed(1)}px;--r:${(d*sp).toFixed(2)}deg;--y:${(d*d*fs*.03).toFixed(1)}px${hid?';visibility:hidden':''}`})}).join('')}</div></div>`;
 let b='';
 /* ボタンは他の人の番や演出待ちでも(押せない状態で)出しておく。階段ボタンは常に表示 */
-const live=!G.over&&G.declarer!==ME&&!isGone(ME),wait=live&&(!my||!ph),canK=live&&(wait||my&&ph==='discard')&&hasRun(me);if(!canK)KAI=false;
+const live=!G.over&&!G.ending&&G.declarer!==ME&&!isGone(ME),wait=live&&(!my||!ph),canK=live&&(wait||my&&ph==='discard')&&hasRun(me);if(!canK)KAI=false;
 if(live)b+=RB(KAI?'kon':'koff','sK','階段<small>'+(KAI?'ON':'OFF')+'</small>',canK?'togKai()':'',!canK);
 if(wait){b+=G.declarer!==null?RB('dark','sY','パス<small>2回タップ</small>','',1):RB('gold','sY','ヤニブ<small>2回タップ</small>','',1);b+=jk?RB('dark','sC','捨てずに<br>引く','',1):RB('green','sD','捨てる','',1)}
 if(my&&ph==='discard'){b+=G.declarer!==null?RB('dark','sY','パス<small>2回タップ</small>',"passTap(this)"):RB('gold','sY','ヤニブ<small>2回タップ</small>',"yanivTap(this)");if(!jk)b+=RB('green','sD','捨てる','doDiscard()',!SEL.size);if(jk&&G.declarer===null)b+=RB('dark','sB','パス<small>2回タップ</small>',"passTap(this)");if(jk)b+=RB('dark','sC','捨てずに<br>引く',"act('skip')")}
 if(my&&ph==='draw'){b+=RB('green','sD','山札から<br>引く',"act('draw',{from:'deck'})");b+=RB('dark sm','sY','捨て札<br>から引く'+(can?'<small>'+nm(G.prevTop)+'</small>':''),"act('draw',{from:'pile'})",!can)}
 if(my&&ph==='bonus'){b+=RB('green','sD','続けて<br>捨てる<small>'+nm(G.bonus)+'</small>',"act('bonus',{y:1})");b+=RB('dark sm','sY','キープ',"act('bonus',{y:0})")}
 if(my&&ph==='give')b+=RB('nana','sD','渡す','doGive()',SEL.size!==G.need);
-h+=`${(()=>{const pt=G.shown&&G.pile.includes(G.shown)?G.shown:null;return pt?`<div class="ptop${G.prevTop===pt?'':' nod'}"><span>前の人の捨て札</span>${card(pt,{fs:16})}${G.prevTop===pt?'':'<em>引けません</em>'}</div>`:""})()}<div id="tmr" class="tmr"></div><div class="acts3">${b}</div>`;
-document.getElementById('app').innerHTML=h;npFit();if(stI)strHint(stI,fs)}
+h+=`${(()=>{const pt=!G.over&&!G.ending&&G.shown&&G.pile.includes(G.shown)?G.shown:null;return pt?`<div class="ptop${G.prevTop===pt?'':' nod'}"><span>前の人の捨て札</span>${card(pt,{fs:16})}${G.prevTop===pt?'':'<em>引けません</em>'}</div>`:""})()}<div id="tmr" class="tmr"></div><div class="acts3">${b}</div>`;
+h+=rdyPanel();document.getElementById('app').innerHTML=h;npFit();if(stI)strHint(stI,fs)}
 /* 奥の席の名札が右上の「第◯局・山札」表示と重なるときは、名札をその下へずらす */
 function npFit(){const I=document.querySelector('#app .info3');if(!I)return;const il=I.offsetLeft,ir=il+I.offsetWidth,ib=I.offsetTop+I.offsetHeight;
  document.querySelectorAll('#app .np:not(.side):not(.cp)').forEach(e=>{const w=e.offsetWidth,hh=e.offsetHeight,l=e.offsetLeft-w/2,t=e.offsetTop-hh;if(l<ir&&l+w>il&&t<ib)e.style.top=(ib+4+hh)+'px'})}
@@ -1087,15 +1124,15 @@ Lf.forEach(i=>{h+=`<div class="side" style="left:8px;top:72px">${plate(i,1)}<div
 Rt.forEach(i=>{h+=`<div class="side" style="right:8px;top:72px">${plate(i,1)}<div class="col">${G.hands[i].map(()=>bkv(5)).join('')}</div></div>`});
 h+=`<div class="tick">${esc(G.log[0]||'')}</div><div class="mat"><div class="info"><div class="rd">第${G.round||1}/${(G.ser&&G.ser.total)||1}局</div><div class="rm">山札 ${G.deck.length}枚</div><div class="tn">${G.over?'終局':'▶ '+esc(NM[G.turn])}</div></div><div class="board"><div class="deck">${[4,3,2,1,0].map(j=>back(9,`left:${j*1.1}px;top:${-j*1.1}px`)).join('')}</div>${pileHtml(ph)}</div></div>`;
 h+=`<div class="mp">${plate(ME,1)}<div class="sc"><span>点数</span><b>${sc}</b>${sc<0&&!safe(G.dora)?'<i>オーバーフロー!</i>':''}</div></div>`;
-h+=`<div class="stt2">${my&&G.inExt&&!G.over?'延長ターン — ':''}${G.over?'対局終了':G.declarer===ME?'ヤニブ宣言済み — 手札は伏せて待機中':my?(ph==='discard'?'捨てる札をタップして選び「捨てる」(またはヤニブ宣言)':ph==='draw'?'山札か捨て札の一番上から引く':ph==='bonus'?'引いた札が捨てた数字と同じ: 続けて捨てられます(引き直し不可)':ph==='give'?'次の人に渡す札を'+G.need+'枚選ぶ':'…'):esc(NM[G.turn])+(G.inExt?'の延長ターン(J/Q/Kを捨てたのでもう1回)':'の番…')}</div>`;
+h+=`<div class="stt2">${my&&G.inExt&&!G.over?'延長ターン — ':''}${G.over?'対局終了':G.ending?'まもなく結果発表…':G.declarer===ME?'ヤニブ宣言済み — 手札は伏せて待機中':my?(ph==='discard'?'捨てる札をタップして選び「捨てる」(またはヤニブ宣言)':ph==='draw'?'山札か捨て札の一番上から引く':ph==='bonus'?'引いた札が捨てた数字と同じ: 続けて捨てられます(引き直し不可)':ph==='give'?'次の人に渡す札を'+G.need+'枚選ぶ':'…'):esc(NM[G.turn])+(G.inExt?'の延長ターン(J/Q/Kを捨てたのでもう1回)':'の番…')}</div>`;
 h+=`<div class="hand">${me.map((c,i)=>G.declarer===ME&&!G.over?back(fs,`margin:0 ${(-fs*.2).toFixed(1)}px`):card(c,{fs,sel:SEL.has(i),di:i,cls:st2.has(i)?'strk':'',on:G.over?'':`pick(${i})`,st:(()=>{const d=i-(me.length-1)/2,sp=Math.min(1.6,12/Math.max(me.length,1));return `margin:0 ${(-fs*.12).toFixed(1)}px;--r:${(d*sp).toFixed(2)}deg;--y:${(d*d*fs*.035).toFixed(1)}px`})()})).join('')}</div><div id="tmr" class="tmr t2"></div><div class="acts">`+
 (my&&ph==='discard'?`${jk?'':'<button class="act g" onclick="doDiscard()" '+(SEL.size?'':'disabled')+'>捨てる</button>'}${G.declarer===null?'<button class="act o" onclick="yanivTap(this)">ヤニブ<small style="font-size:10px;display:block">2回タップ</small></button>':'<button class="act" onclick="passTap(this)">パス<small style="font-size:10px;display:block">2回タップ</small></button>'}${jk&&G.declarer===null?'<button class="act" onclick="passTap(this)">パス<small style="font-size:10px;display:block">2回タップ</small></button>':''}${jk?'<button class="act" onclick="act(\'skip\')">捨てずに引く</button>':''}`:'')+
 (my&&ph==='draw'?`<button class="act g" onclick="act('draw',{from:'deck'})">山札から引く</button><button class="act" onclick="act('draw',{from:'pile'})" ${can?'':'disabled'}>捨て札から引く${can?'('+nm(G.prevTop)+')':''}</button>`:'')+
 (my&&ph==='bonus'?`<button class="act g" onclick="act('bonus',{y:1})">続けて捨てる(${nm(G.bonus)})</button><button class="act" onclick="act('bonus',{y:0})">キープ</button>`:'')+
 (my&&ph==='give'?`<button class="act nv" onclick="doGive()" ${SEL.size===G.need?'':'disabled'}>渡す</button>`:'')+`</div>`;
-document.getElementById('app').innerHTML=h}
+h+=rdyPanel();document.getElementById('app').innerHTML=h}
 
-const RULES="スタート画面でCPU戦かルーム戦を選び、ダイヤルを上下にスワイプして人数(2〜15)と試合数(1〜30)と持ち時間を決める。試合数ぶん続けて対戦し、勝ち数で総合順位を決める(同数は合計点が低い方が上)。ルーム戦は足りない席をCPUが埋める。ルーム戦で途中で抜けた人の席はCPUで埋めず、人数が減った状態で続ける(試合中なら抜けた人の手札は山札の下に入れる)。抜けた人は「途中退出」としてマイナス評価。手札5枚。ドラ表示牌の次の数字がドラ(K→A)。ドラは-2、K=-1(ドラK=-3)。KがドラのときAの合計は偶数枚-5/奇数枚+5。ジョーカーは0(ドラなら+5)。A=1、J=11、Q=12、他は数字。A〜Kの5連続(ストレート。KからAへはつながらないので J・Q・K・A・2 は不可)があるとその5枚は0点。ストレートは5枚まとめて捨てることもでき、手札を左から右へスワイプすると一括で選んで捨てられる(ストレート内の7は七渡無効)。自分の番に捨てる前なら何点でもヤニブ宣言可(宣言後に他の人が自分も勝てる手札ならパスで手番を飛ばせる)、ジョーカー2枚で強制ヤニブ。宣言者は手札を裏向きでテーブルに置く。同数字、または2〜10の3枚の階段を捨てられ(小さい順に置く)、その後に山札か直前の捨て札の一番上を引く。7を捨てると通常どおり1枚だけ引き(山札・捨て札どちらでも可)、7の枚数だけ次の人に手札を渡す(七渡。次の人が宣言者のときは宣言者を飛ばして渡す。最終ターンの七渡のあとゲーム終了)。七渡で手札が0枚になったら、宣言なしでヤニブ宣言と同じ扱い。延長ターン中は、自分が直前に捨てた札は引けない。延長のもとになったJ/Q/Kは、そのあと誰も捨て札から引けない(延長ターン中は、前の人が捨てたJ/Q/Kも引けない)。同数字3枚を捨てるとドラ表示牌が1枚、4枚だと2枚追加される。宣言後は他の人が1周し、J/Q/Kを出した人は1ターン延長(1枚につき1回、何度でも)。最も点が低い人の勝ち(同点は宣言者の勝ち)。席の並びは毎局ランダムに決め直し、席の順に進行。最初の番は1局目がランダム、2局目以降は前回勝者(勝者が複数ならその中からランダム)。勝者が1人ならその人の初期手札は4枚(複数なら全員5枚)。最初に山札から1枚を中央の捨て札に置く。1周目にヤニブ宣言が出た場合は、宣言者以外の全員にもう1ターンずつ与えられる。山札から引いた札が今回捨てた数字と同じなら続けて捨てられる(引き直し不可)。ジョーカーは捨てられない(七渡で渡すことはできる)。持ち時間はCPU戦・ルーム戦とも30秒・45秒・60秒・無しから選べる(引くときは10秒。時間切れは自動で進む。無しのときは引くときも制限なし)。トランプは5人までは1セット(54枚)、6〜9人は2セット(108枚)、10人以上は3セット(162枚)使う(ジョーカーもセット数ぶん)。七渡は山札から1枚引いてから渡す札を選び、必ず実行(ただし階段に含まれる7は七渡無効)。捨て札の7は引けない(ゲーム開始時の最初の捨て札が7の場合のみ引ける)。階段を捨てたターンは、山札から引いた札が階段と同じ数字でも続けて捨てられない。点数がマイナスになるとオーバーフローで最下位扱いになる。ただしドラにA・K・ジョーカーのどれかがある間だけはオーバーフローせず、マイナスでも勝てる。";
+const RULES="スタート画面でCPU戦かルーム戦を選び、ダイヤルを上下にスワイプして人数(2〜15)と試合数(1〜30)と持ち時間を決める。試合数ぶん続けて対戦し、勝ち数で総合順位を決める(同数は合計点が低い方が上)。ルーム戦は足りない席をCPUが埋める。ルーム戦で途中で抜けた人の席はCPUで埋めず、人数が減った状態で続ける(試合中なら抜けた人の手札は山札の下に入れる)。抜けた人は「途中退出」としてマイナス評価。手札5枚。ドラ表示牌の次の数字がドラ(K→A)。ドラは-2、K=-1(ドラK=-3)。KがドラのときAの合計は偶数枚-5/奇数枚+5。ジョーカーは0(ドラなら+5)。A=1、J=11、Q=12、他は数字。A〜Kの5連続(ストレート。KからAへはつながらないので J・Q・K・A・2 は不可)があるとその5枚は0点。ストレートは5枚まとめて捨てることもでき、手札を左から右へスワイプすると一括で選んで捨てられる(ストレート内の7は七渡無効)。自分の番に捨てる前なら何点でもヤニブ宣言可(宣言後に他の人が自分も勝てる手札ならパスで手番を飛ばせる)、ジョーカー2枚で強制ヤニブ。宣言者は手札を裏向きでテーブルに置く。同数字、または2〜10の3枚の階段を捨てられ(小さい順に置く)、その後に山札か直前の捨て札の一番上を引く。7を捨てると通常どおり1枚だけ引き(山札・捨て札どちらでも可)、7の枚数だけ次の人に手札を渡す(七渡。次の人が宣言者のときは宣言者を飛ばして渡す。最終ターンの七渡のあとゲーム終了)。七渡で手札が0枚になったら、宣言なしでヤニブ宣言と同じ扱い。延長ターン中は、自分が直前に捨てた札は引けない。延長のもとになったJ/Q/Kは、そのあと誰も捨て札から引けない(延長ターン中は、前の人が捨てたJ/Q/Kも引けない)。同数字3枚を捨てるとドラ表示牌が1枚、4枚だと2枚追加される。宣言後は他の人が1周し、J/Q/Kを出した人は1ターン延長(1枚につき1回、何度でも)。延長はすぐ続けてではなく、J/Q/Kを捨てて1枚引いたら次の人(まだ番が残っている人)へ番が移り、そのあとで回ってくる(ほかに番が残っている人がいなければ続けて自分)。宣言後は、J/Q/Kを捨てて同じ数字のJ/Q/Kを引いても続けて捨てられない(一旦次の人へ)。最後の人の動き(七渡なら渡し終わるまで)が終わってから結果画面になる。NEXT GAMEは各自が押し、全員そろうと次の試合が始まる(先に押した人はテーブルで待つ)。ルーム戦では1分以内に押さないと退場扱い。最も点が低い人の勝ち(同点は宣言者の勝ち)。席の並びは毎局ランダムに決め直し、席の順に進行。最初の番は1局目がランダム、2局目以降は前回勝者(勝者が複数ならその中からランダム)。勝者が1人ならその人の初期手札は4枚(複数なら全員5枚)。最初に山札から1枚を中央の捨て札に置く。1周目にヤニブ宣言が出た場合は、宣言者以外の全員にもう1ターンずつ与えられる。山札から引いた札が今回捨てた数字と同じなら続けて捨てられる(引き直し不可)。ジョーカーは捨てられない(七渡で渡すことはできる)。持ち時間はCPU戦・ルーム戦とも30秒・45秒・60秒・無しから選べる(引くときは10秒。時間切れは自動で進む。無しのときは引くときも制限なし)。トランプは5人までは1セット(54枚)、6〜9人は2セット(108枚)、10人以上は3セット(162枚)使う(ジョーカーもセット数ぶん)。七渡は山札から1枚引いてから渡す札を選び、必ず実行(ただし階段に含まれる7は七渡無効)。捨て札の7は引けない(ゲーム開始時の最初の捨て札が7の場合のみ引ける)。階段を捨てたターンは、山札から引いた札が階段と同じ数字でも続けて捨てられない。点数がマイナスになるとオーバーフローで最下位扱いになる。ただしドラにA・K・ジョーカーのどれかがある間だけはオーバーフローせず、マイナスでも勝てる。";
 const NET={on:false,host:false,room:null,lobby:null,me:'',hostPeer:'',N:4,G:1,T:30,code:'',inGame:false,sq:0};
 const esc=s=>String(s).replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';');
 const ROT=()=>matchMedia('(orientation:portrait)').matches&&Math.min(innerWidth,innerHeight)<=700;
@@ -1122,9 +1159,9 @@ const FRESH=!ld('ywel',0)&&/^(ゲスト\d{4})?$/.test(ld('yn','')||'')&&!(ld('yh
 function toast(t){const e=document.getElementById('toast');if(!e)return;e.textContent=t;e.style.opacity=1;clearTimeout(toast.t);toast.t=setTimeout(()=>{e.style.opacity=0},2600)}
 const enc=c=>(c.d||0)*84+c.s*14+c.r,dec=v=>{const d=v/84|0,w=v%84,o={r:w%14,s:w/14|0};if(d)o.d=d;return o};
 function net(t,d){if(NET.on&&NET.host&&NET.room){flushSt();NET.room.emit(t,d).catch(()=>{})}}
-function snap(){return{q:++SEQ,N,nm:NM,hp:PL?PL.hp:[],hum:G.hum.map(Number),turn:G.turn,ord:G.ord,num:G.num,dc:G.declarer,ph:G.phase,ov:+G.over,gid:G.gid,tl:G.tdl?Math.max(0,G.tdl-Date.now()):0,hd:G.hold?Math.max(0,G.hold-Date.now()):0,tm:G.tlim===0?0:(G.tlim||TLIM),ex:G.inExt?1:0,aw:G.away||[],go:G.gone||[],lk:PL&&PL.looks?PL.looks:null,rd:G.round,se:SERIES,win:G.win||null,hands:G.hands.map(h=>h.map(enc)),dn:G.deck.length,pile:G.pile.map(enc),pv:G.pile.indexOf(G.prevTop),sh:G.shown?G.pile.indexOf(G.shown):-1,gp:G.grp.map(c=>G.pile.indexOf(c)).filter(i=>i>=0),inds:G.inds.map(enc),dora:G.dora,need:G.need||0,bonus:G.bonus?enc(G.bonus):null,log:G.log.slice(0,5)}}
+function snap(){return{q:++SEQ,N,nm:NM,hp:PL?PL.hp:[],hum:G.hum.map(Number),turn:G.turn,ord:G.ord,num:G.num,dc:G.declarer,ph:G.phase,ov:+G.over,gid:G.gid,tl:G.tdl?Math.max(0,G.tdl-Date.now()):0,hd:G.hold?Math.max(0,G.hold-Date.now()):0,tm:G.tlim===0?0:(G.tlim||TLIM),ex:G.inExt?1:0,en:G.ending?1:0,rdy:G.rdy||null,rl:G.rdl?Math.max(0,G.rdl-Date.now()):0,aw:G.away||[],go:G.gone||[],lk:PL&&PL.looks?PL.looks:null,rd:G.round,se:SERIES,win:G.win||null,hands:G.hands.map(h=>h.map(enc)),dn:G.deck.length,pile:G.pile.map(enc),pv:G.pile.indexOf(G.prevTop),sh:G.shown?G.pile.indexOf(G.shown):-1,gp:G.grp.map(c=>G.pile.indexOf(c)).filter(i=>i>=0),inds:G.inds.map(enc),dora:G.dora,need:G.need||0,bonus:G.bonus?enc(G.bonus):null,log:G.log.slice(0,5)}}
 function apply(S){const P=S.pile.map(dec),og=G&&G.gid===S.gid&&G.gone?G.gone:[];if(!G||G.gid!==S.gid)clrSel();
-G={deck:Array(S.dn).fill(0),pile:P,prevTop:S.pv>=0?P[S.pv]:null,shown:S.sh>=0?P[S.sh]:null,grp:S.gp.map(i=>P[i]),hands:S.hands.map(h=>h.map(dec)),inds:S.inds.map(dec),dora:S.dora,turn:S.turn,ord:S.ord,num:S.num,declarer:S.dc,phase:S.ph,over:!!S.ov,gid:S.gid,tdl:S.tl?Date.now()+S.tl:0,hold:S.hd?Date.now()+Math.min(9000,+S.hd||0):0,tlim:[30000,45000,60000,0].indexOf(S.tm)>=0?S.tm:TLIM,looks:Array.isArray(S.lk)?S.lk.slice(0,15).map(sanLook):null,win:S.win,need:S.need,bonus:S.bonus!==null?dec(S.bonus):null,log:S.log,round:S.rd,ser:S.se,hum:S.hum.map(Boolean),gone:Array.isArray(S.go)?S.go.map(v=>v?1:0):[],away:Array.isArray(S.aw)?S.aw.map(v=>v?1:0):[],inExt:!!S.ex};N=S.N;NM=S.nm;ME=S.hp.indexOf(NET.me);G.gone.forEach((v,i)=>{if(v&&!og[i]&&i!==ME)toast(NM[i]+'が退出しました')})}
+G={deck:Array(S.dn).fill(0),pile:P,prevTop:S.pv>=0?P[S.pv]:null,shown:S.sh>=0?P[S.sh]:null,grp:S.gp.map(i=>P[i]),hands:S.hands.map(h=>h.map(dec)),inds:S.inds.map(dec),dora:S.dora,turn:S.turn,ord:S.ord,num:S.num,declarer:S.dc,phase:S.ph,over:!!S.ov,gid:S.gid,tdl:S.tl?Date.now()+S.tl:0,hold:S.hd?Date.now()+Math.min(9000,+S.hd||0):0,tlim:[30000,45000,60000,0].indexOf(S.tm)>=0?S.tm:TLIM,looks:Array.isArray(S.lk)?S.lk.slice(0,15).map(sanLook):null,win:S.win,need:S.need,bonus:S.bonus!==null?dec(S.bonus):null,log:S.log,round:S.rd,ser:S.se,hum:S.hum.map(Boolean),gone:Array.isArray(S.go)?S.go.map(v=>v?1:0):[],away:Array.isArray(S.aw)?S.aw.map(v=>v?1:0):[],inExt:!!S.ex,ending:!!S.en,rdy:Array.isArray(S.rdy)?S.rdy.map(v=>v?1:0):null,rdl:S.rl?Date.now()+Math.min(RDYMS+5000,+S.rl||0):0};N=S.N;NM=S.nm;ME=S.hp.indexOf(NET.me);G.gone.forEach((v,i)=>{if(v&&!og[i]&&i!==ME)toast(NM[i]+'が退出しました')})}
 function sendSoon(){if(stPend)return;stPend=true;setTimeout(flushSt,40)}
 function flushSt(){stPend=false;if(!NET.on||!NET.host||!G||!NET.room||!PL)return;const s=snap(),lim=NET.stP?3200:3800;while(new TextEncoder().encode(JSON.stringify(s)).length>lim&&s.log.length)s.log.pop();if(NET.stP){NET.room.presence({s}).catch(()=>{});return}NET.room.emit('st',s).catch(e=>{if(e&&e.code==='not_permitted'&&!NET.stP){NET.stP=true;flushSt()}})}
 function render(){if(typeof armTimer==='function')armTimer();paint();if(NET.on&&NET.host)sendSoon()}
@@ -1251,7 +1288,7 @@ if(!NET.host&&NET.inGame&&!hp){const bye=NET.p2p||c.left.some(p=>p.presence&&p.p
 /* スマホのアプリ切替や電波の瞬断で切れても、45秒は席を残して戻るのを待つ(その間の手番は持ち時間で自動進行) */
 const GRACE=45000;
 function syncAway(){if(G&&PL)G.away=PL.hp.map(p=>p&&NET.away&&NET.away[p]?1:0)}
-function seatLeft(s){PL.hum[s]=false;const who=NM[s];if(alive().filter(i=>i!==s&&!(G.after&&G.after[i])).length<2){soloLeft(who);return}dropSeat(s);toast(who+'が退出しました')}
+function seatLeft(s,m){PL.hum[s]=false;const who=NM[s];if(alive().filter(i=>i!==s&&!(G.after&&G.after[i])).length<2){soloLeft(who);return}dropSeat(s);toast(who+(m||'が退出しました'))}
 function awayStart(peer){NET.away=NET.away||{};if(NET.away[peer])return;NET.away[peer]=Date.now();const s=PL.hp.indexOf(peer);if(s>=0)toast(NM[s]+'の接続が切れました(45秒待ちます)');syncAway();render();setTimeout(()=>awayCheck(peer),GRACE+300)}
 function awayCheck(peer){if(!NET.away||!NET.away[peer]||!NET.host||!PL||!G)return;if(Date.now()-NET.away[peer]<GRACE){setTimeout(()=>awayCheck(peer),1000);return}delete NET.away[peer];const s=PL.hp.indexOf(peer);syncAway();if(s>=0&&PL.hum[s]&&!isGone(s))seatLeft(s);else render()}
 function soloLeft(who){GEN++;toast(who+'が退出し、対戦相手がいなくなったため終了しました');NET.on=false;NET.inGame=false;G=null;PL=null;ST.step='lobby';lobbyPres();showStart()}
@@ -1265,7 +1302,7 @@ const hs=[me,...ps.filter(p=>!p.isMe)].slice(0,15),names=[],seen={};hs.forEach(p
 const n=Math.max(NET.N,hs.length);for(let i=hs.length,c=1;i<n;i++,c++)names.push('CPU'+c);
 PL={me:0,hum:names.map((_,i)=>i<hs.length),names,hp:names.map((_,i)=>i<hs.length?hs[i].peer:null),looks:names.map((_,i)=>i===0?myLook():i<hs.length?sanLook(hs[i].presence.av):null)};NET.away={};NET.byes={};NET.hg=0;NET.on=true;NET.inGame=true;TLS=TLOK.indexOf(NET.T)>=0?NET.T:30;closeOv();hideStart();SERIES={total:NET.G||1,cur:1,wins:Array(n).fill(0),sum:Array(n).fill(0)};newGame(null,n);
 lobbyPres();if(!NET.iv)NET.iv=setInterval(()=>{if(NET.on&&NET.host)flushSt()},3000)}
-function onSt(m){if(NET.host||!NET.room||m.peer!==NET.hostPeer||!m.data||!(m.data.q>NET.sq))return;const S=m.data;if(!S.hp||S.hp.indexOf(NET.me)<0){toast('ゲーム進行中のため参加できません');leaveRoom();return}
+function onSt(m){if(NET.host||!NET.room||m.peer!==NET.hostPeer||!m.data||!(m.data.q>NET.sq))return;const S=m.data;if(!S.hp||S.hp.indexOf(NET.me)<0){toast(NET.on?'退場扱いになりました':'ゲーム進行中のため参加できません');leaveRoom();return}
 NET.sq=S.q;if(!NET.on){NET.on=true;NET.inGame=true;PL=null;closeOv();hideStart();lobbyPres()}apply(S);paint()}
 function onAct(m){if(m&&m.data)hostTake(m.peer,m.data)}
 function onFx(m){if(NET.host||m.peer!==NET.hostPeer||!m.data)return;const d=m.data;if(d.k==='d')fxDisc0(d.p,d.c.map(dec));else if(d.k==='w')fxDraw0(d.p,dec(d.c),d.f);else if(d.k==='g')fxGive0(d.p,d.q,d.n);else if(d.k==='s'&&Array.isArray(d.c))strLocal(Math.max(0,Math.min(N-1,+d.p||0)),d.c.slice(0,5).map(dec));else if(d.k==='c'&&['yaniv','nana','dora'].indexOf(d.t)>=0)cutinLocal(d.t,String(d.a||'').slice(0,20),String(d.b||'').slice(0,60),+d.n||1)}
@@ -1388,6 +1425,7 @@ function helpOp(){let h='<p class="hlead">対戦中の画面の使いかたで�
   +hlG(hlC(3,1,{sel:1})+hlC(4,0,{sel:1})+hlC(5,2,{sel:1})+hlC(6,3,{sel:1})+hlC(7,1,{sel:1})+hlC(12,0),'手札を<b>左から右へ</b>指でなぞる','<span class="hsw"></span><span class="hfg" style="left:66%;top:62%">👆</span>')
   +'</div><div class="hnote">つづいた数字<b>5枚</b>(ストレート)が<b>まとめてえらばれ</b>、自分の番ならそのまま捨てられます。KからAへはつながりません(J・Q・K・A・2はダメ)。ストレートの中の7は七渡になりません。</div>';
  h+='<h3><span class="no">5</span>引けない捨て札</h3><div class="hf">'+hlG('<div class="hpt"><span>前の人の捨て札</span>'+hlC(12,2,{dim:1})+'<em>引けません</em></div>','7や、延長のもとになったJ・Q・Kは<br>捨て札から引けません')+'</div>';
+ h+='<h3><span class="no">6</span>試合がおわったら</h3><div class="hf">'+hlG('<span class="hnx">NEXT GAME<small>第2/3試合へ</small></span>','結果画面で<b>NEXT GAME</b>を押す')+'</div><div class="hnote">最後の人が動き終わってから(7なら渡し終わってから)結果が出ます。NEXT GAMEは<b>先に押してOK</b>。押した人はテーブルで待ち、全員そろうと次の試合が始まります。<b>ルーム戦では1分以内</b>に押さないと退場になります(残り秒数が出ます)。</div>';
  return h}
 function helpRule(){const P=(t,c)=>'<span class="hpts'+(c?' '+c:'')+'">'+t+'</span>';
  let h='<p class="hlead">トランプで遊ぶ「ヤニブ」のルールです。むずかしいところは、やりながら覚えればだいじょうぶ!</p>';
@@ -1408,8 +1446,8 @@ function helpRule(){const P=(t,c)=>'<span class="hpts'+(c?' '+c:'')+'">'+t+'</sp
   +'<div class="hf">'+hlG(hlC(9,0)+hlC(9,1)+hlC(9,2),'同じ数字を<b>3枚</b>捨てると<br>ドラが<b>1つふえる</b>')+hlG(hlC(6,0)+hlC(6,1)+hlC(6,2)+hlC(6,3),'<b>4枚</b>なら<br>ドラが<b>2つふえる</b>')+'</div>';
  h+='<h3><span class="no">6</span>7を捨てると「七渡」</h3><div class="hf">'+hlG(hlC(7,1),'7を捨てる')+'<span class="har">→</span>'+hlG(hlC(12,0)+'<span class="hgift">🎁</span>','7の枚数だけ、手札を<br><b>次の人にわたす</b>')+'</div>'
   +'<p>いらない札を相手に押しつけられる、うれしいルール!7が2枚なら2枚わたせます。(階段・ストレートの中の7は七渡になりません。捨て札の7は引けません)</p>';
- h+='<h3><span class="no">7</span>ヤニブのあとのJ・Q・K</h3><div class="hf">'+hlG(hlC(11,1)+hlC(12,3)+hlC(13,0),'J・Q・Kを捨てると<br><b>もう1回</b>自分の番(延長)')+'</div>'
-  +'<p>だれかがヤニブしたあとにJ・Q・Kを捨てると、1枚につき1回、続けて番ができます。そのJ・Q・Kは、だれも捨て札から引けません。</p>';
+ h+='<h3><span class="no">7</span>ヤニブのあとのJ・Q・K</h3><div class="hf">'+hlG(hlC(11,1)+hlC(12,3)+hlC(13,0),'J・Q・Kを捨てると<br>あとで<b>もう1回</b>自分の番(延長)')+'</div>'
+  +'<p>だれかがヤニブしたあとにJ・Q・Kを捨てると、1枚につき1回、もう1回番ができます(延長)。でも、すぐではありません。1枚引いたら、いったん<b>つぎの人</b>の番。そのあとで、もう1回まわってきます(ほかに番がのこっている人がいなければ、そのまま続けて)。J・Q・Kを引いても、続けては捨てられません。そのJ・Q・Kは、だれも捨て札から引けません。</p>';
  h+='<h3><span class="no">8</span>気をつけること</h3><ul class="hul">'
   +'<li>ジョーカーは<b>捨てられません</b>(七渡でわたすのはOK)。</li>'
   +'<li>点数が<b>マイナス</b>になると「オーバーフロー」で<b>最下位</b>。ただしドラがA・K・ジョーカーのときは、マイナスでも勝てます。</li>'
