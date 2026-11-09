@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja"><head><meta charset="utf-8"><script>var YBUILD='yaniv-v34';(function(){try{if(!/\bLine\//i.test(navigator.userAgent||''))return;var q=location.search||'';if(/[?&]openExternalBrowser=1/.test(q))return;location.replace(location.pathname+(q?q+'&':'?')+'openExternalBrowser=1'+location.hash)}catch(e){}})();</script>
+<html lang="ja"><head><meta charset="utf-8"><script>var YBUILD='yaniv-v35';(function(){try{if(!/\bLine\//i.test(navigator.userAgent||''))return;var q=location.search||'';if(/[?&]openExternalBrowser=1/.test(q))return;location.replace(location.pathname+(q?q+'&':'?')+'openExternalBrowser=1'+location.hash)}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"><meta name="format-detection" content="telephone=no">
 <title>ヤニブ</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Yuji+Boku&display=swap&text=%E4%B8%83%E6%B8%A1%E3%83%A4%E3%83%8B%E3%83%96%21Straight%C3%97%EF%BC%92%EF%BC%93%EF%BC%94%EF%BC%95%EF%BC%96%EF%BC%97%EF%BC%98%EF%BC%99">
@@ -69,7 +69,7 @@ html,body{overflow:hidden;min-height:360px}#stage{position:fixed;left:0;top:0;wi
 .pl .av{width:34px;height:34px;font-size:1.2rem;margin:0}.pl .pt{font-size:11px;line-height:1.25;text-align:left;white-space:nowrap}.pl.v .pt{text-align:center}
 .pl.on .av{border-color:var(--gold);box-shadow:0 0 0 3px #e3c26b66,0 0 16px var(--gold)}
 .side{position:absolute;display:flex;flex-direction:column;align-items:center;gap:4px;width:96px}.tz{position:absolute;top:4px;display:flex;align-items:center;gap:8px;transform:translateX(-50%)}.row5{display:flex;padding:0 6px}.col{display:flex;flex-direction:column;align-items:center;padding-top:12px}
-.mp{position:absolute;left:8px;bottom:8px}.mp .av{width:42px;height:42px;font-size:1.5rem}.mp .sc{font-size:12px;margin-top:2px;text-align:center}
+.mp{position:absolute;left:8px;bottom:8px}.mp .av{width:42px;height:42px;font-size:1.5rem}.mp .sc{font-size:12px;margin-top:2px;text-align:center}.mp .sc span{display:block;font-size:12px;font-weight:700;color:#efe2b4;letter-spacing:.1em}.mp .sc b{display:block;font:900 27px/1.05 system-ui,sans-serif;color:var(--gold);text-shadow:0 2px 4px #000,0 0 10px #000c;font-variant-numeric:tabular-nums}.mp .sc i{display:block;font-style:normal;font-size:11px;color:#ffb4a8;font-weight:800}
 .stt2{position:absolute;left:150px;right:150px;top:214px;text-align:center;font-weight:700;color:var(--gold);font-size:12px;min-height:30px;text-shadow:0 1px 3px #000}
 .hand{position:absolute;left:130px;right:140px;bottom:6px;height:104px;display:flex;justify-content:center;align-items:flex-end}
 .acts{position:absolute;right:8px;bottom:10px;display:flex;flex-direction:column;gap:8px}.acts .act{width:104px;padding:10px 0;font-size:15px}
@@ -200,6 +200,18 @@ body.dfx #start h1{visibility:hidden}body.dfx #ci,body.dfx #fx{z-index:87}
 .dfl{position:absolute;width:0;height:0;transform-origin:0 0;z-index:3;will-change:transform}
 .dfw{position:absolute;perspective:700px}.dfi{position:absolute;inset:0;transform-style:preserve-3d;-webkit-transform-style:preserve-3d}
 .dfc{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}.dfc>.cd{margin:0}.dff{transform:rotateY(180deg)}
+.dshow{position:absolute;inset:0;z-index:5;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.dshow .dsfl{position:absolute;inset:0;animation:dsfl var(--d) linear both;mix-blend-mode:screen}
+body.d3 .dshow .dsfl{opacity:.55}
+.dshow .dsin{position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;animation:dsin .32s cubic-bezier(.2,1.4,.4,1) both}
+.dshow .dst{font:900 clamp(18px,5.4vmin,30px)/1 "Hiragino Mincho ProN","Yu Mincho",serif;letter-spacing:.2em;padding-left:.2em;color:#fff3c4;text-shadow:0 0 14px #ffd76a,0 3px 6px #000}
+.dshow .dsb{font:700 clamp(12px,3.4vmin,17px)/1.2 system-ui,sans-serif;color:#fff;background:#000a;border:1px solid #e3c26b88;border-radius:999px;padding:4px 14px;white-space:nowrap}
+.dshow .dsc{display:flex;gap:.9em}
+.dshow .dsc .cd{box-shadow:0 0 0 .05em #f6d25e,0 0 1.2em .2em #f6d25ecc,0 .6em 1.4em #000c}
+.dshow.out .dst,.dshow.out .dsb{opacity:0;transition:opacity .2s}
+.dshow.out .dsfl{opacity:0;transition:opacity .2s}
+@keyframes dsin{0%{transform:scale(.55);opacity:0}100%{transform:scale(1);opacity:1}}
+@keyframes dsfl{0%{background:radial-gradient(ellipse at 50% 45%,#ff2a2a00,#ff2a2a00)}6%,19%{background:radial-gradient(ellipse at 50% 45%,#ff2a2a55,#ff2a2a22 70%)}25%{background:radial-gradient(ellipse at 50% 45%,#ff2a2a00,#ff2a2a00)}31%,44%{background:radial-gradient(ellipse at 50% 45%,#2a6bff55,#2a6bff22 70%)}50%{background:none}56%,69%{background:radial-gradient(ellipse at 50% 45%,#ff2a2a55,#ff2a2a22 70%)}75%{background:none}81%,94%{background:radial-gradient(ellipse at 50% 45%,#2a6bff55,#2a6bff22 70%)}100%{background:none}}
 .dlab{position:absolute;transform:translate(0,-50%);text-align:left;white-space:nowrap;animation:dlab var(--d) ease-out both;pointer-events:none}
 .dl1{font:900 clamp(24px,7vmin,48px)/1.1 "Hiragino Mincho ProN","Yu Mincho",serif;color:#fffbe8;-webkit-text-stroke:1.5px #6b4200;text-shadow:0 2px 0 #3a2400,0 5px 10px #000c}
 .dl2{display:inline-block;margin-top:4px;font-size:clamp(12px,3.6vmin,18px);font-weight:700;color:#fff;background:#000a;padding:2px 12px;border-radius:12px}
@@ -268,7 +280,7 @@ body.d3 #app{pointer-events:none}body.d3 #app *{pointer-events:none}body.d3 #app
 .rb.sY.dark{font-size:21px;letter-spacing:.08em;border-color:#c19a48}.rb.sY.dark.sm{font-size:14px;letter-spacing:.02em}.acts3 .rb.sY.sm small{font-size:11px}.rb.dark{background:radial-gradient(circle at 35% 28%,#7a6754 0,#3f3022 48%,#1c140c 100%)}
 .rb.sY{right:120px;bottom:14px;width:82px;height:82px}.rb.sD{right:66px;bottom:98px;width:72px;height:72px}.rb.sB{right:120px;bottom:110px;width:64px;height:64px}.rb.sC{right:66px;bottom:98px;width:72px;height:72px}
 .hb.rb0{border-radius:50%;width:44px;height:44px}
-body.d3 .mp{left:10px;bottom:10px}
+body.d3 .mp{left:24px;bottom:8px}
 .resbox.res3{left:50%;right:auto;top:6px;transform:translateX(-50%);width:max-content;max-width:600px;padding:8px 16px;background:#0b1a16e0}.res3 details{font-size:12px;margin:4px 0}.res3 summary{cursor:pointer;color:#efe2b4;text-align:center}.res3 .bar{margin:4px 0 0}
 body.d3 #start{background:radial-gradient(ellipse 46% 62% at 50% 50%,rgba(14,9,4,.62) 0,rgba(14,9,4,.34) 62%,rgba(8,5,2,.5) 100%)}
 body.stv #app{visibility:hidden}body.d3 #start .sfan{display:none}body.d3 #start[data-step="mode"]{justify-content:flex-end;padding-bottom:26px}body.d3 #start h1{filter:drop-shadow(0 3px 4px #000) drop-shadow(0 0 18px #000a)}body.d3 #start .crumb,body.d3 #start .stt{text-shadow:0 1px 4px #000,0 0 10px #000}
@@ -379,7 +391,7 @@ if(G.hum[p]){G.phase='discard';h.sort((a,b)=>a.r-b.r);render()}else{render();lat
 function declare(p,why){G.rounds=G.cnt<alive().length?2:1;G.declarer=p;log(NM[p]+'がヤニブ宣言!');cutin('yaniv','ヤニブ!',NM[p]+(why?' '+why:'の宣言'));G.phase='';endTurn(p,false)}
 function discardAct(p,v){const h=G.hands[p];v.s.forEach(c=>h.splice(h.indexOf(c),1));G.pile.push(...v.s);G.grp=[...v.s];
 log(NM[p]+'が捨てた: '+v.s.map(nm).join(' '));
-if(v.tri){const k=v.s.length>=4?2:1,dl=[];for(let x=0;x<k;x++){const e=draw();if(e){G.inds.push(e);const d=e.r===0?0:e.r%13+1;if(!G.dora.includes(d))G.dora.push(d);dl.push(nm(e)+'→ドラ'+RN[d]);log('同数字'+v.s.length+'枚!ドラ表示牌追加: '+nm(e)+' → ドラ'+RN[d])}}if(dl.length)cutin('dora',dl.length>1?'ドラ +2!':'ドラ追加!',dl.join('  '),dl.length)}
+if(v.tri){const k=v.s.length>=4?2:1,dl=[];for(let x=0;x<k;x++){const e=draw();if(e){G.inds.push(e);const d=e.r===0?0:e.r%13+1;if(!G.dora.includes(d))G.dora.push(d);dl.push(nm(e)+'→ドラ'+RN[d]);log('同数字'+v.s.length+'枚!ドラ表示牌追加: '+nm(e)+' → ドラ'+RN[d])}}if(dl.length){const on=(typeof NET!=='undefined'&&NET.on)||(typeof FXON!=='undefined'&&FXON);if(on)G.hold=Math.max(G.hold||0,Date.now()+2800)}if(dl.length)cutin('dora',dl.length>1?'ドラ +2!':'ドラ追加!',dl.join('  '),dl.length)}
 const run=v.s.length>=3&&v.s[0].r!==v.s[1].r,lt=v.s[v.s.length-1];G.blk=run&&lt.r===7?lt:null;if(run&&v.s.some(c=>c.r===7))log((v.str?'ストレート':'階段')+'の7は七渡無効');if(v.str){G.hold=Date.now()+(typeof FXON!=='undefined'&&FXON?STRMS:0);log(NM[p]+'のストレート!');if(typeof strFx==='function')try{strFx(p,v.s)}catch(e){}}G.pend={sev:run?0:v.s.filter(c=>c.r===7).length,jqk:v.s.filter(c=>c.r>=11).length,rk:run?[]:v.s.map(c=>c.r)};G.phase='draw';render();fxDisc(p,v.s);nanaFx(p)}
 function nanaFx(p){const n=G.pend.sev,nx=sevenTarget(p);if(n&&nx!==null)cutin('nana',n>1?'七渡×'+String.fromCharCode(65296+Math.min(9,n)):'七渡',NM[p]+' → '+NM[nx]+'  '+n+'枚',n)}
 function drawAct(p,from){let c;if(from==='pile'&&G.prevTop&&G.pile.includes(G.prevTop)){c=G.prevTop;G.pile.splice(G.pile.indexOf(c),1)}else c=draw();
@@ -714,6 +726,11 @@ function declare(p){const av=AV[p];if(!ok||!av)return;if(G)LAY={gid:G.gid,p,t:no
 function layPose(av,j,n){const off=j-(n-1)/2;return{p:xf(av.A,[off*(CW+.008),TY+.0006+j*.0003,-.56]),yaw:av.yaw}}
 function layDraw(av,hand){const n=hand.length,e=ease(clamp((now-LAY.t)/.55,0,1));for(let j=0;j<n;j++){const lp=layPose(av,j,n);if(e>=1){drawCard(null,lp.p,lp.yaw,Math.PI/2,0);continue}const hp=heldPose(av,j,n);if(av.me&&e<=0)continue;
   drawCard(av.me?hand[j]:null,add(mix(hp.p,lp.p,e),[0,Math.sin(Math.PI*e)*.07,0]),hp.yaw+(lp.yaw-hp.yaw)*e,hp.pitch+(Math.PI/2-hp.pitch)*e,(hp.roll||0)*(1-e))}}
+/* 照明を赤→青→赤→青に点滅させる(ms のあいだに4回) */
+let LFX=null;function lampFlash(ms){if(!ok)return;LFX={t0:performance.now()/1000,d:Math.max(.4,ms/1000)}}
+function lampCol(){const B=[3.1,2.45,1.75],F=[.2,.19,.2];if(!LFX)return[B,F];const t=(performance.now()/1000-LFX.t0)/LFX.d;if(t>=1||t<0){LFX=null;return[B,F]}
+ const k=Math.min(3,Math.floor(t*4)),f=t*4-k,a=Math.min(1,Math.sin(Math.PI*f)*1.7),C=k%2?[.6,1.6,6.4]:[5.4,.5,.45];
+ return[B.map((v,i)=>v*(1-a*.92)+C[i]*a),F.map((v,i)=>v*(1-a)+C[i]*.07*a)]}
 function doraFlight(a,b,demo,onLand){if(!ok||!G||demo)return -1;const NI=NEWIND;const cards=G.inds.slice(-NI.n),st=now,per=2.0,gap=.65;
  cards.forEach((c,k)=>{const idx=G.inds.length-cards.length+k,dst=[DORA0[0]+idx*(CW+.014),TY+.0006,DORA0[2]],src=add(DECK,[0,.02,0]),mid=add(PILE,[-.12,.32,-.05]);let snd=0,fl=0;
   const an={cur:mid,draw(){const t=clamp((now-st-k*gap)/per,0,1);if(t<=0){return}if(!snd){snd=1;if(typeof sfx==='function')sfx('swish')}let p,pitch;
@@ -728,7 +745,7 @@ function render(){const L=list;
  gl.bindFramebuffer(gl.FRAMEBUFFER,shFB);gl.viewport(0,0,SHS,SHS);gl.clear(gl.DEPTH_BUFFER_BIT);gl.useProgram(SP);gl.uniformMatrix4fv(SUf.uLVP,false,LVP);gl.disable(gl.CULL_FACE);gl.enable(gl.POLYGON_OFFSET_FILL);gl.polygonOffset(1.5,3);
  for(const it of L){if(!it.mt.cast)continue;gl.uniformMatrix4fv(SUf.uM,false,it.M);gl.bindVertexArray(it.m.vao);gl.drawElements(gl.TRIANGLES,it.m.n,gl.UNSIGNED_SHORT,0)}
  gl.disable(gl.POLYGON_OFFSET_FILL);gl.bindFramebuffer(gl.FRAMEBUFFER,null);gl.viewport(0,0,cv.width,cv.height);gl.clearColor(.03,.025,.02,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
- gl.useProgram(P);gl.uniformMatrix4fv(U.uVP,false,VP);gl.uniformMatrix4fv(U.uLVP,false,LVP);gl.uniform3fv(U.uEye,EYE);gl.uniform3fv(U.uLamp,[0,1.52,0]);gl.uniform3fv(U.uLampC,[3.1,2.45,1.75]);gl.uniform3fv(U.uFillD,nrm([.15,-.35,-1]));gl.uniform3fv(U.uFillC,[.2,.19,.2]);
+ gl.useProgram(P);gl.uniformMatrix4fv(U.uVP,false,VP);gl.uniformMatrix4fv(U.uLVP,false,LVP);gl.uniform3fv(U.uEye,EYE);gl.uniform3fv(U.uLamp,[0,1.52,0]);const LCF=lampCol();gl.uniform3fv(U.uLampC,LCF[0]);gl.uniform3fv(U.uFillD,nrm([.15,-.35,-1]));gl.uniform3fv(U.uFillC,LCF[1]);
  gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,shTex);gl.uniform1i(U.uS,1);gl.uniform1i(U.uT,0);gl.activeTexture(gl.TEXTURE0);
  let lastT=-1;
  for(const it of L){const m=it.mt;gl.uniformMatrix4fv(U.uM,false,it.M);gl.uniformMatrix3fv(U.uNM,false,nmat(it.M));gl.uniform4fv(U.uUV,m.uv);gl.uniform3fv(U.uCol,m.c);gl.uniform1f(U.uSpec,m.sp);gl.uniform1f(U.uShin,m.sh);gl.uniform1f(U.uEm,m.em);
@@ -754,7 +771,7 @@ function pick(sx,sy){if(!VP)return null;const d=proj([DECK[0],TY,DECK[2]]),p=pro
 function sync(){if(ok)syncSeats()}
 function shot(){if(!ok)return;frame(0)}
 function busy(){if(!ok||!running)return 0;let t=0;for(const av of AV){if(!av)continue;const qq=av.hands.R.q;let s=0;qq.forEach((st,k)=>{if(k===qq.length-1&&typeof st.to==='function')return;s+=st.t==null?st.d:Math.max(0,1-st.t)*st.d});t=Math.max(t,s)}for(const a of anims)if(a.until)t=Math.max(t,a.until-now);return Math.max(0,t)*1000}
-return{_cam(e,l){EYE=e;LOOK=l;setCam()},setLobby(v){lobby=!!v},setLobbyN(n){n=Math.max(2,Math.min(15,n|0||4));if(n!==LOBN){LOBN=n;LOB=null}},busy,setPreview(v){PREV=!!v},get ok(){return ok},init,resize,active,sync,discard,draw,give,declare,doraFlight,anchor,pick,shot,proj,get myHandT(){return myHandT},get now(){return now},get running(){return running}};
+return{_cam(e,l){EYE=e;LOOK=l;setCam()},setLobby(v){lobby=!!v},setLobbyN(n){n=Math.max(2,Math.min(15,n|0||4));if(n!==LOBN){LOBN=n;LOB=null}},busy,setPreview(v){PREV=!!v},lampFlash,get ok(){return ok},init,resize,active,sync,discard,draw,give,declare,doraFlight,anchor,pick,shot,proj,get myHandT(){return myHandT},get now(){return now},get running(){return running}};
 })();
 
 </script>
@@ -964,7 +981,7 @@ const many=N>6,pls=[];for(let i=0;i<N;i++){if(i===ME)continue;const a=S3.anchor(
 /* 7人以上: 小さい名札を頭上に置き、重なったら下へずらす */
 if(many){const PW=84,PH=25,done=[],lim=x=>x<130?232:x<215?146:250,free=(x,y)=>x>=46&&x<=LW-46&&y<=lim(x)&&y>=(x<200?100:76)&&!done.some(d=>Math.abs(d.x-x)<PW&&Math.abs(d.y-y)<PH);pls.sort((a,b)=>a.y-b.y||a.x-b.x);
  for(const p of pls){if(p.x>LW-160&&p.y>104)p.x=LW-160;let b=null;for(const dx of [0,PW,-PW,2*PW,-2*PW]){for(const k of [0,1,2,3,4,5,6,-1,-2,-3,-4]){if(b)break;const x=p.x+dx,y=p.y+k*(PH+1);if(free(x,y))b={x,y}}if(b)break}if(b){p.x=b.x;p.y=b.y}done.push(p);h+=`<div class="np cp" style="left:${p.x.toFixed(0)}px;top:${p.y.toFixed(0)}px">${plate(p.i,0)}</div>`}}
-h+=`<div class="mp">${plate(ME,1)}<div class="sc">点数 <b style="color:var(--gold)">${sc}</b>${sc<0&&!safe(G.dora)?'<br>オーバーフロー!':''}</div></div>`;
+h+=`<div class="mp">${plate(ME,1)}<div class="sc"><span>点数</span><b>${sc}</b>${sc<0&&!safe(G.dora)?'<i>オーバーフロー!</i>':''}</div></div>`;
 h+=`<div class="stt3${SEL.size&&G.declarer!==ME?' dim':''}${G.declarer===ME&&!G.over?' low':''}">${my&&G.inExt&&!G.over?'延長ターン — ':''}${G.over?'対局終了':G.declarer===ME?'ヤニブ宣言済み — 手札は伏せてテーブルに置きました':my?(ph==='discard'?(KAI?'階段: 一番小さい数字をタップ → 捨てる':hasStr(me)?'ストレートあり! 手札を左から右へスワイプで一括捨て':'札をタップで選択 → 捨てる'):ph==='draw'?'山札か捨て札をタップ(またはボタン)で引く':ph==='bonus'?'引いた札が捨てた数字と同じ: 続けて捨てられます':ph==='give'?'次の人に渡す札を'+G.need+'枚選ぶ':'まもなくあなたの番… 札を先に選んでおけます'):esc(NM[G.turn])+(G.inExt?'の延長ターン(J/Q/Kを捨てたのでもう1回)':'の番… 札を先に選んでおけます')}</div>`;
 const fs=Math.max(8,Math.min(17,(LW-350)/(Math.max(me.length,1)*4.2))),nowt=Date.now();
 if(!(G.declarer===ME&&!G.over))h+=`<div class="hand3"><div class="fan3">${me.map((c,i)=>{const d=i-(me.length-1)/2,sp=Math.min(1.3,10/Math.max(me.length,1)),hid=MYNEW&&MYNEW.k===enc(c)&&nowt<MYNEW.t;return card(c,{fs,sel:SEL.has(i),di:i,on:G.over?'':`pick(${i})`,st:`margin:0 ${(-fs*.1).toFixed(1)}px;--r:${(d*sp).toFixed(2)}deg;--y:${(d*d*fs*.03).toFixed(1)}px${hid?';visibility:hidden':''}`})}).join('')}</div></div>`;
@@ -988,7 +1005,7 @@ T.forEach((i,k)=>{const x=170+(k+.5)*((LW-230)/T.length);h+=`<div class="tz" sty
 Lf.forEach(i=>{h+=`<div class="side" style="left:8px;top:72px">${plate(i,1)}<div class="col">${G.hands[i].map(()=>bkv(5)).join('')}</div></div>`});
 Rt.forEach(i=>{h+=`<div class="side" style="right:8px;top:72px">${plate(i,1)}<div class="col">${G.hands[i].map(()=>bkv(5)).join('')}</div></div>`});
 h+=`<div class="tick">${esc(G.log[0]||'')}</div><div class="mat"><div class="info"><div class="rd">第${G.round||1}/${(G.ser&&G.ser.total)||1}局</div><div class="rm">山札 ${G.deck.length}枚</div><div class="tn">${G.over?'終局':'▶ '+esc(NM[G.turn])}</div></div><div class="board"><div class="deck">${[4,3,2,1,0].map(j=>back(9,`left:${j*1.1}px;top:${-j*1.1}px`)).join('')}</div>${pileHtml(ph)}</div></div>`;
-h+=`<div class="mp">${plate(ME,1)}<div class="sc">点数 <b style="color:var(--gold)">${sc}</b>${sc<0&&!safe(G.dora)?'<br>オーバーフロー!':''}</div></div>`;
+h+=`<div class="mp">${plate(ME,1)}<div class="sc"><span>点数</span><b>${sc}</b>${sc<0&&!safe(G.dora)?'<i>オーバーフロー!</i>':''}</div></div>`;
 h+=`<div class="stt2">${my&&G.inExt&&!G.over?'延長ターン — ':''}${G.over?'対局終了':G.declarer===ME?'ヤニブ宣言済み — 手札は伏せて待機中':my?(ph==='discard'?'捨てる札をタップして選び「捨てる」(またはヤニブ宣言)':ph==='draw'?'山札か捨て札の一番上から引く':ph==='bonus'?'引いた札が捨てた数字と同じ: 続けて捨てられます(引き直し不可)':ph==='give'?'次の人に渡す札を'+G.need+'枚選ぶ':'…'):esc(NM[G.turn])+(G.inExt?'の延長ターン(J/Q/Kを捨てたのでもう1回)':'の番…')}</div>`;
 h+=`<div class="hand">${me.map((c,i)=>G.declarer===ME&&!G.over?back(fs,`margin:0 ${(-fs*.2).toFixed(1)}px`):card(c,{fs,sel:SEL.has(i),di:i,on:G.over?'':`pick(${i})`,st:(()=>{const d=i-(me.length-1)/2,sp=Math.min(1.6,12/Math.max(me.length,1));return `margin:0 ${(-fs*.12).toFixed(1)}px;--r:${(d*sp).toFixed(2)}deg;--y:${(d*d*fs*.035).toFixed(1)}px`})()})).join('')}</div><div id="tmr" class="tmr t2"></div><div class="acts">`+
 (my&&ph==='discard'?`${jk?'':'<button class="act g" onclick="doDiscard()" '+(SEL.size?'':'disabled')+'>捨てる</button>'}${G.declarer===null?'<button class="act o" onclick="yanivTap(this)">ヤニブ<small style="font-size:10px;display:block">2回タップ</small></button>':'<button class="act" onclick="passTap(this)">パス<small style="font-size:10px;display:block">2回タップ</small></button>'}${jk&&G.declarer===null?'<button class="act" onclick="passTap(this)">パス<small style="font-size:10px;display:block">2回タップ</small></button>':''}${jk?'<button class="act" onclick="act(\'skip\')">捨てずに引く</button>':''}`:'')+
@@ -1234,6 +1251,7 @@ else if(k==='rumble')nz(a,t,2.4,180,50,.7,.6,'lowpass');
 else if(k==='slit')nz(a,t,.6,700,5200,1.2,.3);
 else if(k==='brush'){nz(a,t,1,1600,480,.8,.4);nz(a,t+.05,.8,3500,1200,.7,.15)}
 else if(k==='taiko'){nz(a,t,.35,420,80,.7,.95,'lowpass');try{const o=a.createOscillator(),g=a.createGain();o.type='sine';o.frequency.setValueAtTime(130,t);o.frequency.exponentialRampToValueAtTime(46,t+.6);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.8,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+.75);o.connect(g);g.connect(a.destination);o.start(t);o.stop(t+.8)}catch(e){}}
+else if(k==='dora'){[0,.5,1,1.5].forEach((d,i)=>{try{const o=a.createOscillator(),g=a.createGain();o.type='sine';o.frequency.setValueAtTime(i%2?740:988,t+d);g.gain.setValueAtTime(.0001,t+d);g.gain.exponentialRampToValueAtTime(.16,t+d+.02);g.gain.exponentialRampToValueAtTime(.0001,t+d+.42);o.connect(g);g.connect(a.destination);o.start(t+d);o.stop(t+d+.45)}catch(e){}})}
 else if(k==='tick'){nz(a,t,.03,2600,1500,2.2,.32);nz(a,t,.015,6000,4000,1.5,.12)}
 else if(k==='tap'){nz(a,t,.1,1400,500,.7,.9,'lowpass');nz(a,t,.05,4000,2500,1,.25)}
 else if(k==='nana'){nz(a,t,.36,3200,750,.7,.7);nz(a,t+.14,.32,3600,900,.7,.55)}
@@ -1264,7 +1282,7 @@ function strLocal(p,cs,demo){cs=[...cs].sort((a,b)=>a.r-b.r).slice(0,5);const wh
 function cutin(t,a,b,n){net('fx',{k:'c',t,a,b,n:n||1});cutinLocal(t,a,b,n)}
 function cutinLocal(t,a,b,n,demo){if(t==='yaniv'&&!demo&&S3.ok&&G&&G.declarer!=null)S3.declare(G.declarer);if(t==='dora'&&!demo&&G){NEWIND={n:n||1,gid:G.gid,hide:FXON?1:0,landed:0,t0:Date.now(),until:FXON?0:Date.now()+2000};if(NET.on&&!NET.host&&!ST.vis)paint()}CIQ.push([t,a,b,demo,n]);if(CIQ.length>3)CIQ.splice(0,CIQ.length-3);if(!CIB)ciNext()}
 function ciNext(){const L=document.getElementById('ci');if(!CIQ.length||!L||!L.appendChild){CIB=false;return}CIB=true;const [t,a,b,demo,cn]=CIQ.shift();let dur=t==='yaniv'||t==='nana'?3000:1450;if(CIQ.length)dur*=.8;if(demo)demoMode(dur+400);
-if(t==='dora'){if(!FXON){sfx('swish');setTimeout(ciNext,200);return}setTimeout(()=>{let ms=-1;try{if(S3.ok&&!demo&&G&&!ST.vis){ms=S3.doraFlight(a,b,demo,landInd);if(ms>=0)doraLabel(a,b,ms)}if(ms<0)ms=doraFlight(a,b,demo)}catch(e){unhideAll();ms=0}setTimeout(ciNext,ms)},demo?50:380);return}
+if(t==='dora'){if(!FXON){sfx('swish');setTimeout(ciNext,200);return}setTimeout(()=>{let ms=0;try{ms=doraShow(a,b,demo)}catch(e){unhideAll();ms=0}setTimeout(ciNext,ms)},demo?50:200);return}
 sfx(t);if(t==='yaniv'&&SNDON&&navigator.vibrate)try{navigator.vibrate([60,40,140])}catch(e){}
 if(!FXON){setTimeout(ciNext,200);return}
 const d=document.createElement('div');d.className='ci ci-'+t+(t==='nana'&&cn>1?' nx'+Math.min(3,cn):'');d.style.setProperty('--d',dur+'ms');
@@ -1275,6 +1293,19 @@ setTimeout(()=>{d.remove();ciNext()},dur)}
 const stP=p=>p&&ROT()?{x:p.y-ROFF,y:innerWidth-p.x}:p;
 const ctrE=e=>{const r=e.getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+r.height/2}};
 function doraLabel(a,b,ms){const L=document.getElementById('ci');if(!L||!L.appendChild)return;const lb=document.createElement('div');lb.className='dlab';const mp=S3.proj([.03,1.08,.15]);lb.style.left=(mp.x+STH*.16)+'px';lb.style.top=(mp.y+STH*.05)+'px';lb.style.setProperty('--d',ms+'ms');lb.innerHTML='<div class="dl1"></div>'+(b?'<div class="dl2"></div>':'');lb.querySelector('.dl1').textContent=a;if(b)lb.querySelector('.dl2').textContent=b;L.appendChild(lb);setTimeout(()=>lb.remove(),ms+60)}
+const DORAMS=2000;
+function doraShow(a,b,demo){const L=document.getElementById('ci');if(!L||!L.appendChild){unhideAll();return 0}
+ const live=!demo&&G&&!ST.vis&&NEWIND.gid===G.gid,n=live?Math.max(1,NEWIND.n):1,cards=live?G.inds.slice(-n):[{r:1+(Math.random()*13|0),s:Math.random()*4|0}];
+ const fs=Math.max(14,Math.min(40,STH*.46/6.2,STW*.62/(cards.length*4.9)));
+ const box=document.createElement('div');box.className='dshow';box.style.setProperty('--d',DORAMS+'ms');
+ box.innerHTML='<div class="dsfl"></div><div class="dsin"><div class="dst"></div><div class="dsc">'+cards.map(c=>card(c,{fs})).join('')+'</div><div class="dsb"></div></div>';
+ box.querySelector('.dst').textContent=a;const sb=box.querySelector('.dsb');if(b)sb.textContent=b;else sb.remove();L.appendChild(box);
+ try{if(S3.ok&&!ST.vis)S3.lampFlash(DORAMS)}catch(e){}sfx('dora');try{SNDON&&navigator.vibrate&&navigator.vibrate([40,460,40,460,40,460,40])}catch(e){}
+ setTimeout(()=>{box.classList.add('out');const els=live?document.querySelectorAll('#app .tray .cd'):[],cds=box.querySelectorAll('.dsc .cd');let flew=0;
+  cds.forEach((cd,k)=>{const el=els[G?G.inds.length-cards.length+k:-1];if(!el)return;const T=stP(ctrE(el)),S=stP(ctrE(cd)),r1=el.getBoundingClientRect(),r0=cd.getBoundingClientRect(),sc=Math.max(.05,Math.max(r1.width,r1.height)/Math.max(1,r0.width,r0.height));
+   cd.style.transition='transform .42s cubic-bezier(.55,0,.8,.3),opacity .42s';cd.style.transform='translate('+(T.x-S.x).toFixed(1)+'px,'+(T.y-S.y).toFixed(1)+'px) scale('+sc.toFixed(3)+')';flew=1});
+  setTimeout(()=>{box.remove();if(live)landInd(n-1);else unhideAll()},flew?440:260)},DORAMS);
+ return DORAMS+480}
 function unhideAll(){if(NEWIND.hide){NEWIND.hide=0;NEWIND.landed=NEWIND.n;NEWIND.until=Date.now()+2000;if(G&&!ST.vis)paint()}}
 function landInd(k){if(!NEWIND.hide)return;NEWIND.landed=Math.max(NEWIND.landed,k+1);if(NEWIND.landed>=NEWIND.n){NEWIND.hide=0;NEWIND.until=Date.now()+2000}if(G&&!ST.vis)paint();const t=document.querySelector('#app .tray');if(t&&t.classList){t.classList.remove('glow');void t.offsetWidth;t.classList.add('glow')}}
 function doraFlight(a,b,demo){const L=document.getElementById('ci'),st=document.getElementById('stage');
@@ -1369,7 +1400,7 @@ let TMS=-1,ETCBK=false;
 function tmrLoop(){const el=document.getElementById('tmr'),cd=document.getElementById('cdn');if(!el||!cd||!el.style)return;
  const mine=!!(G&&!G.over&&!ST.vis&&G.turn===ME&&G.tdl&&G.hum&&G.hum[ME]&&TPH[G.phase])&&!(ovOpen&&!NET.on);
  if(!mine){el.style.display='none';if(TMS!==-1){cd.innerHTML='';TMS=-1}return}
- const rem=Math.max(0,G.tdl-Date.now())/1000,sec=Math.ceil(rem);el.style.display='flex';el.textContent=sec;
+ const full=(G.phase==='draw'?TDRAW:(G.tlim||TLIM)),rem=Math.min(full,Math.max(0,G.tdl-Date.now()))/1000,sec=Math.ceil(rem);el.style.display='flex';el.textContent=sec;
  el.className='tmr'+(S3.ok?'':' t2')+(sec<=5?' tr':sec<=10?' to':'');el.style.setProperty('--p',(rem*1000/(G.phase==='draw'?TDRAW:(G.tlim||TLIM))*100).toFixed(1));
  if(G.phase==='draw'){if(TMS!==-1&&cd.innerHTML)cd.innerHTML=''}else if(sec<=5&&sec>=1&&sec!==TMS){cd.innerHTML='<b>'+sec+'</b>';if(typeof sfx==='function')sfx('flick')}else if(sec>5&&TMS!==-1&&TMS<=5)cd.innerHTML='';
  if(sec<1)cd.innerHTML='';TMS=sec}
