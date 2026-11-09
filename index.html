@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja"><head><meta charset="utf-8"><script>var YBUILD='yaniv-v40';(function(){try{if(!/\bLine\//i.test(navigator.userAgent||''))return;var q=location.search||'';if(/[?&]openExternalBrowser=1/.test(q))return;location.replace(location.pathname+(q?q+'&':'?')+'openExternalBrowser=1'+location.hash)}catch(e){}})();</script>
+<html lang="ja"><head><meta charset="utf-8"><script>var YBUILD='yaniv-v41';(function(){try{if(!/\bLine\//i.test(navigator.userAgent||''))return;var q=location.search||'';if(/[?&]openExternalBrowser=1/.test(q))return;location.replace(location.pathname+(q?q+'&':'?')+'openExternalBrowser=1'+location.hash)}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"><meta name="format-detection" content="telephone=no">
 <title>ヤニブ</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Yuji+Boku&display=swap&text=%E4%B8%83%E6%B8%A1%E3%83%A4%E3%83%8B%E3%83%96%21Straight%C3%97%EF%BC%91%EF%BC%92%EF%BC%93%EF%BC%94%EF%BC%95%EF%BC%96%EF%BC%97%EF%BC%98%EF%BC%99">
@@ -450,8 +450,10 @@ function draw(){if(!G.deck.length&&G.pile.length>1){const t=G.pile.pop();G.deck=
 function newGame(win,n){GEN++;const pOrd=G&&G.ord&&G.ord.length===(n||N)?G.ord.slice():null;setN(n||N);const d=[];for(let k=0;k<DECKS(N);k++){const o=k?{d:k}:{};for(let s=0;s<4;s++)for(let r=1;r<=13;r++)d.push(Object.assign({r,s},o));d.push(Object.assign({r:0,s:4},o),Object.assign({r:0,s:5},o))}sh(d);
 G={deck:d,pile:[],hands:[],turn:0,declarer:null,phase:'',log:[],over:false,pend:null,gid:Date.now().toString(36)+Math.random().toString(36).slice(2,6),round:SERIES?SERIES.cur:1,ser:SERIES,hum:PL?PL.hum.slice():NM.map((_,i)=>i===0),tlim:(TLOK.indexOf(TLS)>=0?TLS:30)*1000};ME=PL?PL.me:0;clrSel();
 for(let i=0;i<N;i++)G.hands.push(d.splice(0,win&&win.length===1&&win[0]===i?4:5));
-let ord=sh([...Array(N).keys()]);if(win&&win.length){const st=win[Math.random()*win.length|0];if(pOrd){const k=pOrd.indexOf(st);ord=[...pOrd.slice(k),...pOrd.slice(0,k)]}else ord=[st,...ord.filter(i=>i!==st)]}G.ord=ord;G.num=[];ord.forEach((p,k)=>G.num[p]=k+1);G.turn=ord[0];G.cnt=0;G.grp=[];if(!PL)for(let p=1;p<N;p++)NM[p]='CPU'+(N-((G.num[p]-G.num[0]+N)%N));
-const ind=G.deck.pop();G.inds=[ind];G.dora=[ind.r===0?0:ind.r%13+1];G.pile=[G.deck.pop()];G.prevTop=G.pile[0];G.shown=G.prevTop;G.nd=[];sortAll();log('番号: '+NM.map((n,i)=>n+'='+G.num[i]).join(' ')+' → 1番の'+NM[G.turn]+'から開始'+(win?'(前回勝者'+(win.length===1?'は手札4枚':'複数のため全員5枚')+')':''));log('最初の捨て札: '+nm(G.pile[0]));startTurn()}
+/* 席の並びは毎局ランダム。最初の番: 1局目はランダム、2局目以降は前回の勝者(複数ならその中からランダム) */
+const cyc=o=>{const k=o.indexOf(0);return [...o.slice(k),...o.slice(0,k)].join()};let ord=sh([...Array(N).keys()]);if(pOrd&&N>2)for(let t=0;t<20&&cyc(ord)===cyc(pOrd);t++)ord=sh(ord);/* 前局と同じ並び(回転も同じ扱い)なら引き直す */
+const wn=(win||[]).filter(i=>i>=0&&i<N),st=wn.length?wn[Math.random()*wn.length|0]:Math.random()*N|0;G.ord=ord;G.num=[];ord.forEach((p,k)=>G.num[p]=k+1);G.turn=st;G.cnt=0;G.grp=[];
+const ind=G.deck.pop();G.inds=[ind];G.dora=[ind.r===0?0:ind.r%13+1];G.pile=[G.deck.pop()];G.prevTop=G.pile[0];G.shown=G.prevTop;G.nd=[];sortAll();{const k=ord.indexOf(st),q=[...ord.slice(k),...ord.slice(0,k)];log('席替え → 順番: '+q.map(i=>NM[i]).join(' → '));log(NM[st]+'から開始'+(wn.length?'(前回の勝者'+(wn.length===1?'・手札4枚':'からランダム・全員5枚')+')':'(ランダム)'))}log('最初の捨て札: '+nm(G.pile[0]));startTurn()}
 /* 手札の並び: 左から小さい数字、ドラは右側、ジョーカーは一番右 */
 function hkey(c){return c.r===0?3e4:(G&&G.dora&&G.dora.includes(c.r)?2e4:0)+c.r*100+c.s*10+(c.d||0)}
 function sortHand(h){if(h&&h.sort)h.sort((a,b)=>hkey(a)-hkey(b))}
@@ -1006,7 +1008,7 @@ const rr=c=>((c.r*37+c.s*61)%13-6)*1.5,ox=c=>((c.r*5+c.s*3)%7)-3,oy=c=>((c.r*3+c
 u.forEach((c,i)=>{const top=i===u.length-1;h+=`<div class="stk${top?'':' old'}" style="left:${8+ox(c)}px;top:${4+oy(c)}px;transform:rotate(${rr(c)}deg)">${card(c,{fs,take:top&&c===G.prevTop&&ph==='draw'})}</div>`});
 g.forEach((c,k)=>{h+=`<div class="stk gp" style="left:${30+k*13}px;top:${7+k*2}px;transform:rotate(${6+k*5+rr(c)*.3}deg)">${card(c,{fs})}</div>`});return h+'</div>'}
 const bkv=fs=>`<div style="position:relative;width:${6.2*fs}px;height:${4.4*fs}px;margin-top:${-2.4*fs}px;flex:none"><div class="cd back" style="font-size:${fs}px;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(90deg)"></div></div>`;
-function plate(i,v){const on=G.turn===i&&!G.over,gn=isGone(i);return `<div class="pl ${v?'v':''} ${on?'on':''}${gn?' gone':''}" data-i="${i}"><div class="av pchip c${i%6}">${(m=>m?'<small>C</small>'+m[1]:esc(String(NM[i]).slice(0,1)))(/^CPU(\d+)/.exec(String(NM[i])))}<span class="pk">${G.num[i]}</span></div><div class="pt"><div class="nm">${esc(NM[i])}${NET.on&&i===ME?' ★':''}${G.declarer===i?' 🔔':''}</div><div class="ct">${gn?'途中退出':G.away&&G.away[i]&&!G.over?'接続待ち…':G.hands[i].length+'枚'+(G.over?' '+score(G.hands[i],G.dora)+'点':'')+(on&&G.inExt?' <b class="ext">延長</b>':'')}</div></div></div>`}
+function plate(i,v){const on=G.turn===i&&!G.over,gn=isGone(i);return `<div class="pl ${v?'v':''} ${on?'on':''}${gn?' gone':''}" data-i="${i}"><div class="av pchip c${i%6}">${(m=>m?'<small>C</small>'+m[1]:esc(String(NM[i]).slice(0,1)))(/^CPU(\d+)/.exec(String(NM[i])))}</div><div class="pt"><div class="nm">${esc(NM[i])}${NET.on&&i===ME?' ★':''}${G.declarer===i?' 🔔':''}</div><div class="ct">${gn?'途中退出':G.away&&G.away[i]&&!G.over?'接続待ち…':G.hands[i].length+'枚'+(G.over?' '+score(G.hands[i],G.dora)+'点':'')+(on&&G.inExt?' <b class="ext">延長</b>':'')}</div></div></div>`}
 function resultHtml(compact){let h='';const ser=G.ser||{total:1,cur:1,wins:[],sum:[]},fin=ser.cur>=ser.total;
 const r=NM.map((n,i)=>({n,i,s:ef(G.hands[i],G.dora),raw:score(G.hands[i],G.dora),w:ser.wins[i]||0,t:ser.sum[i]||0})).sort((a,b)=>a.s-b.s||(a.i===G.declarer?-1:b.i===G.declarer?1:0));
 const fl=[...r].sort((a,b)=>b.w-a.w||a.t-b.t);
@@ -1067,7 +1069,10 @@ if(my&&ph==='draw'){b+=RB('green','sD','山札から<br>引く',"act('draw',{fro
 if(my&&ph==='bonus'){b+=RB('green','sD','続けて<br>捨てる<small>'+nm(G.bonus)+'</small>',"act('bonus',{y:1})");b+=RB('dark sm','sY','キープ',"act('bonus',{y:0})")}
 if(my&&ph==='give')b+=RB('nana','sD','渡す','doGive()',SEL.size!==G.need);
 h+=`${(()=>{const pt=G.shown&&G.pile.includes(G.shown)?G.shown:null;return pt?`<div class="ptop${G.prevTop===pt?'':' nod'}"><span>前の人の捨て札</span>${card(pt,{fs:16})}${G.prevTop===pt?'':'<em>引けません</em>'}</div>`:""})()}<div id="tmr" class="tmr"></div><div class="acts3">${b}</div>`;
-document.getElementById('app').innerHTML=h;if(stI)strHint(stI,fs)}
+document.getElementById('app').innerHTML=h;npFit();if(stI)strHint(stI,fs)}
+/* 奥の席の名札が右上の「第◯局・山札」表示と重なるときは、名札をその下へずらす */
+function npFit(){const I=document.querySelector('#app .info3');if(!I)return;const il=I.offsetLeft,ir=il+I.offsetWidth,ib=I.offsetTop+I.offsetHeight;
+ document.querySelectorAll('#app .np:not(.side):not(.cp)').forEach(e=>{const w=e.offsetWidth,hh=e.offsetHeight,l=e.offsetLeft-w/2,t=e.offsetTop-hh;if(l<ir&&l+w>il&&t<ib)e.style.top=(ib+4+hh)+'px'})}
 /* 手札にストレートがあるとき: 👆が左から右へなぞって知らせる(くり返し) */
 function strHint(ix,fs){const fan=document.querySelector('#app .fan3');if(!fan)return;const cs=ix.map(i=>fan.querySelector('.cd[data-i="'+i+'"]')).filter(Boolean);if(cs.length<5)return;
  const x0=Math.min(...cs.map(c=>c.offsetLeft)),x1=Math.max(...cs.map(c=>c.offsetLeft+c.offsetWidth)),f=document.createElement('span');f.className='sfg';f.textContent='👆';
@@ -1090,7 +1095,7 @@ h+=`<div class="hand">${me.map((c,i)=>G.declarer===ME&&!G.over?back(fs,`margin:0
 (my&&ph==='give'?`<button class="act nv" onclick="doGive()" ${SEL.size===G.need?'':'disabled'}>渡す</button>`:'')+`</div>`;
 document.getElementById('app').innerHTML=h}
 
-const RULES="スタート画面でCPU戦かルーム戦を選び、ダイヤルを上下にスワイプして人数(2〜15)と試合数(1〜30)と持ち時間を決める。試合数ぶん続けて対戦し、勝ち数で総合順位を決める(同数は合計点が低い方が上)。ルーム戦は足りない席をCPUが埋める。ルーム戦で途中で抜けた人の席はCPUで埋めず、人数が減った状態で続ける(試合中なら抜けた人の手札は山札の下に入れる)。抜けた人は「途中退出」としてマイナス評価。手札5枚。ドラ表示牌の次の数字がドラ(K→A)。ドラは-2、K=-1(ドラK=-3)。KがドラのときAの合計は偶数枚-5/奇数枚+5。ジョーカーは0(ドラなら+5)。A=1、J=11、Q=12、他は数字。A〜Kの5連続(ストレート。KからAへはつながらないので J・Q・K・A・2 は不可)があるとその5枚は0点。ストレートは5枚まとめて捨てることもでき、手札を左から右へスワイプすると一括で選んで捨てられる(ストレート内の7は七渡無効)。自分の番に捨てる前なら何点でもヤニブ宣言可(宣言後に他の人が自分も勝てる手札ならパスで手番を飛ばせる)、ジョーカー2枚で強制ヤニブ。宣言者は手札を裏向きでテーブルに置く。同数字、または2〜10の3枚の階段を捨てられ(小さい順に置く)、その後に山札か直前の捨て札の一番上を引く。7を捨てると通常どおり1枚だけ引き(山札・捨て札どちらでも可)、7の枚数だけ次の人に手札を渡す(七渡。次の人が宣言者のときは宣言者を飛ばして渡す。最終ターンの七渡のあとゲーム終了)。七渡で手札が0枚になったら、宣言なしでヤニブ宣言と同じ扱い。延長ターン中は、自分が直前に捨てた札は引けない。延長のもとになったJ/Q/Kは、そのあと誰も捨て札から引けない(延長ターン中は、前の人が捨てたJ/Q/Kも引けない)。同数字3枚を捨てるとドラ表示牌が1枚、4枚だと2枚追加される。宣言後は他の人が1周し、J/Q/Kを出した人は1ターン延長(1枚につき1回、何度でも)。最も点が低い人の勝ち(同点は宣言者の勝ち)。開始時は参加者にランダムに1から人数ぶんの番号を振り、1番から番号順に進行。2局目以降は前回勝者(同点複数なら全員)が1番で、勝者が1人なら初期手札4枚(複数なら全員5枚)。最初に山札から1枚を中央の捨て札に置く。1周目にヤニブ宣言が出た場合は、宣言者以外の全員にもう1ターンずつ与えられる。山札から引いた札が今回捨てた数字と同じなら続けて捨てられる(引き直し不可)。ジョーカーは捨てられない(七渡で渡すことはできる)。持ち時間はCPU戦・ルーム戦とも30秒・45秒・60秒・無しから選べる(引くときは10秒。時間切れは自動で進む。無しのときは引くときも制限なし)。トランプは5人までは1セット(54枚)、6〜9人は2セット(108枚)、10人以上は3セット(162枚)使う(ジョーカーもセット数ぶん)。七渡は山札から1枚引いてから渡す札を選び、必ず実行(ただし階段に含まれる7は七渡無効)。捨て札の7は引けない(ゲーム開始時の最初の捨て札が7の場合のみ引ける)。階段を捨てたターンは、山札から引いた札が階段と同じ数字でも続けて捨てられない。点数がマイナスになるとオーバーフローで最下位扱いになる。ただしドラにA・K・ジョーカーのどれかがある間だけはオーバーフローせず、マイナスでも勝てる。";
+const RULES="スタート画面でCPU戦かルーム戦を選び、ダイヤルを上下にスワイプして人数(2〜15)と試合数(1〜30)と持ち時間を決める。試合数ぶん続けて対戦し、勝ち数で総合順位を決める(同数は合計点が低い方が上)。ルーム戦は足りない席をCPUが埋める。ルーム戦で途中で抜けた人の席はCPUで埋めず、人数が減った状態で続ける(試合中なら抜けた人の手札は山札の下に入れる)。抜けた人は「途中退出」としてマイナス評価。手札5枚。ドラ表示牌の次の数字がドラ(K→A)。ドラは-2、K=-1(ドラK=-3)。KがドラのときAの合計は偶数枚-5/奇数枚+5。ジョーカーは0(ドラなら+5)。A=1、J=11、Q=12、他は数字。A〜Kの5連続(ストレート。KからAへはつながらないので J・Q・K・A・2 は不可)があるとその5枚は0点。ストレートは5枚まとめて捨てることもでき、手札を左から右へスワイプすると一括で選んで捨てられる(ストレート内の7は七渡無効)。自分の番に捨てる前なら何点でもヤニブ宣言可(宣言後に他の人が自分も勝てる手札ならパスで手番を飛ばせる)、ジョーカー2枚で強制ヤニブ。宣言者は手札を裏向きでテーブルに置く。同数字、または2〜10の3枚の階段を捨てられ(小さい順に置く)、その後に山札か直前の捨て札の一番上を引く。7を捨てると通常どおり1枚だけ引き(山札・捨て札どちらでも可)、7の枚数だけ次の人に手札を渡す(七渡。次の人が宣言者のときは宣言者を飛ばして渡す。最終ターンの七渡のあとゲーム終了)。七渡で手札が0枚になったら、宣言なしでヤニブ宣言と同じ扱い。延長ターン中は、自分が直前に捨てた札は引けない。延長のもとになったJ/Q/Kは、そのあと誰も捨て札から引けない(延長ターン中は、前の人が捨てたJ/Q/Kも引けない)。同数字3枚を捨てるとドラ表示牌が1枚、4枚だと2枚追加される。宣言後は他の人が1周し、J/Q/Kを出した人は1ターン延長(1枚につき1回、何度でも)。最も点が低い人の勝ち(同点は宣言者の勝ち)。席の並びは毎局ランダムに決め直し、席の順に進行。最初の番は1局目がランダム、2局目以降は前回勝者(勝者が複数ならその中からランダム)。勝者が1人ならその人の初期手札は4枚(複数なら全員5枚)。最初に山札から1枚を中央の捨て札に置く。1周目にヤニブ宣言が出た場合は、宣言者以外の全員にもう1ターンずつ与えられる。山札から引いた札が今回捨てた数字と同じなら続けて捨てられる(引き直し不可)。ジョーカーは捨てられない(七渡で渡すことはできる)。持ち時間はCPU戦・ルーム戦とも30秒・45秒・60秒・無しから選べる(引くときは10秒。時間切れは自動で進む。無しのときは引くときも制限なし)。トランプは5人までは1セット(54枚)、6〜9人は2セット(108枚)、10人以上は3セット(162枚)使う(ジョーカーもセット数ぶん)。七渡は山札から1枚引いてから渡す札を選び、必ず実行(ただし階段に含まれる7は七渡無効)。捨て札の7は引けない(ゲーム開始時の最初の捨て札が7の場合のみ引ける)。階段を捨てたターンは、山札から引いた札が階段と同じ数字でも続けて捨てられない。点数がマイナスになるとオーバーフローで最下位扱いになる。ただしドラにA・K・ジョーカーのどれかがある間だけはオーバーフローせず、マイナスでも勝てる。";
 const NET={on:false,host:false,room:null,lobby:null,me:'',hostPeer:'',N:4,G:1,T:30,code:'',inGame:false,sq:0};
 const esc=s=>String(s).replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';');
 const ROT=()=>matchMedia('(orientation:portrait)').matches&&Math.min(innerWidth,innerHeight)<=700;
@@ -1344,7 +1349,7 @@ function helpScr(){const N=(n,x,y)=>'<span class="hn" style="left:'+x+'px;top:'+
   +'</div></div><ol class="hleg">'
   +'<li><b>ドラ表示</b>…表示の札と、いまのドラの数字。タップで大きくなります。</li>'
   +'<li><b>さっき起きたこと</b>…だれが何を捨てた・引いたか。</li>'
-  +'<li><b>相手の名札</b>…名前と手札の枚数。チップの数字は順番の番号。いまの番の人は名札が光ります。🔔はヤニブした人、「延長」はJ・Q・Kでもう1回の番、「接続待ち…」「途中退出」も出ます。</li>'
+  +'<li><b>相手の名札</b>…名前と手札の枚数。席の並びは試合ごとにランダムで変わります。いまの番の人は名札が光ります。🔔はヤニブした人、「延長」はJ・Q・Kでもう1回の番、「接続待ち…」「途中退出」も出ます。</li>'
   +'<li><b>第何局・山札の残り・いまの番の人</b>。右の☰はメニュー。</li>'
   +'<li><b>テーブルのまんなか</b>…山札(うら向き)と、捨て札の山。</li>'
   +'<li><b>前の人の捨て札</b>…「捨て札から引く」で引ける札。引けないときは「引けません」と出ます。</li>'
@@ -1410,7 +1415,7 @@ function helpRule(){const P=(t,c)=>'<span class="hpts'+(c?' '+c:'')+'">'+t+'</sp
   +'<li>点数が<b>マイナス</b>になると「オーバーフロー」で<b>最下位</b>。ただしドラがA・K・ジョーカーのときは、マイナスでも勝てます。</li>'
   +'<li>Kがドラのときは、Aの点数が特別:Aが<b>偶数枚ならマイナス5点</b>、<b>奇数枚ならプラス5点</b>。</li>'
   +'<li>手札にストレート(つづいた5枚)があると、その5枚は<b>0点</b>。</li>'
-  +'<li>番は番号順。2回目からは前の試合の勝った人が1番で、勝った人が1人なら手札は4枚から。</li></ul>';
+  +'<li>席のならびは、試合ごとにくじびき(ランダム)で変わるよ。番はとなりの人へじゅんばんに回る。</li><li>さいしょの番の人は、1回目はくじびき。2回目からは前の試合で勝った人(勝った人が何人もいたら、その中からくじびき)。勝った人が1人なら、その人の手札は4枚から。</li></ul>';
  h+='<details class="hdet"><summary>くわしいルール(全部)</summary><div class="mut" style="text-align:left;font-size:12px;line-height:1.7">'+esc(RULES)+'</div></details>';
  return h}
 function closeOv(){ovOpen=false;QA=0;const o=document.getElementById('ov');if(o)o.style.display='none';avPrev()}
