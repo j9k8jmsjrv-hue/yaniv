@@ -1308,7 +1308,7 @@ async function cloudInit(){try{if(!window.claude)return;const db=await window.cl
 if(typeof document!=='undefined'&&document.addEventListener)document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'&&cT){clearTimeout(cT);cloudSave()}});
 const B64=s=>btoa(unescape(encodeURIComponent(s))),U64=s=>decodeURIComponent(escape(atob(s)));
 /* ===== アプリ版の引き継ぎ: 一人ひとりの「ID」+「引き継ぎコード」。データはスマホ側で暗号化して無料サーバー(Firebase)に預ける ===== */
-const FBDB='';
+const FBDB='https://yaniv-7f1d8-default-rtdb.asia-southeast1.firebasedatabase.app';
 const TCA='ABCDEFGHJKLMNPQRSTUVWXYZ23456789',tcFmt=c=>c?c.slice(0,4)+'-'+c.slice(4):'',tcNorm=v=>String(v||'').replace(/[！-～]/g,c=>String.fromCharCode(c.charCodeAt(0)-65248)).toUpperCase().replace(/[^A-Z0-9]/g,'');
 const tcOn=()=>!!FBDB&&!inClaude()&&typeof crypto!=='undefined'&&!!crypto.subtle&&typeof fetch==='function';
 function myTc(){let c=ld('ytc','');if(!/^[A-Z2-9]{8}$/.test(c)){const a=new Uint8Array(8);crypto.getRandomValues(a);c=[...a].map(x=>TCA[x&31]).join('');sv('ytc',c)}return c}
