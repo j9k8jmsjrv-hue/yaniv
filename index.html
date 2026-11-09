@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja"><head><meta charset="utf-8"><script>var YBUILD='yaniv-v37';(function(){try{if(!/\bLine\//i.test(navigator.userAgent||''))return;var q=location.search||'';if(/[?&]openExternalBrowser=1/.test(q))return;location.replace(location.pathname+(q?q+'&':'?')+'openExternalBrowser=1'+location.hash)}catch(e){}})();</script>
+<html lang="ja"><head><meta charset="utf-8"><script>var YBUILD='yaniv-v38';(function(){try{if(!/\bLine\//i.test(navigator.userAgent||''))return;var q=location.search||'';if(/[?&]openExternalBrowser=1/.test(q))return;location.replace(location.pathname+(q?q+'&':'?')+'openExternalBrowser=1'+location.hash)}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"><meta name="format-detection" content="telephone=no">
 <title>ヤニブ</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Yuji+Boku&display=swap&text=%E4%B8%83%E6%B8%A1%E3%83%A4%E3%83%8B%E3%83%96%21Straight%C3%97%EF%BC%91%EF%BC%92%EF%BC%93%EF%BC%94%EF%BC%95%EF%BC%96%EF%BC%97%EF%BC%98%EF%BC%99">
@@ -318,7 +318,7 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 #cdn{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:76}
 #cdn b{font:900 clamp(96px,36vmin,210px)/1 Georgia,"Times New Roman",serif;color:#ff3b30;-webkit-text-stroke:3px #4a0000;text-shadow:0 0 28px #ff2a2acc,0 10px 16px #000;animation:cdnP 1s ease-out both}
 @keyframes cdnP{0%{transform:scale(2.3);opacity:0}14%{transform:scale(1);opacity:1}70%{transform:scale(1);opacity:1}100%{transform:scale(.82);opacity:0}}
-.ptop{position:absolute;left:98px;bottom:100px;display:flex;flex-direction:column;align-items:center;gap:3px;pointer-events:none;z-index:2}.ptop span{font-size:12px;font-weight:700;color:#efe2b4;text-shadow:0 1px 3px #000,0 0 6px #000}
+.ptop{position:absolute;left:98px;bottom:100px;display:flex;flex-direction:column;align-items:center;gap:3px;pointer-events:none;z-index:2}.ptop em{position:absolute;left:50%;top:58%;transform:translate(-50%,-50%) rotate(-6deg);font-style:normal;font-size:12px;font-weight:800;color:#ffd2c8;background:#1a0b07e6;border:1px solid #ff9f8a;border-radius:6px;padding:2px 7px;white-space:nowrap;box-shadow:0 2px 6px #000a}.ptop.nod .cd{filter:grayscale(.55) brightness(.8)}.ptop span{font-size:12px;font-weight:700;color:#efe2b4;text-shadow:0 1px 3px #000,0 0 6px #000}
 .ptop .cd{transform:rotate(-4deg);box-shadow:0 0 0 .03em #b9b09e,0 .25em .6em #000c}
 .fan3 .cd,.hand .cd{touch-action:none}.fan3 .cd{position:relative}
 .hand .cd.sel{z-index:3;transform:translateY(calc(var(--y,0px) - 1.4em)) rotate(var(--r,0deg)) scale(1.2)}
@@ -385,18 +385,22 @@ function newGame(win,n){GEN++;const pOrd=G&&G.ord&&G.ord.length===(n||N)?G.ord.s
 G={deck:d,pile:[],hands:[],turn:0,declarer:null,phase:'',log:[],over:false,pend:null,gid:Date.now().toString(36)+Math.random().toString(36).slice(2,6),round:SERIES?SERIES.cur:1,ser:SERIES,hum:PL?PL.hum.slice():NM.map((_,i)=>i===0),tlim:(TLOK.indexOf(TLS)>=0?TLS:30)*1000};ME=PL?PL.me:0;clrSel();
 for(let i=0;i<N;i++)G.hands.push(d.splice(0,win&&win.length===1&&win[0]===i?4:5));
 let ord=sh([...Array(N).keys()]);if(win&&win.length){const st=win[Math.random()*win.length|0];if(pOrd){const k=pOrd.indexOf(st);ord=[...pOrd.slice(k),...pOrd.slice(0,k)]}else ord=[st,...ord.filter(i=>i!==st)]}G.ord=ord;G.num=[];ord.forEach((p,k)=>G.num[p]=k+1);G.turn=ord[0];G.cnt=0;G.grp=[];if(!PL)for(let p=1;p<N;p++)NM[p]='CPU'+(N-((G.num[p]-G.num[0]+N)%N));
-const ind=G.deck.pop();G.inds=[ind];G.dora=[ind.r===0?0:ind.r%13+1];G.pile=[G.deck.pop()];G.prevTop=G.pile[0];G.shown=G.prevTop;log('番号: '+NM.map((n,i)=>n+'='+G.num[i]).join(' ')+' → 1番の'+NM[G.turn]+'から開始'+(win?'(前回勝者'+(win.length===1?'は手札4枚':'複数のため全員5枚')+')':''));log('最初の捨て札: '+nm(G.pile[0]));startTurn()}
+const ind=G.deck.pop();G.inds=[ind];G.dora=[ind.r===0?0:ind.r%13+1];G.pile=[G.deck.pop()];G.prevTop=G.pile[0];G.shown=G.prevTop;G.nd=[];sortAll();log('番号: '+NM.map((n,i)=>n+'='+G.num[i]).join(' ')+' → 1番の'+NM[G.turn]+'から開始'+(win?'(前回勝者'+(win.length===1?'は手札4枚':'複数のため全員5枚')+')':''));log('最初の捨て札: '+nm(G.pile[0]));startTurn()}
+/* 手札の並び: 左から小さい数字、ドラは右側、ジョーカーは一番右 */
+function hkey(c){return c.r===0?3e4:(G&&G.dora&&G.dora.includes(c.r)?2e4:0)+c.r*100+c.s*10+(c.d||0)}
+function sortHand(h){if(h&&h.sort)h.sort((a,b)=>hkey(a)-hkey(b))}
+function sortAll(){if(G&&G.hands)G.hands.forEach(sortHand)}
 function startTurn(){if(G.over)return;const p=G.turn,h=G.hands[p];
 if(G.declarer===null&&h.filter(c=>c.r===0).length>=2){log(NM[p]+'はジョーカー2枚で強制ヤニブ!');return declare(p,'ジョーカー2枚で強制ヤニブ')}
-if(G.hum[p]){G.phase='discard';h.sort((a,b)=>a.r-b.r);render()}else{render();later(cpuTurn,900)}}
+if(G.hum[p]){G.phase='discard';sortHand(h);render()}else{render();later(cpuTurn,900)}}
 function declare(p,why){G.rounds=G.cnt<alive().length?2:1;G.declarer=p;log(NM[p]+'がヤニブ宣言!');cutin('yaniv','ヤニブ!',NM[p]+(why?' '+why:'の宣言'));G.phase='';endTurn(p,false)}
-function discardAct(p,v){const h=G.hands[p];v.s.forEach(c=>h.splice(h.indexOf(c),1));G.pile.push(...v.s);G.grp=[...v.s];
+function discardAct(p,v){const h=G.hands[p];if(G.nd&&G.nd.length){const ks=v.s.map(enc);G.nd=G.nd.filter(k=>ks.indexOf(k)<0)}v.s.forEach(c=>h.splice(h.indexOf(c),1));G.pile.push(...v.s);G.grp=[...v.s];
 log(NM[p]+'が捨てた: '+v.s.map(nm).join(' '));
-if(v.tri){const k=v.s.length>=4?2:1,dl=[];for(let x=0;x<k;x++){const e=draw();if(e){G.inds.push(e);const d=e.r===0?0:e.r%13+1;if(!G.dora.includes(d))G.dora.push(d);dl.push(nm(e)+'→ドラ'+RN[d]);log('同数字'+v.s.length+'枚!ドラ表示牌追加: '+nm(e)+' → ドラ'+RN[d])}}if(dl.length){const on=(typeof NET!=='undefined'&&NET.on)||(typeof FXON!=='undefined'&&FXON);if(on)G.hold=Math.max(G.hold||0,Date.now()+2800)}if(dl.length)cutin('dora',dl.length>1?'ドラ +2!':'ドラ追加!',dl.join('  '),dl.length)}
+if(v.tri){const k=v.s.length>=4?2:1,dl=[];for(let x=0;x<k;x++){const e=draw();if(e){G.inds.push(e);const d=e.r===0?0:e.r%13+1;if(!G.dora.includes(d))G.dora.push(d);dl.push(nm(e)+'→ドラ'+RN[d]);log('同数字'+v.s.length+'枚!ドラ表示牌追加: '+nm(e)+' → ドラ'+RN[d])}}if(dl.length){sortAll();const on=(typeof NET!=='undefined'&&NET.on)||(typeof FXON!=='undefined'&&FXON);if(on)G.hold=Math.max(G.hold||0,Date.now()+2800)}if(dl.length)cutin('dora',dl.length>1?'ドラ +2!':'ドラ追加!',dl.join('  '),dl.length)}
 const run=v.s.length>=3&&v.s[0].r!==v.s[1].r,lt=v.s[v.s.length-1];G.blk=run&&lt.r===7?lt:null;if(run&&v.s.some(c=>c.r===7))log((v.str?'ストレート':'階段')+'の7は七渡無効');if(v.str){G.hold=Date.now()+(typeof FXON!=='undefined'&&FXON?STRMS:0);log(NM[p]+'のストレート!');if(typeof strFx==='function')try{strFx(p,v.s)}catch(e){}}G.pend={sev:run?0:v.s.filter(c=>c.r===7).length,jqk:v.s.filter(c=>c.r>=11).length,rk:run?[]:v.s.map(c=>c.r)};G.phase='draw';render();fxDisc(p,v.s);nanaFx(p)}
-function nanaFx(p){const n=G.pend.sev,nx=sevenTarget(p);if(n&&nx!==null)cutin('nana','七渡×'+String.fromCharCode(65296+Math.max(1,Math.min(9,n))),NM[p]+' → '+NM[nx]+'  '+n+'枚',n)}
+function nanaFx(p){const n=G.pend.sev,nx=sevenTarget(p);if(n&&nx!==null)cutin('nana',n>1?'七渡×'+String.fromCharCode(65296+Math.min(9,n)):'七渡',NM[p]+' → '+NM[nx]+'  '+n+'枚',n)}
 function drawAct(p,from){let c;if(from==='pile'&&G.prevTop&&G.pile.includes(G.prevTop)){c=G.prevTop;G.pile.splice(G.pile.indexOf(c),1)}else c=draw();
-if(c){fxDraw(p,c,from);G.hands[p].push(c);log(NM[p]+'が'+(from==='pile'?'捨て札('+nm(c)+')':'山札')+'から引いた')}
+if(c){fxDraw(p,c,from);G.hands[p].push(c);sortHand(G.hands[p]);log(NM[p]+'が'+(from==='pile'?'捨て札('+nm(c)+')':'山札')+'から引いた')}
 if(c&&from!=='pile'&&G.pend.rk.includes(c.r)){if(G.hum[p]){G.phase='bonus';G.bonus=c;return render()}if(cb(c,G.dora)>0)return bonusAct(p,c,true)}post(p)}
 function bonusAct(p,c,y){G.phase='';G.bonus=null;if(y){G.hands[p].splice(G.hands[p].indexOf(c),1);G.pile.push(c);G.grp.push(c);fxDisc(p,[c]);log(NM[p]+'が引いた'+nm(c)+'を続けて捨てた');if(c.r===7){G.pend.sev++;nanaFx(p)}if(c.r>=11)G.pend.jqk++}post(p)}
 function sevenTarget(p){let nx=nextOf(p);if(nx===G.declarer)nx=nextOf(nx);return nx===p?null:nx}
@@ -409,13 +413,13 @@ function dropSeat(s){if(!G||!G.hands[s]||isGone(s))return false;G.hum[s]=false;i
  if(G.turn===s){GEN++;G.phase='';G.bonus=null;G.need=0;endTurn(s,false)}else render();return true}
 function post(p){const n=G.pend.sev,nx=sevenTarget(p);
 if(n&&nx!==null){log('七渡!'+NM[p]+'が'+n+'枚を'+NM[nx]+'へ渡す');
-if(G.hum[p]){G.phase='give';G.need=Math.min(n,G.hands[p].length);if(p===ME)clrSel();G.hands[p].sort((a,b)=>a.r-b.r);return render()}
+if(G.hum[p]){G.phase='give';G.need=Math.min(n,G.hands[p].length);if(p===ME)clrSel();sortHand(G.hands[p]);return render()}
 cpuGive(p,n);return}
 if(n)log('七渡の渡し先がいないため無効');
 finish(p)}
-function giveAct(p,cs){const nx=sevenTarget(p);fxGive(p,nx,cs.length);cs.forEach(c=>G.hands[p].splice(G.hands[p].indexOf(c),1));G.hands[nx].push(...cs);if(!G.hands[p].length&&G.declarer===null){G.rounds=G.cnt<alive().length?2:1;G.declarer=p;G.phase='';log(NM[p]+'は手札0枚でヤニブ扱い!');cutin('yaniv','ヤニブ!',NM[p]+' 手札0枚');return endTurn(p,false)}finish(p)}
-function finish(p){let n=G.declarer!==null?G.pend.jqk:0;if(!G.inExt)G.extLeft=0;if((G.extN||0)>=30)n=0;G.extLeft+=n;if(G.extLeft>0){G.extLeft--;G.extN=(G.extN||0)+1;endTurn(p,true)}else endTurn(p,false)}
-function endTurn(p,extra){G.inExt=!!extra;if(G.declarer===null&&!extra)G.cnt++;{const g=extra?G.grp.filter(c=>G.pile.includes(c)):[],u=G.pile.filter(c=>!g.includes(c));G.prevTop=u[u.length-1]||null;G.shown=G.prevTop;if(G.prevTop&&G.prevTop.r===7)G.prevTop=null}
+function giveAct(p,cs){const nx=sevenTarget(p);fxGive(p,nx,cs.length);cs.forEach(c=>G.hands[p].splice(G.hands[p].indexOf(c),1));G.hands[nx].push(...cs);sortHand(G.hands[nx]);if(!G.hands[p].length&&G.declarer===null){G.rounds=G.cnt<alive().length?2:1;G.declarer=p;G.phase='';log(NM[p]+'は手札0枚でヤニブ扱い!');cutin('yaniv','ヤニブ!',NM[p]+' 手札0枚');return endTurn(p,false)}finish(p)}
+function finish(p){let n=G.declarer!==null?G.pend.jqk:0;if(!G.inExt)G.extLeft=0;if((G.extN||0)>=30)n=0;if(n>0){G.nd=G.nd||[];(G.grp||[]).forEach(c=>{if(c.r>=11)G.nd.push(enc(c))})}G.extLeft+=n;if(G.extLeft>0){G.extLeft--;G.extN=(G.extN||0)+1;endTurn(p,true)}else endTurn(p,false)}
+function endTurn(p,extra){G.inExt=!!extra;if(G.declarer===null&&!extra)G.cnt++;{const g=extra?G.grp.filter(c=>G.pile.includes(c)):[],u=G.pile.filter(c=>!g.includes(c));G.prevTop=u[u.length-1]||null;G.shown=G.prevTop;if(G.prevTop&&G.prevTop.r===7)G.prevTop=null;if(G.prevTop&&((G.nd&&G.nd.indexOf(enc(G.prevTop))>=0)||(extra&&G.prevTop.r>=11)))G.prevTop=null}
 if(extra){log(NM[p]+'はJ/Q/Kで1ターン延長!');G.turn=p}else{const nx=nextOf(p);if(G.declarer!==null&&nx===G.declarer){if(--G.rounds<=0)return end();log('1周目のヤニブ宣言: 宣言者以外にもう1ターンの権利!');G.turn=nextOf(nx)}else G.turn=nx}nextTurn()}
 /* 前の人の「引く/渡す」演出が手元に届くまで次の手番を始めない(CPUは考える時間ぶん早めに開始) */
 function fxBusy(){try{if(typeof S3!=='undefined'&&S3.ok&&S3.running&&!(typeof ST!=='undefined'&&ST.vis))return S3.busy()}catch(e){}return 0}
@@ -796,7 +800,8 @@ function canGroup(cs,h){if(cs.length<2)return true;if(cs.some(c=>c.r===0))return
 const stXY=e=>ROT()?{x:e.clientY-ROFF,y:innerWidth-e.clientX}:{x:e.clientX,y:e.clientY};
 /* 手札を左から右へなぞると一括選択。5枚のストレートなら、自分の番はそのまま捨てる */
 const HCD='.fan3 .cd[data-i],.hand .cd[data-i]';let SWD=null,SWT=0;
-function strOf(h,ix){const by={};ix.forEach(i=>{const c=h[i];if(c&&c.r&&by[c.r]==null)by[c.r]=i});const rs=Object.keys(by).map(Number).sort((a,b)=>a-b);return rs.length===5&&rs[4]-rs[0]===4?rs.map(r=>by[r]):null}
+/* なぞった札の中に5連続があればそれを選ぶ(ドラが右側に並んでいても、手札全体をなぞればストレートを拾える) */
+function strOf(h,ix){const by={};ix.forEach(i=>{const c=h[i];if(c&&c.r&&by[c.r]==null)by[c.r]=i});for(let r=9;r>=1;r--)if([0,1,2,3,4].every(k=>by[r+k]!=null))return[0,1,2,3,4].map(k=>by[r+k]);return null}
 function hasStr(h){const rs=new Set(h.map(c=>c.r));for(let r=1;r<=9;r++)if([0,1,2,3,4].every(k=>rs.has(r+k)))return true;return false}
 function markSw(){const d=SWD;document.querySelectorAll(HCD).forEach(c=>c.classList.toggle('swp',!!d&&d.set.indexOf(+c.getAttribute('data-i'))>=0))}
 function swipeDone(ix){const h=G&&G.hands[ME];if(!h)return;ix=ix.filter(i=>h[i]);const st=strOf(h,ix),pk=st||ix;SEL=new Set(pk);SELK=new Set(pk.map(i=>enc(h[i])));
@@ -995,7 +1000,7 @@ if(my&&ph==='discard'){b+=G.declarer!==null?RB('dark','sY','パス<small>2回タ
 if(my&&ph==='draw'){b+=RB('green','sD','山札から<br>引く',"act('draw',{from:'deck'})");b+=RB('dark sm','sY','捨て札<br>から引く'+(can?'<small>'+nm(G.prevTop)+'</small>':''),"act('draw',{from:'pile'})",!can)}
 if(my&&ph==='bonus'){b+=RB('green','sD','続けて<br>捨てる<small>'+nm(G.bonus)+'</small>',"act('bonus',{y:1})");b+=RB('dark sm','sY','キープ',"act('bonus',{y:0})")}
 if(my&&ph==='give')b+=RB('green','sD','渡す','doGive()',SEL.size!==G.need);
-h+=`${(()=>{const pt=G.shown&&G.pile.includes(G.shown)?G.shown:null;return pt?`<div class="ptop"><span>前の人の捨て札</span>${card(pt,{fs:16})}</div>`:""})()}<div id="tmr" class="tmr"></div><div class="acts3">${b}</div>`;
+h+=`${(()=>{const pt=G.shown&&G.pile.includes(G.shown)?G.shown:null;return pt?`<div class="ptop${G.prevTop===pt?'':' nod'}"><span>前の人の捨て札</span>${card(pt,{fs:16})}${G.prevTop===pt?'':'<em>引けません</em>'}</div>`:""})()}<div id="tmr" class="tmr"></div><div class="acts3">${b}</div>`;
 document.getElementById('app').innerHTML=h}
 function paint2D(){maybeRecord();syncSel();const me=G.hands[ME],sc=score(me,G.dora),ph=G.phase,my=G.turn===ME&&!G.over,can=G.prevTop&&G.pile.includes(G.prevTop),off=i=>(G.num[i]-G.num[ME]+N)%N,jk=me.length>0&&me.every(c=>c.r===0);
 const opp=[...Array(N).keys()].filter(i=>i!==ME).sort((a,b)=>off(b)-off(a));let Lf=[],T=[],Rt=[];if(opp.length===1)T=opp;else{Lf=[opp[0]];Rt=[opp[opp.length-1]];T=opp.slice(1,-1)}
@@ -1015,7 +1020,7 @@ h+=`<div class="hand">${me.map((c,i)=>G.declarer===ME&&!G.over?back(fs,`margin:0
 (my&&ph==='give'?`<button class="act g" onclick="doGive()" ${SEL.size===G.need?'':'disabled'}>渡す</button>`:'')+`</div>`;
 document.getElementById('app').innerHTML=h}
 
-const RULES="スタート画面でCPU戦かルーム戦を選び、ダイヤルを上下にスワイプして人数(2〜15)と試合数(1〜30)と持ち時間を決める。試合数ぶん続けて対戦し、勝ち数で総合順位を決める(同数は合計点が低い方が上)。ルーム戦は足りない席をCPUが埋める。ルーム戦で途中で抜けた人の席はCPUで埋めず、人数が減った状態で続ける(試合中なら抜けた人の手札は山札の下に入れる)。抜けた人は「途中退出」としてマイナス評価。手札5枚。ドラ表示牌の次の数字がドラ(K→A)。ドラは-2、K=-1(ドラK=-3)。KがドラのときAの合計は偶数枚-5/奇数枚+5。ジョーカーは0(ドラなら+5)。A=1、J=11、Q=12、他は数字。A〜Kの5連続(ストレート。KからAへはつながらないので J・Q・K・A・2 は不可)があるとその5枚は0点。ストレートは5枚まとめて捨てることもでき、手札を左から右へスワイプすると一括で選んで捨てられる(ストレート内の7は七渡無効)。自分の番に捨てる前なら何点でもヤニブ宣言可(宣言後に他の人が自分も勝てる手札ならパスで手番を飛ばせる)、ジョーカー2枚で強制ヤニブ。宣言者は手札を裏向きでテーブルに置く。同数字、または2〜10の3枚の階段を捨てられ(小さい順に置く)、その後に山札か直前の捨て札の一番上を引く。7を捨てると通常どおり1枚だけ引き(山札・捨て札どちらでも可)、7の枚数だけ次の人に手札を渡す(七渡。次の人が宣言者のときは宣言者を飛ばして渡す。最終ターンの七渡のあとゲーム終了)。七渡で手札が0枚になったら、宣言なしでヤニブ宣言と同じ扱い。延長ターン中は、自分が直前に捨てた札は引けない。同数字3枚を捨てるとドラ表示牌が1枚、4枚だと2枚追加される。宣言後は他の人が1周し、J/Q/Kを出した人は1ターン延長(1枚につき1回、何度でも)。最も点が低い人の勝ち(同点は宣言者の勝ち)。開始時は参加者にランダムに1から人数ぶんの番号を振り、1番から番号順に進行。2局目以降は前回勝者(同点複数なら全員)が1番で、勝者が1人なら初期手札4枚(複数なら全員5枚)。最初に山札から1枚を中央の捨て札に置く。1周目にヤニブ宣言が出た場合は、宣言者以外の全員にもう1ターンずつ与えられる。山札から引いた札が今回捨てた数字と同じなら続けて捨てられる(引き直し不可)。ジョーカーは捨てられない(七渡で渡すことはできる)。持ち時間はCPU戦・ルーム戦とも30秒・45秒・60秒・無しから選べる(引くときは10秒。時間切れは自動で進む。無しのときは引くときも制限なし)。トランプは5人までは1セット(54枚)、6〜9人は2セット(108枚)、10人以上は3セット(162枚)使う(ジョーカーもセット数ぶん)。七渡は山札から1枚引いてから渡す札を選び、必ず実行(ただし階段に含まれる7は七渡無効)。捨て札の7は引けない(ゲーム開始時の最初の捨て札が7の場合のみ引ける)。階段を捨てたターンは、山札から引いた札が階段と同じ数字でも続けて捨てられない。点数がマイナスになるとオーバーフローで最下位扱いになる。ただしドラにA・K・ジョーカーのどれかがある間だけはオーバーフローせず、マイナスでも勝てる。";
+const RULES="スタート画面でCPU戦かルーム戦を選び、ダイヤルを上下にスワイプして人数(2〜15)と試合数(1〜30)と持ち時間を決める。試合数ぶん続けて対戦し、勝ち数で総合順位を決める(同数は合計点が低い方が上)。ルーム戦は足りない席をCPUが埋める。ルーム戦で途中で抜けた人の席はCPUで埋めず、人数が減った状態で続ける(試合中なら抜けた人の手札は山札の下に入れる)。抜けた人は「途中退出」としてマイナス評価。手札5枚。ドラ表示牌の次の数字がドラ(K→A)。ドラは-2、K=-1(ドラK=-3)。KがドラのときAの合計は偶数枚-5/奇数枚+5。ジョーカーは0(ドラなら+5)。A=1、J=11、Q=12、他は数字。A〜Kの5連続(ストレート。KからAへはつながらないので J・Q・K・A・2 は不可)があるとその5枚は0点。ストレートは5枚まとめて捨てることもでき、手札を左から右へスワイプすると一括で選んで捨てられる(ストレート内の7は七渡無効)。自分の番に捨てる前なら何点でもヤニブ宣言可(宣言後に他の人が自分も勝てる手札ならパスで手番を飛ばせる)、ジョーカー2枚で強制ヤニブ。宣言者は手札を裏向きでテーブルに置く。同数字、または2〜10の3枚の階段を捨てられ(小さい順に置く)、その後に山札か直前の捨て札の一番上を引く。7を捨てると通常どおり1枚だけ引き(山札・捨て札どちらでも可)、7の枚数だけ次の人に手札を渡す(七渡。次の人が宣言者のときは宣言者を飛ばして渡す。最終ターンの七渡のあとゲーム終了)。七渡で手札が0枚になったら、宣言なしでヤニブ宣言と同じ扱い。延長ターン中は、自分が直前に捨てた札は引けない。延長のもとになったJ/Q/Kは、そのあと誰も捨て札から引けない(延長ターン中は、前の人が捨てたJ/Q/Kも引けない)。同数字3枚を捨てるとドラ表示牌が1枚、4枚だと2枚追加される。宣言後は他の人が1周し、J/Q/Kを出した人は1ターン延長(1枚につき1回、何度でも)。最も点が低い人の勝ち(同点は宣言者の勝ち)。開始時は参加者にランダムに1から人数ぶんの番号を振り、1番から番号順に進行。2局目以降は前回勝者(同点複数なら全員)が1番で、勝者が1人なら初期手札4枚(複数なら全員5枚)。最初に山札から1枚を中央の捨て札に置く。1周目にヤニブ宣言が出た場合は、宣言者以外の全員にもう1ターンずつ与えられる。山札から引いた札が今回捨てた数字と同じなら続けて捨てられる(引き直し不可)。ジョーカーは捨てられない(七渡で渡すことはできる)。持ち時間はCPU戦・ルーム戦とも30秒・45秒・60秒・無しから選べる(引くときは10秒。時間切れは自動で進む。無しのときは引くときも制限なし)。トランプは5人までは1セット(54枚)、6〜9人は2セット(108枚)、10人以上は3セット(162枚)使う(ジョーカーもセット数ぶん)。七渡は山札から1枚引いてから渡す札を選び、必ず実行(ただし階段に含まれる7は七渡無効)。捨て札の7は引けない(ゲーム開始時の最初の捨て札が7の場合のみ引ける)。階段を捨てたターンは、山札から引いた札が階段と同じ数字でも続けて捨てられない。点数がマイナスになるとオーバーフローで最下位扱いになる。ただしドラにA・K・ジョーカーのどれかがある間だけはオーバーフローせず、マイナスでも勝てる。";
 const NET={on:false,host:false,room:null,lobby:null,me:'',hostPeer:'',N:4,G:1,T:30,code:'',inGame:false,sq:0};
 const esc=s=>String(s).replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';');
 const ROT=()=>matchMedia('(orientation:portrait)').matches&&Math.min(innerWidth,innerHeight)<=700;
@@ -1239,10 +1244,18 @@ function openOv(t){if(t)OVT=t;ovOpen=true;ovRender()}
 function closeOv(){ovOpen=false;QA=0;const o=document.getElementById('ov');if(o)o.style.display='none';avPrev()}
 function ovSoft(){if(ovOpen&&!(document.activeElement&&document.activeElement.tagName==='INPUT'))ovRender()}
 let FXON=ld('yfx',1),SNDON=ld('ysnd',1),CIQ=[],CIB=false,NEWIND={n:0,t:0},AC=null;
-function audio(){if(!SNDON)return null;try{if(!AC){const A=window.AudioContext||window.webkitAudioContext;if(!A)return null;AC=new A()}if(AC.state==='suspended')AC.resume();return AC}catch(e){return null}}
+function audio(){if(!SNDON)return null;try{if(!AC){const A=window.AudioContext||window.webkitAudioContext;if(!A)return null;AC=new A()}if(AC.state!=='running'){const r=AC.resume();r&&r.catch&&r.catch(()=>{})}return AC}catch(e){return null}}
+/* iPhone: タップのたびに音の出口を起こす(アプリ切替で止まるため)。マナーモードでも効果音が鳴るようにする */
+function audUnlock(){if(!SNDON)return;try{if(navigator.audioSession&&navigator.audioSession.type!=='playback')navigator.audioSession.type='playback'}catch(e){}const a=audio();if(!a||(audUnlock.ok&&a.state==='running'))return;try{const b=a.createBuffer(1,1,22050),q=a.createBufferSource();q.buffer=b;q.connect(a.destination);q.start(0);audUnlock.ok=1}catch(e){}}
 let NB=null;
 function nz(a,t,du,f1,f2,q,vol,ty){const src=a.createBufferSource();if(!NB){NB=a.createBuffer(1,a.sampleRate*.6|0,a.sampleRate);const d=NB.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1}src.buffer=NB;const f=a.createBiquadFilter();f.type=ty||'bandpass';f.Q.value=q;f.frequency.setValueAtTime(f1,t);if(f2)f.frequency.exponentialRampToValueAtTime(f2,t+du);const g=a.createGain();g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(vol,t+Math.min(.03,du*.3));g.gain.exponentialRampToValueAtTime(.0001,t+du);src.connect(f);f.connect(g);g.connect(a.destination);src.start(t,Math.random()*.3);src.stop(t+du+.05)}
-function sfx(k){const a=audio();if(!a)return;const t=a.currentTime+.02;try{
+/* ベル(ヤニブ): 鐘の倍音を重ねて余韻を長く */
+function bellAt(a,t,f0,vol){const P=[[.56,1,1],[.92,.67,.9],[1.19,1,.65],[1.7,1.8,.55],[2,2.67,.33],[2.74,1.67,.35],[3,1.46,.25],[3.76,1.33,.2],[4.07,1.33,.15]],D=2.6;P.forEach(([r,am,du])=>{try{const o=a.createOscillator(),g=a.createGain();o.type='sine';o.frequency.setValueAtTime(f0*r,t);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(vol*am/12,t+.004);g.gain.exponentialRampToValueAtTime(.0001,t+D*du);o.connect(g);g.connect(a.destination);o.start(t);o.stop(t+D*du+.05)}catch(e){}});nz(a,t,.03,6000,3000,1.2,.12)}
+/* 机をノックする音(七渡) */
+function knockAt(a,t,v){nz(a,t,.05,900,260,.8,.9*v,'lowpass');nz(a,t,.035,620,480,6,.55*v);try{const o=a.createOscillator(),g=a.createGain();o.type='sine';o.frequency.setValueAtTime(190,t);o.frequency.exponentialRampToValueAtTime(105,t+.12);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.55*v,t+.004);g.gain.exponentialRampToValueAtTime(.0001,t+.16);o.connect(g);g.connect(a.destination);o.start(t);o.stop(t+.18)}catch(e){}}
+/* カードが擦れる音(ドラ追加): シュッ */
+function rubAt(a,t,v){nz(a,t,.16,1700,5600,1.1,1.6*v);nz(a,t+.02,.12,5200,8000,2,.55*v)}
+function sfx(k,n){const a=audio();if(!a)return;const t=a.currentTime+.02;n=Math.max(1,Math.min(8,n|0||1));try{
 if(k==='swish')nz(a,t,.38,3400,800,.7,.75);
 else if(k==='flick')nz(a,t,.1,5200,2600,1.1,.55);
 else if(k==='thud'){nz(a,t,.26,700,110,.8,1,'lowpass');nz(a,t,.04,3200,1800,1.4,.3)}
@@ -1252,19 +1265,19 @@ else if(k==='rumble')nz(a,t,2.4,180,50,.7,.6,'lowpass');
 else if(k==='slit')nz(a,t,.6,700,5200,1.2,.3);
 else if(k==='brush'){nz(a,t,1,1600,480,.8,.4);nz(a,t+.05,.8,3500,1200,.7,.15)}
 else if(k==='taiko'){nz(a,t,.35,420,80,.7,.95,'lowpass');try{const o=a.createOscillator(),g=a.createGain();o.type='sine';o.frequency.setValueAtTime(130,t);o.frequency.exponentialRampToValueAtTime(46,t+.6);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.8,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+.75);o.connect(g);g.connect(a.destination);o.start(t);o.stop(t+.8)}catch(e){}}
-else if(k==='dora'){[0,.5,1,1.5].forEach((d,i)=>{try{const o=a.createOscillator(),g=a.createGain();o.type='sine';o.frequency.setValueAtTime(i%2?740:988,t+d);g.gain.setValueAtTime(.0001,t+d);g.gain.exponentialRampToValueAtTime(.16,t+d+.02);g.gain.exponentialRampToValueAtTime(.0001,t+d+.42);o.connect(g);g.connect(a.destination);o.start(t+d);o.stop(t+d+.45)}catch(e){}})}
+else if(k==='dora'){for(let i=0;i<n;i++)rubAt(a,t+i*.3,1)}
 else if(k==='tick'){nz(a,t,.03,2600,1500,2.2,.32);nz(a,t,.015,6000,4000,1.5,.12)}
 else if(k==='tap'){nz(a,t,.1,1400,500,.7,.9,'lowpass');nz(a,t,.05,4000,2500,1,.25)}
-else if(k==='nana'){nz(a,t,.36,3200,750,.7,.7);nz(a,t+.14,.32,3600,900,.7,.55)}
-else if(k==='yaniv'){nz(a,t,.18,700,220,.6,.9,'lowpass');const o=a.createOscillator(),g=a.createGain();o.type='sine';o.frequency.setValueAtTime(120,t);o.frequency.exponentialRampToValueAtTime(55,t+.25);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.4,t+.008);g.gain.exponentialRampToValueAtTime(.0001,t+.3);o.connect(g);g.connect(a.destination);o.start(t);o.stop(t+.32)}
+else if(k==='nana'){for(let i=0;i<n;i++)knockAt(a,t+i*.24,i===n-1?1:.85)}
+else if(k==='yaniv'){bellAt(a,t,880,1)}
 }catch(e){}}
-if(document.addEventListener){const un=()=>{if(SNDON)audio()};document.addEventListener('pointerdown',un,{once:true});document.addEventListener('touchend',un,{once:true})}
+if(document.addEventListener){['pointerdown','touchend','keydown'].forEach(ev=>document.addEventListener(ev,audUnlock,{passive:true,capture:true}))}
 /* ===== ストレート演出(約7秒・画面を切り替えて見せる) ===== */
 let SXT=[];
 function strFx(p,cs){net('fx',{k:'s',p,c:cs.map(enc)});strLocal(p,cs)}
 /* 演出の試し見(☰ → その他)。演出OFFのときも見られる */
-const DEMOS=[['ヤニブ',()=>cutinLocal('yaniv','ヤニブ!','あなたの宣言',1,1)],['七渡',()=>cutinLocal('nana','七渡×１','CPU1 → あなた  1枚',1,1)],
- ['ドラ追加',()=>cutinLocal('dora','ドラ追加!','♠5→ドラ6',1,1)],['ドラ+2',()=>cutinLocal('dora','ドラ +2!','♠5→ドラ6  ♥9→ドラ10',2,1)],['ストレート',()=>strLocal(0,[{r:9,s:0},{r:10,s:1},{r:11,s:3},{r:12,s:2},{r:13,s:0}],1)]];
+const DEMOS=[['ヤニブ',()=>cutinLocal('yaniv','ヤニブ!','あなたの宣言',1,1)],['七渡',()=>cutinLocal('nana','七渡','CPU1 → あなた  1枚',1,1)],
+ ['ドラ追加',()=>cutinLocal('dora','ドラ追加!','♠5→ドラ6',1,1)],['ストレート',()=>strLocal(0,[{r:9,s:0},{r:10,s:1},{r:11,s:3},{r:12,s:2},{r:13,s:0}],1)]];
 function demoFx(i){const d=DEMOS[i];if(!d)return;closeOv();setTimeout(d[1],120)}
 function demoMode(ms){if(!ST.vis)return;document.body.classList.toggle('dfx',true);clearTimeout(demoMode.t);demoMode.t=setTimeout(()=>document.body.classList.toggle('dfx',false),ms)}
 const SQBR='<svg viewBox="0 0 1000 200" preserveAspectRatio="none"><defs><filter id="sqr" x="-5%" y="-30%" width="110%" height="160%"><feTurbulence type="fractalNoise" baseFrequency="0.018 0.22" numOctaves="3" seed="7"/><feDisplacementMap in="SourceGraphic" scale="42"/></filter><linearGradient id="sqbg" x1="0" x2="1"><stop offset="0" stop-color="#2a0505" stop-opacity="0"/><stop offset=".1" stop-color="#4d0909"/><stop offset=".5" stop-color="#7a1010"/><stop offset=".9" stop-color="#4d0909"/><stop offset="1" stop-color="#2a0505" stop-opacity="0"/></linearGradient></defs><rect x="20" y="38" width="960" height="124" fill="url(#sqbg)" filter="url(#sqr)"/><rect x="60" y="150" width="880" height="6" fill="#c19a48" opacity=".55" filter="url(#sqr)"/></svg>';
@@ -1288,7 +1301,7 @@ function cutin(t,a,b,n){net('fx',{k:'c',t,a,b,n:n||1});cutinLocal(t,a,b,n)}
 function cutinLocal(t,a,b,n,demo){if(t==='yaniv'&&!demo&&S3.ok&&G&&G.declarer!=null)S3.declare(G.declarer);if(t==='dora'&&!demo&&G){NEWIND={n:n||1,gid:G.gid,hide:FXON?1:0,landed:0,t0:Date.now(),until:FXON?0:Date.now()+2000};if(NET.on&&!NET.host&&!ST.vis)paint()}CIQ.push([t,a,b,demo,n]);if(CIQ.length>3)CIQ.splice(0,CIQ.length-3);if(!CIB)ciNext()}
 function ciNext(){const L=document.getElementById('ci');if(!CIQ.length||!L||!L.appendChild){CIB=false;return}CIB=true;const [t,a,b,demo,cn]=CIQ.shift();let dur=t==='yaniv'||t==='nana'?3000:1450;if(CIQ.length)dur*=.8;if(demo)demoMode(t==='dora'?DORAMS+900:dur+400);
 if(t==='dora'){if(!FXON&&!demo){sfx('swish');setTimeout(ciNext,200);return}setTimeout(()=>{let ms=0;try{ms=doraShow(a,b,demo,cn)}catch(e){unhideAll();ms=0}setTimeout(ciNext,ms)},demo?50:200);return}
-sfx(t);if(t==='yaniv'&&SNDON&&navigator.vibrate)try{navigator.vibrate([60,40,140])}catch(e){}
+sfx(t,cn);if(t==='yaniv'&&SNDON&&navigator.vibrate)try{navigator.vibrate([60,40,140])}catch(e){}
 if(!FXON&&!demo){setTimeout(ciNext,200);return}
 const d=document.createElement('div');d.className='ci ci-'+t+(t==='nana'&&cn>1?' nx'+Math.min(3,cn):'');d.style.setProperty('--d',dur+'ms');
 d.innerHTML=t==='nana'?'<div class="nsp"></div><div class="n7">7</div><div class="nfl"><span class="g2"></span><span class="g1"></span><span class="cit"></span></div><div class="cis"></div>':'<div class="cib"></div>'+(t==='yaniv'?'<div class="bgw">YANIV</div>':'')+'<div class="cit"></div><div class="cis"></div>';
@@ -1305,7 +1318,7 @@ function doraShow(a,b,demo,dn){const L=document.getElementById('ci');if(!L||!L.a
  const box=document.createElement('div');box.className='dshow';box.style.setProperty('--d',DORAMS+'ms');
  box.innerHTML='<div class="dsfl"></div><div class="dsin"><div class="dst"></div><div class="dsc">'+cards.map(c=>card(c,{fs})).join('')+'</div><div class="dsb"></div></div>';
  box.querySelector('.dst').textContent=a;const sb=box.querySelector('.dsb');if(b)sb.textContent=b;else sb.remove();L.appendChild(box);
- try{if(S3.ok)S3.lampFlash(DORAMS)}catch(e){}sfx('dora');try{SNDON&&navigator.vibrate&&navigator.vibrate([40,460,40,460,40,460,40])}catch(e){}
+ try{if(S3.ok)S3.lampFlash(DORAMS)}catch(e){}sfx('dora',cards.length);try{SNDON&&navigator.vibrate&&navigator.vibrate([40,460,40,460,40,460,40])}catch(e){}
  setTimeout(()=>{box.classList.add('out');const els=live?document.querySelectorAll('#app .tray .cd'):[],cds=box.querySelectorAll('.dsc .cd');let flew=0;
   cds.forEach((cd,k)=>{const el=els[G?G.inds.length-cards.length+k:-1];if(!el)return;const T=stP(ctrE(el)),S=stP(ctrE(cd)),r1=el.getBoundingClientRect(),r0=cd.getBoundingClientRect(),sc=Math.max(.05,Math.max(r1.width,r1.height)/Math.max(1,r0.width,r0.height));
    cd.style.transition='transform .42s cubic-bezier(.55,0,.8,.3),opacity .42s';cd.style.transform='translate('+(T.x-S.x).toFixed(1)+'px,'+(T.y-S.y).toFixed(1)+'px) scale('+sc.toFixed(3)+')';flew=1});
@@ -1333,7 +1346,7 @@ cards.forEach((c,k)=>setTimeout(()=>{
   setTimeout(()=>{fl.remove();sfx('tap');if(live)landInd(k)},per);
 },k*gap));
 return total+150}
-function tgl(k){if(k==='fx'){FXON=FXON?0:1;sv('yfx',FXON)}else{SNDON=SNDON?0:1;sv('ysnd',SNDON);if(SNDON)audio()}ovRender()}
+function tgl(k){if(k==='fx'){FXON=FXON?0:1;sv('yfx',FXON)}else{SNDON=SNDON?0:1;sv('ysnd',SNDON);if(SNDON){audUnlock.ok=0;audUnlock();sfx('tick')}else{try{if(navigator.audioSession)navigator.audioSession.type='auto'}catch(e){}}}ovRender()}
 const PAL=[['navy','紺',[.16,.22,.36]],['blue','青',[.18,.3,.56]],['sky','水色',[.46,.64,.82]],['red','赤',[.56,.12,.16]],['wine','ワイン',[.38,.1,.17]],['pink','ピンク',[.84,.52,.6]],['green','緑',[.18,.4,.27]],['olive','オリーブ',[.36,.38,.28]],['mustard','からし',[.66,.5,.16]],['orange','オレンジ',[.78,.4,.14]],['brown','茶',[.42,.27,.16]],['beige','ベージュ',[.74,.64,.48]],['purple','紫',[.36,.21,.48]],['gray','グレー',[.44,.44,.46]],['black','黒',[.1,.1,.11]],['white','白',[.88,.87,.83]]];
 const PALM={};PAL.forEach(p=>PALM[p[0]]=p);
 const AVDEF={me:{g:'m',c:'navy'},c1:{g:'m',c:'blue'},c2:{g:'f',c:'red'},c3:{g:'m',c:'olive'},c4:{g:'f',c:'green'},c5:{g:'m',c:'mustard'}};
