@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja"><head><meta charset="utf-8"><script>var YBUILD='yaniv-v42';(function(){try{if(!/\bLine\//i.test(navigator.userAgent||''))return;var q=location.search||'';if(/[?&]openExternalBrowser=1/.test(q))return;location.replace(location.pathname+(q?q+'&':'?')+'openExternalBrowser=1'+location.hash)}catch(e){}})();</script>
+<html lang="ja"><head><meta charset="utf-8"><script>var YBUILD='yaniv-v43';(function(){try{if(!/\bLine\//i.test(navigator.userAgent||''))return;var q=location.search||'';if(/[?&]openExternalBrowser=1/.test(q))return;location.replace(location.pathname+(q?q+'&':'?')+'openExternalBrowser=1'+location.hash)}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"><meta name="format-detection" content="telephone=no">
 <title>ヤニブ</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Yuji+Boku&display=swap&text=%E4%B8%83%E6%B8%A1%E3%83%A4%E3%83%8B%E3%83%96%21Straight%C3%97%EF%BC%91%EF%BC%92%EF%BC%93%EF%BC%94%EF%BC%95%EF%BC%96%EF%BC%97%EF%BC%98%EF%BC%99">
@@ -80,6 +80,26 @@ html,body{overflow:hidden;min-height:360px}#stage{position:fixed;left:0;top:0;wi
 /* info ボタンと説明画面 */
 .infob{position:absolute;top:8px;left:20px;z-index:3;width:42px;height:42px;padding:0;display:flex;align-items:center;justify-content:center;border-radius:8px;background:linear-gradient(180deg,#ffe46e,#f2c52e);border:2.5px solid #111;color:#111;font:900 26px/1 system-ui,-apple-system,sans-serif;box-shadow:0 3px 0 #000b,0 6px 14px #0009;cursor:pointer}
 .infob:active{transform:translateY(2px);box-shadow:0 1px 0 #000b}
+/* アップデート情報ボタン(赤い四角・白い縁・白い!) と 画面 */
+.newsb{position:absolute;top:8px;left:72px;z-index:3;width:42px;height:42px;padding:0;display:flex;align-items:center;justify-content:center;border-radius:8px;background:linear-gradient(180deg,#ec4a3f,#c21f17);border:2.5px solid #fff;color:#fff;font:900 26px/1 system-ui,-apple-system,sans-serif;box-shadow:0 3px 0 #000b,0 6px 14px #0009;cursor:pointer}
+.newsb:active{transform:translateY(2px);box-shadow:0 1px 0 #000b}
+.nnone{display:flex;flex-direction:column;align-items:center;gap:12px;padding:44px 10px 30px;text-align:center}.nnone b{font-size:21px;color:#fff;letter-spacing:.08em}.nnone small{font-size:12px;color:#bfae86}
+.hlp .nmock{position:relative;top:auto;left:auto;display:inline-flex;pointer-events:none}
+.nwh{flex:1;display:flex;align-items:baseline;gap:12px;padding-left:4px;min-width:0}.nwh b{font-size:17px;color:var(--gold);letter-spacing:.06em;white-space:nowrap}.nwh span{font-size:12px;color:#cfe3d8;white-space:nowrap}
+.nvh{display:flex;align-items:center;gap:12px;margin:12px 0 2px;padding:9px 14px;border-radius:10px;background:linear-gradient(90deg,#c21f1740,#c21f1708 70%,transparent);border-left:4px solid #ec4a3f}
+.nvh b{font-size:19px;color:#fff;letter-spacing:.04em}.nvh span{font-size:14px;color:#efe2b4;font-weight:700}.nvh i{font-style:normal;font-size:10px;font-weight:900;background:#ec4a3f;color:#fff;border-radius:6px;padding:2px 7px;letter-spacing:.08em}
+.ntb{position:relative;width:118px;height:118px;border-radius:50%;background:radial-gradient(circle at 50% 38%,#cf9b5c,#8d5b2c 68%,#5b3817);box-shadow:inset 0 3px 12px #0009,0 4px 12px #000a;margin:6px 14px}
+.ntb .av{position:absolute;transform:translate(-50%,-50%);width:30px;height:30px;font-size:.85rem;margin:0;border-width:2px}
+.ntb .fs{position:absolute;transform:translate(-50%,-50%);font-size:10px;font-weight:900;line-height:1.5;background:var(--gold);color:#1a1206;border-radius:999px;padding:0 6px;white-space:nowrap;box-shadow:0 1px 3px #000a}
+.ntb .cr{position:absolute;transform:translate(-50%,-50%);font-size:17px;filter:drop-shadow(0 1px 2px #000)}
+.nfl{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap}
+.nst{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:64px}.nst .av{width:32px;height:32px;font-size:.9rem;margin:0;border-width:2px}.nst small{font-size:11px;color:#e9dcb4;text-align:center;line-height:1.35}
+.nst .ext{font-size:11px;padding:3px 6px;background:#e3b84a;color:#2a1a05;border-radius:6px}.nst .cd{margin:0 -.1em}.nrow{display:flex;align-items:center;gap:3px}
+.nres{display:inline-flex;align-items:center;justify-content:center;width:62px;height:42px;border-radius:8px;border:1px solid #c19a48;background:linear-gradient(180deg,#2a1d10,#140d07);color:var(--gold);font-weight:900;font-size:14px;box-shadow:0 3px 8px #000a}
+.ngift{font-size:28px;line-height:1;filter:drop-shadow(0 2px 3px #000)}
+.hnx .rdc{font-size:9px;font-weight:800;color:#5a3005;margin-top:2px}.hnx .rdc b{font-size:12px}
+.hnx.ok{color:#08261a;border-color:#c8f5dc;background:radial-gradient(circle at 35% 25%,#e3fbee 0,#7fd3a8 32%,#2f8a5f 68%,#14432e 100%)}
+.nvp{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 12px;border-radius:12px;border:1px solid #c19a48;background:linear-gradient(180deg,#24180ef2,#120c07f2);box-shadow:0 6px 16px #000a;font-size:11px;color:#efe2b4}.nvp b{color:var(--gold);font-size:12px}.nvp em{font-style:normal;font-size:10px;color:#bfae86}
 #help{position:fixed;inset:0;z-index:93;display:none;align-items:center;justify-content:center;background:#000c;padding:8px}
 .hlp{width:min(840px,100%);height:100%;display:flex;flex-direction:column;background:linear-gradient(180deg,#24190f,#140d07);border:1px solid #c19a48;border-radius:14px;box-shadow:0 10px 40px #000;overflow:hidden}
 .hlph{display:flex;gap:8px;align-items:center;padding:8px 10px;border-bottom:1px solid #c19a4855;flex:none}
@@ -1356,6 +1376,16 @@ function openOv(t){if(t)OVT=t;ovOpen=true;ovRender()}
 /* ===== info: 操作方法(絵つき) と ルール説明 ===== */
 let HLPT='op';
 function openHelp(t){if(t)HLPT=t;const e=document.getElementById('help');if(!e)return;e.innerHTML=helpHtml();e.style.display='flex';hlpFit();const b=e.querySelector('.hlpb');if(b)b.scrollTop=0}
+/* ===== アップデート情報(!) =====
+   新しい版を出すときは NEWS の先頭に {v:'1.1',d:'20XX年X月X日',body:()=>'...'} を足し、APPV と APPD を上げる(info と同じ hlC/hlB/hlG で絵つき説明) */
+const APPV='1.0',APPD='2026年11月9日';
+const nChip=(c,l)=>'<span class="av pchip '+c+'">'+l+'</span>',nC=n=>nChip('c'+n,'<small>C</small>'+n),nMe=()=>nChip('c0','あ');
+const nTable=(seats,first,crown)=>{const P=[[50,88],[12,50],[50,12],[88,50]],F=[[50,64],[33,50],[50,36],[67,50]];return '<div class="ntb">'+seats.map((x,k)=>x.replace('<span class="av','<span style="left:'+P[k][0]+'%;top:'+P[k][1]+'%" class="av')).join('')+(first!=null?'<span class="fs" style="left:'+F[first][0]+'%;top:'+F[first][1]+'%">最初</span>':'')+(crown!=null?'<span class="cr" style="left:'+P[crown][0]+'%;top:'+(P[crown][1]-21)+'%">👑</span>':'')+'</div>'};
+const NEWS=[];/* 例: {v:'1.1',d:'2026年11月20日',body:()=>'<h3><span class="no">1</span>…</h3><div class="hf">'+hlG(…)+'</div><p>…</p>'} */
+function newsHtml(){let h='<div class="hlp"><div class="hlph"><div class="nwh"><b>アップデート情報</b><span>現在のバージョン '+APPV+'</span></div><button class="hb" style="width:38px;height:38px;flex:none" onclick="closeHelp()" aria-label="閉じる">✕</button></div><div class="hlpb">';
+ if(!NEWS.length)h+='<div class="nvh"><b>バージョン '+APPV+'</b><span>'+APPD+'</span><i>現在</i></div><div class="nnone"><span class="newsb nmock">!</span><b>アップデート情報無し</b><small>新しいバージョンが出ると、ここに変更内容が表示されます</small></div>';
+ else NEWS.forEach((u,k)=>{h+='<div class="nvh"><b>バージョン '+u.v+'</b><span>'+u.d+'</span>'+(k===0?'<i>最新</i>':'')+'</div>'+u.body()});return h+'</div></div>'}
+function openNews(){const e=document.getElementById('help');if(!e)return;e.innerHTML=newsHtml();e.style.display='flex';const b=e.querySelector('.hlpb');if(b)b.scrollTop=0}
 function closeHelp(){const e=document.getElementById('help');if(e){e.style.display='none';e.innerHTML=''}}
 const hlC=(r,s,o)=>{o=o||{};let h=card({r,s},{fs:o.fs||11,sel:o.sel,cls:o.str?'strk':''});h=h.replace(/(class="cd[^"]*?)\bdora\b/,'$1');if(o.dora)h=h.replace('class="cd ','class="cd dora ');if(o.dim)h=h.replace('class="cd ','class="cd dim ');return h};
 const hlB=(cls,label,sub,dis)=>'<span class="rb '+cls+(dis?' off':'')+'">'+label+(sub?'<small>'+sub+'</small>':'')+'</span>';
@@ -1784,7 +1814,7 @@ else if(st==='hello'){t='はじめまして';const tcx=tcOn();b=inappNote()+'<di
  +(tcx?'<div class="row hrow"><input id="hid" inputmode="numeric" maxlength="9" placeholder="ID(8桁の数字)" value="'+esc(ST.hi||'')+'" oninput="ST.hi=this.value"><input id="htc" maxlength="9" autocapitalize="characters" autocomplete="off" placeholder="引き継ぎコード(8文字)" value="'+esc(ST.hc||'')+'" oninput="ST.hc=this.value"><button class="act s g" onclick="tcRestoreUI(\'hid\',\'htc\')">戻す</button></div><div class="mut2" style="text-align:left">IDと引き継ぎコードは、前に遊んだ方の ☰ → その他 にあります</div>':'')
  +(tcx&&!ST.hlong?'<div class="mut2" style="text-align:left"><a onclick="ST.hlong=1;stRender()">Claude版など、長いコードで移すときはこちら</a></div>':'<div class="mut2" style="text-align:left">長い引き継ぎコードで移すとき: 前に遊んだ方の ☰ → その他 →「長い引き継ぎコードを表示」でコピーして、ここに貼り付け</div><div class="row hrow"><input id="hbk" placeholder="長い引き継ぎコード" value="'+esc(ST.hb||'')+'" oninput="ST.hb=this.value"><button class="act s" onclick="pasteInto(\'hbk\')">貼り付け</button><button class="act s g" onclick="restoreCode(\'hbk\')">引き継ぐ</button></div>')+'</div>'}
 else if(st==='ids'){t='あなたのIDと引き継ぎコード';b='<div class="hello idc"><div class="idr"><span>ID</span><b>'+fidFmt(myFid())+'</b></div><div class="idr"><span>引き継ぎコード</span><b>'+tcFmt(myTc())+'</b></div><div class="mut" style="text-align:left">スマホを替えたときや別のブラウザで開いたときは、この2つを入れるとデータ(名前・フレンド・履歴)が戻ります。<b style="color:#ffe7b0">スクショしておくと安心です。</b>引き継ぎコードは人に教えないでください。いつでも ☰ → その他 で見られます。</div><div class="row" style="justify-content:center"><button class="act g" onclick="stGo(\'mode\')">OK</button></div></div>'}
-e.innerHTML='<button class="infob" onclick="openHelp()" aria-label="遊び方とルール">?</button><div class="stbar"><button class="who" onclick="openOv(\'etc\')">👤 '+esc(USER)+'</button><button class="hb" onclick="openOv(\'hist\')" aria-label="メニュー">☰</button></div>'+(st==='mode'?'<div class="sfan">'+[[1,0],[13,1],[12,2],[11,3],[0,5]].map((x,i)=>card({r:x[0],s:x[1]},{fs:12,st:'--r:'+((i-2)*13)+'deg;--y:'+(Math.abs(i-2)*Math.abs(i-2)*3)+'px'})).join('')+'</div>':'')+'<h1 aria-label="ヤニブ">'+TTL+'</h1><div class="crumb">'+cr+'</div><div class="stt" style="font-size:16px;color:#f1e7c8;font-weight:700">'+t+'</div>'+b+(st!=='mode'&&st!=='hello'&&st!=='ids'&&ST.step!=='set'?'<button class="act s" onclick="stBack()">← 戻る</button>':'')+'';if(ST.step==='set')whlInit();if(ST.step!=='lobby'&&S3.setLobbyN)S3.setLobbyN(ST.n)}
+e.innerHTML='<button class="infob" onclick="openHelp()" aria-label="遊び方とルール">?</button><button class="newsb" onclick="openNews()" aria-label="アップデート情報">!</button><div class="stbar"><button class="who" onclick="openOv(\'etc\')">👤 '+esc(USER)+'</button><button class="hb" onclick="openOv(\'hist\')" aria-label="メニュー">☰</button></div>'+(st==='mode'?'<div class="sfan">'+[[1,0],[13,1],[12,2],[11,3],[0,5]].map((x,i)=>card({r:x[0],s:x[1]},{fs:12,st:'--r:'+((i-2)*13)+'deg;--y:'+(Math.abs(i-2)*Math.abs(i-2)*3)+'px'})).join('')+'</div>':'')+'<h1 aria-label="ヤニブ">'+TTL+'</h1><div class="crumb">'+cr+'</div><div class="stt" style="font-size:16px;color:#f1e7c8;font-weight:700">'+t+'</div>'+b+(st!=='mode'&&st!=='hello'&&st!=='ids'&&ST.step!=='set'?'<button class="act s" onclick="stBack()">← 戻る</button>':'')+'';if(ST.step==='set')whlInit();if(ST.step!=='lobby'&&S3.setLobbyN)S3.setLobbyN(ST.n)}
 
 (async()=>{try{if(!window.claude){initP2P();return}const r=await window.claude.use('room');if(!r)return;NET.lobby=r;lobbyPres.k='';lobbyPres();r.onPeers(()=>{frFlush();ovSoft();stSoft()});r.on('invite',onInvite);ovSoft();stSoft()}catch(e){}})();
 SBOOT=false;try{layout();showStart();bootOK();setTimeout(init3d,60);cloudInit();setTimeout(()=>tcSync(),2500)}catch(e){bootErr(e)}
